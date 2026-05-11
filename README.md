@@ -1,0 +1,2 @@
+# cgcapital
+AI Intelligence Platform
