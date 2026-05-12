@@ -22,6 +22,8 @@
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
+        html { scroll-behavior: smooth; }
+        
         body {
             background-color: var(--bg);
             color: var(--text-main);
@@ -45,7 +47,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* PREMIUM NAVIGATION */
+        /* SCROLLING NAVIGATION */
         header {
             padding: 20px 0;
             border-bottom: 1px solid var(--border);
@@ -73,35 +75,19 @@
         .nav-links { display: flex; gap: 32px; align-items: center; }
         .nav-link { 
             color: var(--text-muted); font-size: 0.95rem; font-weight: 500; 
-            cursor: pointer; transition: 0.2s; position: relative;
+            cursor: pointer; transition: 0.2s;
         }
-        .nav-link:hover, .nav-link.active { color: var(--text-main); }
-        
-        /* Dropdown Logic */
-        .dropdown { position: relative; }
-        .dropdown-menu {
-            position: absolute; top: 100%; left: -20px; background: var(--surface);
-            border: 1px solid var(--border); border-radius: 8px; padding: 10px;
-            min-width: 220px; opacity: 0; visibility: hidden; transform: translateY(10px);
-            transition: 0.2s; box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-        }
-        .dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(15px); }
-        .dropdown-item {
-            display: block; padding: 10px 16px; color: var(--text-muted);
-            border-radius: 6px; transition: 0.2s; font-size: 0.9rem; font-weight: 500;
-        }
-        .dropdown-item:hover { background: rgba(255,255,255,0.03); color: var(--cyan); }
-        .dropdown-item span { display: block; font-size: 0.75rem; color: #64748b; margin-top: 2px; }
+        .nav-link:hover { color: var(--text-main); }
 
         .btn-header {
             background: var(--text-main); color: var(--bg);
             padding: 8px 20px; border-radius: 6px; font-size: 0.9rem; font-weight: 600;
-            transition: 0.2s;
+            transition: 0.2s; cursor: pointer;
         }
         .btn-header:hover { background: var(--text-muted); }
 
         /* HERO SECTION */
-        .hero { padding: 120px 0 80px; text-align: center; }
+        .hero { padding: 120px 0 80px; text-align: center; scroll-margin-top: 100px; }
         .hero h1 {
             font-size: clamp(3rem, 6vw, 4.5rem); line-height: 1.1; margin-bottom: 24px;
             background: linear-gradient(180deg, #fff, #94a3b8);
@@ -110,7 +96,12 @@
         .hero p { font-size: 1.25rem; color: var(--text-muted); max-width: 650px; margin: 0 auto 40px; }
 
         /* PRODUCT CARDS */
-        .agent-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; padding-bottom: 100px; }
+        .products-section { padding: 40px 0 80px; scroll-margin-top: 100px; }
+        .section-title { text-align: center; margin-bottom: 50px; }
+        .section-title h2 { font-size: 2.5rem; margin-bottom: 10px; }
+        .section-title p { color: var(--text-muted); font-size: 1.1rem; }
+
+        .agent-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
         
         .card {
             background: var(--surface); border: 1px solid var(--border);
@@ -129,12 +120,43 @@
         .card h2 { font-size: 2rem; margin-bottom: 12px; }
         .card p { color: var(--text-muted); font-size: 1.05rem; }
 
-        /* ALICANTO PRODUCT PAGE */
-        .product-header { text-align: center; padding: 80px 0 60px; }
+        /* CONTACT & LINKS SECTION (Restored from old version) */
+        .contact-section { padding: 40px 0 100px; scroll-margin-top: 100px; }
+        .contact-card {
+            background: linear-gradient(180deg, rgba(255,255,255,0.03), transparent);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 50px;
+            text-align: center;
+        }
+        .contact-card h2 { font-size: 2.5rem; margin-bottom: 16px; }
+        .contact-card p { color: var(--text-muted); margin-bottom: 30px; font-size: 1.1rem; }
+
+        .link-grid {
+            display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;
+        }
+        .link-btn {
+            padding: 14px 28px; border-radius: 8px; font-weight: 600; font-size: 0.95rem;
+            transition: 0.2s; display: inline-flex; align-items: center; gap: 8px;
+        }
+        .link-primary { background: var(--cyan); color: #000; }
+        .link-primary:hover { background: #00bccc; transform: translateY(-2px); }
+        .link-secondary { background: rgba(255,255,255,0.05); color: #fff; border: 1px solid var(--border); }
+        .link-secondary:hover { background: rgba(255,255,255,0.1); transform: translateY(-2px); }
+
+
+        /* ALICANTO PRODUCT PAGE (Unchanged as requested) */
+        .btn-back {
+            display: inline-flex; align-items: center; gap: 8px;
+            color: var(--text-muted); font-size: 0.95rem; font-weight: 600;
+            margin-top: 40px; cursor: pointer; transition: 0.2s;
+        }
+        .btn-back:hover { color: #fff; }
+
+        .product-header { text-align: center; padding: 40px 0 60px; }
         .product-header h1 { font-size: 3.5rem; color: var(--cyan); margin-bottom: 16px; }
         .product-header p { color: var(--text-muted); font-size: 1.15rem; max-width: 700px; margin: auto; }
 
-        /* PRICING / TIERS */
         .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 100px; }
 
         .tier {
@@ -174,8 +196,8 @@
         }
 
         @media (max-width: 900px) {
-            .nav-links { display: none; /* Add hamburger menu for mobile in production */ }
-            .agent-grid, .pricing-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+            .agent-grid, .pricing-grid, .link-grid { grid-template-columns: 1fr; flex-direction: column; }
             .hero h1 { font-size: 2.5rem; }
         }
     </style>
@@ -184,29 +206,15 @@
 
     <header>
         <div class="container nav-wrapper">
-            <div class="brand" onclick="openPage('home-view')">
+            <div class="brand" onclick="scrollToSection('home')">
                 <img src="6248802109012775016.jpg" alt="C. G. Capital AI" class="brand-logo" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><rect width=\'100\' height=\'100\' fill=\'%23111\'/><text x=\'50\' y=\'65\' font-family=\'Arial\' font-size=\'40\' fill=\'%2300e6ff\' text-anchor=\'middle\'>CG</text></svg>';">
                 C. G. Capital AI
             </div>
 
             <nav class="nav-links">
-                <div class="nav-link" onclick="openPage('home-view')">Home</div>
-                
-                <div class="dropdown">
-                    <div class="nav-link">Agents ▾</div>
-                    <div class="dropdown-menu">
-                        <a href="#" class="dropdown-item" onclick="openPage('alicanto-view')">
-                            Alicanto
-                            <span>Macro & Commodity Intelligence</span>
-                        </a>
-                        <a href="#" class="dropdown-item" style="opacity: 0.5; cursor: default;">
-                            Kairos (Coming Soon)
-                            <span>Indian Equity Swing Trading</span>
-                        </a>
-                    </div>
-                </div>
-
-                <a href="mailto:partners@cgcapitalai.online" class="nav-link">Support</a>
+                <a onclick="scrollToSection('home')" class="nav-link">Home</a>
+                <a onclick="scrollToSection('products')" class="nav-link">Products</a>
+                <a onclick="scrollToSection('contact')" class="nav-link">Contact</a>
                 <a href="https://godhwanichetan.gumroad.com/l/baiglo" class="btn-header">Get Access</a>
             </nav>
         </div>
@@ -215,30 +223,56 @@
     <main class="container">
         
         <div id="home-view" class="page-view active">
-            <section class="hero">
+            
+            <section id="home" class="hero">
                 <h1>Trade with Institutional Intelligence.</h1>
                 <p>Deploy 24/7 autonomous AI agents designed to give you the ultimate edge in macro research, commodity tracking, and market execution.</p>
             </section>
 
-            <section class="agent-grid">
-                <div class="card" onclick="openPage('alicanto-view')">
-                    <span class="tag cyan">Available Now</span>
-                    <h2>Alicanto Base</h2>
-                    <p>Your private macro-intelligence analyst. Monitors global commodity flows, precious metals, and geopolitical disruption vectors in real-time.</p>
-                    <div style="margin-top: 24px; color: var(--cyan); font-weight: 600; font-size: 0.9rem;">View Features & Pricing →</div>
+            <section id="products" class="products-section">
+                <div class="section-title">
+                    <h2>Our AI Agents</h2>
+                    <p>Select an agent to view technical specifications and deployment options.</p>
                 </div>
+                
+                <div class="agent-grid">
+                    <div class="card" onclick="openPage('alicanto-view')">
+                        <span class="tag cyan">Available Now</span>
+                        <h2>Alicanto Base</h2>
+                        <p>Your private macro-intelligence analyst. Monitors global commodity flows, precious metals, and geopolitical disruption vectors in real-time.</p>
+                        <div style="margin-top: 24px; color: var(--cyan); font-weight: 600; font-size: 0.9rem;">View Features & Pricing →</div>
+                    </div>
 
-                <div class="card">
-                    <span class="tag gold">In Development</span>
-                    <h2>Kairos Protocol</h2>
-                    <p>Systematic swing trading agent optimized for Indian Equities. Utilizes proprietary momentum squeeze filters and volatility sizing.</p>
-                    <div style="margin-top: 24px; color: var(--text-muted); font-weight: 600; font-size: 0.9rem;">Access Currently Locked 🔒</div>
+                    <div class="card">
+                        <span class="tag gold">In Development</span>
+                        <h2>Kairos Protocol</h2>
+                        <p>Systematic swing trading agent optimized for Indian Equities. Utilizes proprietary momentum squeeze filters and volatility sizing.</p>
+                        <div style="margin-top: 24px; color: var(--text-muted); font-weight: 600; font-size: 0.9rem;">Access Currently Locked 🔒</div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="contact" class="contact-section">
+                <div class="contact-card">
+                    <h2>Connect & Support</h2>
+                    <p>Get direct access to our agents, join the community, or reach out to global support.</p>
+                    
+                    <div class="link-grid">
+                        <a href="https://godhwanichetan.gumroad.com/l/baiglo" class="link-btn link-primary">Subscribe on Gumroad</a>
+                        <a href="https://t.me/Silver_agent_gb_bot" class="link-btn link-secondary">Open Telegram Bot</a>
+                        <a href="https://t.me/c_g_capital_ai" class="link-btn link-secondary">Telegram Support Group</a>
+                        <a href="mailto:partners@cgcapitalai.online" class="link-btn link-secondary">partners@cgcapitalai.online</a>
+                    </div>
                 </div>
             </section>
         </div>
 
         <div id="alicanto-view" class="page-view">
             
+            <div class="btn-back" onclick="openPage('home-view')">
+                ← Back to Firm Overview
+            </div>
+
             <div class="product-header">
                 <h1>Alicanto AI Agent</h1>
                 <p>Built for stackers, traders, and macro-focused investors who need high-signal intelligence without the noise. Choose your operational level below.</p>
@@ -294,15 +328,26 @@
     </footer>
 
     <script>
+        // Handles switching between the Home view and the Alicanto view
         function openPage(pageId) {
-            // Hide all pages
             document.querySelectorAll('.page-view').forEach(p => p.classList.remove('active'));
-            
-            // Show target page
             document.getElementById(pageId).classList.add('active');
-            
-            // Scroll to top
             window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Handles scrolling from the top menu
+        function scrollToSection(sectionId) {
+            // If the user is inside the Alicanto view, send them back to the Home view first
+            if (!document.getElementById('home-view').classList.contains('active')) {
+                openPage('home-view');
+                // Wait a split second for the page to render, then scroll
+                setTimeout(() => {
+                    document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+                }, 100);
+            } else {
+                // If they are already on the Home view, just scroll
+                document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+            }
         }
     </script>
 </body>
