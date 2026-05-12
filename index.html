@@ -4,351 +4,298 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>C. G. Capital AI | Trade With Institutional Intelligence</title>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --bg: #07080b;
-            --surface: #11131a;
-            --surface-hover: #1a1d27;
+            --bg: #050608;
+            --surface: #0d0f14;
+            --surface-hover: #161a22;
             --border: rgba(255, 255, 255, 0.06);
             --border-highlight: rgba(0, 230, 255, 0.2);
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
             --cyan: #00e6ff;
             --gold: #f5c451;
+            --pink: #ff007a;
+            --purple: #bc00ff;
             --glow-cyan: 0 0 30px rgba(0, 230, 255, 0.1);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
         html { scroll-behavior: smooth; }
-        
         body {
             background-color: var(--bg);
             color: var(--text-main);
             font-family: 'Inter', sans-serif;
             line-height: 1.6;
-            background-image: radial-gradient(circle at 50% 0%, rgba(0, 230, 255, 0.03) 0%, transparent 50%);
         }
 
         h1, h2, h3, h4 { font-family: 'Space Grotesk', sans-serif; font-weight: 700; letter-spacing: -0.5px; }
-        a { text-decoration: none; color: inherit; }
-        ul { list-style: none; }
+        .mono { font-family: 'JetBrains Mono', monospace; text-transform: uppercase; font-size: 0.8rem; }
 
         .container { width: min(1200px, 92%); margin: auto; }
 
-        /* MULTI-PAGE SYSTEM */
+        /* PAGE SYSTEM */
         .page-view { display: none; animation: fadeIn 0.3s ease-out; }
         .page-view.active { display: block; }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* SCROLLING NAVIGATION */
+        /* NAVIGATION */
         header {
-            padding: 20px 0;
-            border-bottom: 1px solid var(--border);
-            background: rgba(7, 8, 11, 0.85);
-            backdrop-filter: blur(16px);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+            padding: 20px 0; border-bottom: 1px solid var(--border);
+            background: rgba(5, 6, 8, 0.85); backdrop-filter: blur(16px);
+            position: sticky; top: 0; z-index: 1000;
         }
-        
         .nav-wrapper { display: flex; justify-content: space-between; align-items: center; }
-        
-        .brand {
-            display: flex; align-items: center; gap: 12px;
-            font-family: 'Space Grotesk', sans-serif; font-size: 1.4rem; font-weight: 700;
-            cursor: pointer; transition: 0.2s;
-        }
-        .brand:hover { color: var(--cyan); }
-        
-        .brand-logo { 
-            width: 38px; height: 38px; border-radius: 8px; object-fit: cover;
-            border: 1px solid var(--border);
-        }
-
+        .brand { display: flex; align-items: center; gap: 12px; cursor: pointer; }
+        .brand-logo { width: 38px; height: 38px; border-radius: 8px; border: 1px solid var(--border); }
         .nav-links { display: flex; gap: 32px; align-items: center; }
-        .nav-link { 
-            color: var(--text-muted); font-size: 0.95rem; font-weight: 500; 
-            cursor: pointer; transition: 0.2s;
-        }
+        .nav-link { color: var(--text-muted); font-size: 0.95rem; font-weight: 500; cursor: pointer; transition: 0.2s; }
         .nav-link:hover { color: var(--text-main); }
+        .btn-header { background: #fff; color: #000; padding: 8px 20px; border-radius: 6px; font-weight: 600; font-size: 0.9rem; }
 
-        .btn-header {
-            background: var(--text-main); color: var(--bg);
-            padding: 8px 20px; border-radius: 6px; font-size: 0.9rem; font-weight: 600;
-            transition: 0.2s; cursor: pointer;
-        }
-        .btn-header:hover { background: var(--text-muted); }
+        /* HERO */
+        .hero { padding: 100px 0 60px; text-align: center; }
+        .hero h1 { font-size: clamp(3rem, 6vw, 4.5rem); margin-bottom: 24px; background: linear-gradient(180deg, #fff, #64748b); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero p { color: var(--text-muted); font-size: 1.2rem; max-width: 600px; margin: auto; }
 
-        /* HERO SECTION */
-        .hero { padding: 120px 0 80px; text-align: center; scroll-margin-top: 100px; }
-        .hero h1 {
-            font-size: clamp(3rem, 6vw, 4.5rem); line-height: 1.1; margin-bottom: 24px;
-            background: linear-gradient(180deg, #fff, #94a3b8);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-        }
-        .hero p { font-size: 1.25rem; color: var(--text-muted); max-width: 650px; margin: 0 auto 40px; }
+        /* AGENT CARDS */
+        .agent-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; padding: 60px 0; }
+        .card { background: var(--surface); border: 1px solid var(--border); padding: 40px; border-radius: 16px; cursor: pointer; transition: 0.3s; }
+        .card:hover { border-color: var(--cyan); transform: translateY(-4px); box-shadow: var(--glow-cyan); }
+        .card h2 { font-size: 2rem; margin-bottom: 10px; }
+        .tag { display: inline-block; padding: 4px 10px; border-radius: 4px; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; margin-bottom: 20px; }
+        .tag-cyan { background: rgba(0, 230, 255, 0.1); color: var(--cyan); }
+        .tag-gold { background: rgba(245, 196, 81, 0.1); color: var(--gold); }
 
-        /* PRODUCT CARDS */
-        .products-section { padding: 40px 0 80px; scroll-margin-top: 100px; }
-        .section-title { text-align: center; margin-bottom: 50px; }
-        .section-title h2 { font-size: 2.5rem; margin-bottom: 10px; }
-        .section-title p { color: var(--text-muted); font-size: 1.1rem; }
-
-        .agent-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+        /* ========================================== */
+        /* NEW: TECHNICAL VISUALS (RECREATING IMAGES) */
+        /* ========================================== */
         
-        .card {
-            background: var(--surface); border: 1px solid var(--border);
-            border-radius: 16px; padding: 40px; transition: 0.3s; cursor: pointer;
-            position: relative; overflow: hidden;
+        /* THE SWARM ENGINE VISUAL */
+        .swarm-container {
+            background: #000; border: 1px solid var(--border); border-radius: 12px;
+            padding: 40px; margin: 40px 0; display: flex; justify-content: space-between; align-items: center;
+            overflow-x: auto; gap: 20px;
         }
-        .card:hover { transform: translateY(-4px); border-color: var(--border-highlight); box-shadow: var(--glow-cyan); }
-        
-        .tag {
-            display: inline-block; padding: 6px 12px; border-radius: 6px; font-size: 0.75rem;
-            font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 24px;
+        .swarm-node {
+            border: 1px solid var(--border); padding: 15px; border-radius: 8px; text-align: center; min-width: 140px;
+            background: rgba(255,255,255,0.02);
         }
-        .tag.cyan { background: rgba(0, 230, 255, 0.1); color: var(--cyan); border: 1px solid rgba(0, 230, 255, 0.2); }
-        .tag.gold { background: rgba(245, 196, 81, 0.1); color: var(--gold); border: 1px solid rgba(245, 196, 81, 0.2); }
+        .node-active { border-color: var(--cyan); box-shadow: 0 0 15px rgba(0,230,255,0.1); }
+        .node-label { font-size: 0.7rem; color: var(--text-muted); margin-bottom: 5px; font-family: 'JetBrains Mono'; }
+        .node-title { font-weight: 800; font-size: 0.8rem; letter-spacing: 1px; }
+        .node-status { font-size: 0.6rem; margin-top: 8px; color: var(--cyan); }
 
-        .card h2 { font-size: 2rem; margin-bottom: 12px; }
-        .card p { color: var(--text-muted); font-size: 1.05rem; }
-
-        /* CONTACT & LINKS SECTION (Restored from old version) */
-        .contact-section { padding: 40px 0 100px; scroll-margin-top: 100px; }
-        .contact-card {
-            background: linear-gradient(180deg, rgba(255,255,255,0.03), transparent);
-            border: 1px solid var(--border);
-            border-radius: 24px;
-            padding: 50px;
-            text-align: center;
+        /* THE TERMINAL UI PREVIEW */
+        .terminal-preview {
+            background: #050608; border: 2px solid #111; border-radius: 8px; padding: 20px;
+            font-family: 'JetBrains Mono', monospace; margin: 40px 0;
         }
-        .contact-card h2 { font-size: 2.5rem; margin-bottom: 16px; }
-        .contact-card p { color: var(--text-muted); margin-bottom: 30px; font-size: 1.1rem; }
+        .term-header { display: flex; justify-content: space-between; font-size: 0.7rem; color: var(--cyan); margin-bottom: 20px; border-bottom: 1px solid #222; padding-bottom: 10px; }
+        .term-grid { display: grid; grid-template-columns: 1fr 2fr 1fr; gap: 20px; }
+        .term-box { background: #08090b; border: 1px solid #1a1a1a; padding: 15px; }
+        .term-box h4 { font-size: 0.65rem; color: var(--cyan); margin-bottom: 10px; }
+        .defcon-box { border: 1px solid var(--pink); color: var(--pink); text-align: center; padding: 10px; margin-top: 10px; }
 
-        .link-grid {
-            display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;
-        }
-        .link-btn {
-            padding: 14px 28px; border-radius: 8px; font-weight: 600; font-size: 0.95rem;
-            transition: 0.2s; display: inline-flex; align-items: center; gap: 8px;
-        }
-        .link-primary { background: var(--cyan); color: #000; }
-        .link-primary:hover { background: #00bccc; transform: translateY(-2px); }
-        .link-secondary { background: rgba(255,255,255,0.05); color: #fff; border: 1px solid var(--border); }
-        .link-secondary:hover { background: rgba(255,255,255,0.1); transform: translateY(-2px); }
+        /* PRICING */
+        .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 80px; }
+        .tier { background: #000; border: 1px solid var(--border); border-radius: 16px; padding: 45px; }
+        .tier-pro { border-color: var(--cyan); background: linear-gradient(180deg, rgba(0,230,255,0.02), transparent); }
+        .feature-list { list-style: none; margin-top: 30px; }
+        .feature-list li { margin-bottom: 15px; color: var(--text-muted); font-size: 0.9rem; padding-left: 20px; position: relative; }
+        .feature-list li::before { content: '✓'; position: absolute; left: 0; color: var(--cyan); }
 
+        .btn-buy { display: block; text-align: center; padding: 15px; border-radius: 8px; font-weight: 700; margin-top: 40px; transition: 0.2s; }
+        .btn-outline { border: 1px solid var(--border); color: #fff; }
+        .btn-solid { background: var(--cyan); color: #000; }
 
-        /* ALICANTO PRODUCT PAGE (Unchanged as requested) */
-        .btn-back {
-            display: inline-flex; align-items: center; gap: 8px;
-            color: var(--text-muted); font-size: 0.95rem; font-weight: 600;
-            margin-top: 40px; cursor: pointer; transition: 0.2s;
-        }
-        .btn-back:hover { color: #fff; }
+        /* CONTACT SECTION */
+        .contact-card { background: var(--surface); border: 1px solid var(--border); padding: 60px; border-radius: 24px; text-align: center; margin-bottom: 100px; }
+        .link-grid { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-top: 30px; }
+        .link-btn { padding: 12px 24px; border-radius: 6px; background: rgba(255,255,255,0.05); border: 1px solid var(--border); font-size: 0.9rem; font-weight: 600; }
+        .link-btn:hover { background: rgba(255,255,255,0.1); transform: translateY(-2px); }
 
-        .product-header { text-align: center; padding: 40px 0 60px; }
-        .product-header h1 { font-size: 3.5rem; color: var(--cyan); margin-bottom: 16px; }
-        .product-header p { color: var(--text-muted); font-size: 1.15rem; max-width: 700px; margin: auto; }
+        footer { text-align: center; padding: 40px; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.8rem; }
 
-        .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 100px; }
-
-        .tier {
-            background: #000; border: 1px solid var(--border);
-            border-radius: 16px; padding: 40px; display: flex; flex-direction: column;
-        }
-        .tier.pro { 
-            border-color: rgba(0, 230, 255, 0.3); 
-            background: linear-gradient(180deg, rgba(0, 230, 255, 0.03) 0%, transparent 100%);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-        }
-
-        .tier-header { margin-bottom: 30px; padding-bottom: 30px; border-bottom: 1px solid var(--border); }
-        .tier-name { font-size: 1.5rem; color: #fff; display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
-        .tier-desc { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; }
-
-        .feature-list li { 
-            margin-bottom: 16px; padding-left: 24px; position: relative; 
-            color: var(--text-muted); font-size: 0.95rem; line-height: 1.5; 
-        }
-        .feature-list li::before { content: '✓'; position: absolute; left: 0; color: var(--cyan); font-weight: bold; }
-        .feature-list li strong { color: #fff; }
-
-        .btn-buy {
-            display: block; width: 100%; text-align: center; padding: 16px; margin-top: auto;
-            border-radius: 8px; font-weight: 600; transition: 0.2s; font-size: 1rem;
-        }
-        .btn-buy.outline { border: 1px solid var(--border); color: #fff; margin-top: 40px;}
-        .btn-buy.outline:hover { background: rgba(255,255,255,0.05); }
-        .btn-buy.solid { background: var(--cyan); color: #000; margin-top: 40px;}
-        .btn-buy.solid:hover { background: #00bccc; }
-
-        /* FOOTER */
-        footer {
-            text-align: center; padding: 40px 0; border-top: 1px solid var(--border);
-            color: var(--text-muted); font-size: 0.9rem;
-        }
-
-        @media (max-width: 900px) {
-            .nav-links { display: none; }
-            .agent-grid, .pricing-grid, .link-grid { grid-template-columns: 1fr; flex-direction: column; }
-            .hero h1 { font-size: 2.5rem; }
-        }
+        @media (max-width: 900px) { .agent-grid, .pricing-grid, .term-grid { grid-template-columns: 1fr; } .nav-links { display: none; } }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="container nav-wrapper">
-            <div class="brand" onclick="scrollToSection('home')">
-                <img src="6248802109012775016.jpg" alt="C. G. Capital AI" class="brand-logo" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><rect width=\'100\' height=\'100\' fill=\'%23111\'/><text x=\'50\' y=\'65\' font-family=\'Arial\' font-size=\'40\' fill=\'%2300e6ff\' text-anchor=\'middle\'>CG</text></svg>';">
-                C. G. Capital AI
-            </div>
-
-            <nav class="nav-links">
-                <a onclick="scrollToSection('home')" class="nav-link">Home</a>
-                <a onclick="scrollToSection('products')" class="nav-link">Products</a>
-                <a onclick="scrollToSection('contact')" class="nav-link">Contact</a>
-                <a href="https://godhwanichetan.gumroad.com/l/baiglo" class="btn-header">Get Access</a>
-            </nav>
+<header>
+    <div class="container nav-wrapper">
+        <div class="brand" onclick="openPage('home-view')">
+            <img src="6248802109012775016.jpg" alt="CG" class="brand-logo" onerror="this.style.display='none'">
+            C. G. Capital AI
         </div>
-    </header>
+        <nav class="nav-links">
+            <a onclick="scrollToSection('home')" class="nav-link">Home</a>
+            <a onclick="scrollToSection('products')" class="nav-link">Products</a>
+            <a onclick="scrollToSection('contact')" class="nav-link">Contact</a>
+            <a href="https://godhwanichetan.gumroad.com/l/baiglo" class="btn-header">Get Access</a>
+        </nav>
+    </div>
+</header>
 
-    <main class="container">
+<main class="container">
+    
+    <div id="home-view" class="page-view active">
+        <section id="home" class="hero">
+            <h1>Scale Your Intelligence.</h1>
+            <p>Deploy autonomous AI agents for high-signal macro research and systematic trading execution.</p>
+        </section>
+
+        <section id="products" class="agent-grid">
+            <div class="card" onclick="openPage('alicanto-view')">
+                <span class="tag tag-cyan">Active Deployment</span>
+                <h2>Alicanto AI</h2>
+                <p>24/7 Macro & Commodity Intelligence Swarm. Real-time tracking of global arbitrage and geopolitical flows.</p>
+                <p style="color:var(--cyan); margin-top:20px; font-weight:700;">Open Terminal Interface →</p>
+            </div>
+            <div class="card">
+                <span class="tag tag-gold">In Development</span>
+                <h2>Kairos Protocol</h2>
+                <p>Systematic swing trading agent for Indian Equities. Volatility-adjusted momentum filters.</p>
+                <p style="color:var(--text-muted); margin-top:20px;">Access Restricted 🔒</p>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-card">
+            <h2>Connect & Support</h2>
+            <div class="link-grid">
+                <a href="https://godhwanichetan.gumroad.com/l/baiglo" class="link-btn">Gumroad Store</a>
+                <a href="https://t.me/Silver_agent_gb_bot" class="link-btn">Telegram Bot</a>
+                <a href="https://t.me/c_g_capital_ai" class="link-btn">Telegram Support</a>
+                <a href="mailto:partners@cgcapitalai.online" class="link-btn">Email Contact</a>
+            </div>
+        </section>
+    </div>
+
+    <div id="alicanto-view" class="page-view">
+        <div style="margin-top:40px; cursor:pointer; color:var(--text-muted);" onclick="openPage('home-view')">← Back to Overview</div>
         
-        <div id="home-view" class="page-view active">
-            
-            <section id="home" class="hero">
-                <h1>Trade with Institutional Intelligence.</h1>
-                <p>Deploy 24/7 autonomous AI agents designed to give you the ultimate edge in macro research, commodity tracking, and market execution.</p>
-            </section>
+        <section class="hero">
+            <h1 style="color:var(--cyan); -webkit-text-fill-color: var(--cyan);">Alicanto Terminal</h1>
+            <p>A multi-stage AI swarm processing global macro-catalysts in real-time.</p>
+        </section>
 
-            <section id="products" class="products-section">
-                <div class="section-title">
-                    <h2>Our AI Agents</h2>
-                    <p>Select an agent to view technical specifications and deployment options.</p>
-                </div>
-                
-                <div class="agent-grid">
-                    <div class="card" onclick="openPage('alicanto-view')">
-                        <span class="tag cyan">Available Now</span>
-                        <h2>Alicanto Base</h2>
-                        <p>Your private macro-intelligence analyst. Monitors global commodity flows, precious metals, and geopolitical disruption vectors in real-time.</p>
-                        <div style="margin-top: 24px; color: var(--cyan); font-weight: 600; font-size: 0.9rem;">View Features & Pricing →</div>
-                    </div>
-
-                    <div class="card">
-                        <span class="tag gold">In Development</span>
-                        <h2>Kairos Protocol</h2>
-                        <p>Systematic swing trading agent optimized for Indian Equities. Utilizes proprietary momentum squeeze filters and volatility sizing.</p>
-                        <div style="margin-top: 24px; color: var(--text-muted); font-weight: 600; font-size: 0.9rem;">Access Currently Locked 🔒</div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="contact" class="contact-section">
-                <div class="contact-card">
-                    <h2>Connect & Support</h2>
-                    <p>Get direct access to our agents, join the community, or reach out to global support.</p>
-                    
-                    <div class="link-grid">
-                        <a href="https://godhwanichetan.gumroad.com/l/baiglo" class="link-btn link-primary">Subscribe on Gumroad</a>
-                        <a href="https://t.me/Silver_agent_gb_bot" class="link-btn link-secondary">Open Telegram Bot</a>
-                        <a href="https://t.me/c_g_capital_ai" class="link-btn link-secondary">Telegram Support Group</a>
-                        <a href="mailto:partners@cgcapitalai.online" class="link-btn link-secondary">partners@cgcapitalai.online</a>
-                    </div>
-                </div>
-            </section>
+        <h3 class="mono" style="text-align:center; margin-bottom:10px;">Swarm Architecture: 4-Stage Multi-Agent Loop</h3>
+        <div class="swarm-container">
+            <div class="swarm-node node-active">
+                <div class="node-label">Input Layer</div>
+                <div class="node-title">DATA FEEDER</div>
+                <div class="node-status">● ONLINE</div>
+            </div>
+            <div style="color:#333;">>>></div>
+            <div class="swarm-node">
+                <div class="node-label">Specialist</div>
+                <div class="node-title" style="color:var(--cyan);">FIN ANALYST</div>
+                <div class="node-status" style="color:#444;">IDLE</div>
+            </div>
+            <div class="swarm-node node-active" style="border-color:var(--pink);">
+                <div class="node-label">Specialist</div>
+                <div class="node-title" style="color:var(--pink);">GEO ANALYST</div>
+                <div class="node-status" style="color:var(--pink);">● AUDITING</div>
+            </div>
+            <div style="color:#333;">>>></div>
+            <div class="swarm-node">
+                <div class="node-label">Validation</div>
+                <div class="node-title" style="color:var(--purple);">SENIOR ANALYST</div>
+                <div class="node-status" style="color:var(--purple);">VETO CHECK</div>
+            </div>
+            <div style="color:#333;">>>></div>
+            <div class="swarm-node">
+                <div class="node-label">Output</div>
+                <div class="node-title" style="color:var(--gold);">LEAD ANALYST</div>
+                <div class="node-status" style="color:#444;">DORMANT</div>
+            </div>
         </div>
 
-        <div id="alicanto-view" class="page-view">
-            
-            <div class="btn-back" onclick="openPage('home-view')">
-                ← Back to Firm Overview
+        <h3 class="mono" style="text-align:center; margin-top:60px; margin-bottom:10px;">Visual Interface Preview</h3>
+        <div class="terminal-preview">
+            <div class="term-header">
+                <div>ALICANTO AI TERMINAL // V1.1.0 ENGINE</div>
+                <div>SECURE CONNECTION: ● VERIFIED</div>
             </div>
-
-            <div class="product-header">
-                <h1>Alicanto AI Agent</h1>
-                <p>Built for stackers, traders, and macro-focused investors who need high-signal intelligence without the noise. Choose your operational level below.</p>
-            </div>
-
-            <div class="pricing-grid">
-                <div class="tier">
-                    <div class="tier-header">
-                        <div class="tier-name">🥈 STACKER</div>
-                        <div class="tier-desc">
-                            <strong>The Essential Market Pulse.</strong> Built specifically for users who need fast, accurate live data and direct answers without complex analytics.
-                        </div>
+            <div class="term-grid">
+                <div class="term-box">
+                    <h4>MACRO MATRIX</h4>
+                    <div style="font-size:0.7rem; color:#fff;">
+                        COMEX GOLD: $2432.10 <br>
+                        COMEX SILVER: $29.45 <br>
+                        DXY INDEX: 104.12
                     </div>
-                    
-                    <ul class="feature-list">
-                        <li><strong>Live Market Matrix:</strong> Instantly check <code>/price</code>, <code>/ratio</code>, and global <code>/status</code> metrics including the COMEX to Shanghai spread.</li>
-                        <li><strong>Threat Monitoring:</strong> On-demand access to the global <code>/defcon</code> threat level assessment.</li>
-                        <li><strong>Streamlined AI Access:</strong> Ping the agent with basic market questions (up to 150 words per prompt).</li>
-                        <li><strong>Fair-Use Limits:</strong> 10 fast-response messages per hour ensures you get the data you need exactly when you need it.</li>
-                    </ul>
-
-                    <a href="https://godhwanichetan.gumroad.com/l/baiglo" class="btn-buy outline">Subscribe to Stacker</a>
+                    <div class="defcon-box">DEFCON 2<br><span style="font-size:0.5rem;">CRITICAL SHORTAGE</span></div>
                 </div>
-
-                <div class="tier pro">
-                    <div class="tier-header">
-                        <div class="tier-name">🥇 MACRO PRO</div>
-                        <div class="tier-desc">
-                            <strong>The Ultimate Alpha Engine.</strong> Transform Alicanto into your private quantitative researcher. Unlock full memory access, visual dashboards, and automated background tracking.
-                        </div>
+                <div class="term-box">
+                    <h4>LIVE ARBITRAGE SPREAD</h4>
+                    <div style="height:80px; border-bottom:1px solid #222; position:relative;">
+                        <div style="position:absolute; bottom:20px; width:100%; height:2px; background:var(--cyan); opacity:0.3;"></div>
+                        <div style="position:absolute; bottom:40px; width:100%; height:2px; background:var(--gold); opacity:0.3;"></div>
+                        <span style="font-size:0.6rem; color:var(--cyan);">[LIVE SPREAD: +$4.50]</span>
                     </div>
-
-                    <ul class="feature-list">
-                        <li><strong>Visual Web Terminal:</strong> Generate a secure PIN to access the live Flask-powered dashboard, featuring arbitrage charts and dark pool tickers.</li>
-                        <li><strong>Automated Executive Briefings:</strong> Force the LLM to synthesize macro news every 4 hours, plus a guaranteed Friday 5:00 PM market wrap-up.</li>
-                        <li><strong>Custom Background Alerts:</strong> Set up to 4 autonomous active triggers (e.g., <code>/alert price 35</code>) so you never miss a market shift.</li>
-                        <li><strong>Memory Vault Injection:</strong> Feed your private notes and data directly into the AI's memory (<code>/inject</code>) to personalize your future briefs.</li>
-                        <li><strong>Vector Deep-Search:</strong> Map global contagion events (<code>/connect</code>) and search the historical AI database (<code>/query</code>).</li>
-                        <li><strong>Expanded Bandwidth:</strong> Up to 30 messages per hour with expanded 250-word context windows.</li>
-                    </ul>
-
-                    <a href="https://godhwanichetan.gumroad.com/l/baiglo" class="btn-buy solid">Upgrade to Macro Pro</a>
+                </div>
+                <div class="term-box">
+                    <h4>SYSTEM VITALS</h4>
+                    <div style="font-size:0.6rem; color:var(--text-muted);">
+                        ALPHA SCANNED: 812 <br>
+                        NOISE BLOCKED: 4,102 <br>
+                        API LATENCY: 256ms <br>
+                        UPTIME: 81h 11m
+                    </div>
                 </div>
             </div>
-
         </div>
-    </main>
 
-    <footer>
-        <div class="container">
-            &copy; 2026 C. G. Capital AI &nbsp;|&nbsp; Built for the modern trader.
+        <div class="pricing-grid">
+            <div class="tier">
+                <h3>🥈 STACKER</h3>
+                <p style="font-size:0.9rem; color:var(--text-muted); margin-top:10px;">Essential Market Pulse.</p>
+                <ul class="feature-list">
+                    <li>Live Market Matrix (Price/Ratio)</li>
+                    <li>Global Threat Index (/defcon)</li>
+                    <li>10 AI Messages / Hour</li>
+                    <li>Read-only Tier Access</li>
+                </ul>
+                <a href="https://godhwanichetan.gumroad.com/l/baiglo" class="btn-buy btn-outline">Subscribe Stacker</a>
+            </div>
+            <div class="tier tier-pro">
+                <h3>🥇 MACRO PRO</h3>
+                <p style="font-size:0.9rem; color:var(--cyan); margin-top:10px;">Ultimate Alpha Engine.</p>
+                <ul class="feature-list">
+                    <li><strong>Full Web Terminal Access</strong></li>
+                    <li>Automated Executive Briefings</li>
+                    <li>Custom Background Alerts</li>
+                    <li>Memory Vault Injection (/inject)</li>
+                    <li>Vector Deep-Search (/query)</li>
+                </ul>
+                <a href="https://godhwanichetan.gumroad.com/l/baiglo" class="btn-buy btn-solid">Upgrade to Pro</a>
+            </div>
         </div>
-    </footer>
+    </div>
+</main>
 
-    <script>
-        // Handles switching between the Home view and the Alicanto view
-        function openPage(pageId) {
-            document.querySelectorAll('.page-view').forEach(p => p.classList.remove('active'));
-            document.getElementById(pageId).classList.add('active');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+<footer>
+    &copy; 2026 C. G. Capital AI Infrastructure // Intelligence. Execution. Growth.
+</footer>
+
+<script>
+    function openPage(pageId) {
+        document.querySelectorAll('.page-view').forEach(p => p.classList.remove('active'));
+        document.getElementById(pageId).classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToSection(id) {
+        if(!document.getElementById('home-view').classList.contains('active')) {
+            openPage('home-view');
+            setTimeout(() => { document.getElementById(id).scrollIntoView({behavior:'smooth'}); }, 100);
+        } else {
+            document.getElementById(id).scrollIntoView({behavior:'smooth'});
         }
+    }
+</script>
 
-        // Handles scrolling from the top menu
-        function scrollToSection(sectionId) {
-            // If the user is inside the Alicanto view, send them back to the Home view first
-            if (!document.getElementById('home-view').classList.contains('active')) {
-                openPage('home-view');
-                // Wait a split second for the page to render, then scroll
-                setTimeout(() => {
-                    document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
-                }, 100);
-            } else {
-                // If they are already on the Home view, just scroll
-                document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
-            }
-        }
-    </script>
 </body>
 </html>
