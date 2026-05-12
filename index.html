@@ -3,20 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>C. G. Capital AI | Deploy Autonomous Intelligence</title>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <title>C. G. Capital AI | Trade With Institutional Intelligence</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --bg: #050507;
-            --surface: #0a0c11;
-            --surface-hover: #11141d;
-            --border: rgba(255, 255, 255, 0.08);
-            --text-main: #f3f4f6;
-            --text-muted: #8b949e;
-            --alicanto-cyan: #00e6ff;
-            --kairos-gold: #f5c451;
-            --glow-alicanto: 0 0 40px rgba(0, 230, 255, 0.15);
+            --bg: #07080b;
+            --surface: #11131a;
+            --surface-hover: #1a1d27;
+            --border: rgba(255, 255, 255, 0.06);
+            --border-highlight: rgba(0, 230, 255, 0.2);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --cyan: #00e6ff;
+            --gold: #f5c451;
+            --glow-cyan: 0 0 30px rgba(0, 230, 255, 0.1);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -26,18 +27,17 @@
             color: var(--text-main);
             font-family: 'Inter', sans-serif;
             line-height: 1.6;
-            background-image: 
-                linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
-            background-size: 50px 50px;
+            background-image: radial-gradient(circle at 50% 0%, rgba(0, 230, 255, 0.03) 0%, transparent 50%);
         }
 
-        h1, h2, h3, h4 { font-family: 'Space Grotesk', sans-serif; font-weight: 700; }
-        
+        h1, h2, h3, h4 { font-family: 'Space Grotesk', sans-serif; font-weight: 700; letter-spacing: -0.5px; }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
         .container { width: min(1200px, 92%); margin: auto; }
 
         /* MULTI-PAGE SYSTEM */
-        .page-view { display: none; animation: fadeIn 0.4s ease-out; }
+        .page-view { display: none; animation: fadeIn 0.3s ease-out; }
         .page-view.active { display: block; }
         
         @keyframes fadeIn {
@@ -45,156 +45,138 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* HEADER & LOGO */
+        /* PREMIUM NAVIGATION */
         header {
             padding: 20px 0;
             border-bottom: 1px solid var(--border);
-            background: rgba(5, 5, 7, 0.8);
-            backdrop-filter: blur(12px);
+            background: rgba(7, 8, 11, 0.85);
+            backdrop-filter: blur(16px);
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 1000;
         }
         
         .nav-wrapper { display: flex; justify-content: space-between; align-items: center; }
         
         .brand {
             display: flex; align-items: center; gap: 12px;
-            font-family: 'Space Grotesk', sans-serif; font-size: 1.4rem; font-weight: 700; letter-spacing: -0.5px;
-            cursor: pointer;
+            font-family: 'Space Grotesk', sans-serif; font-size: 1.4rem; font-weight: 700;
+            cursor: pointer; transition: 0.2s;
+        }
+        .brand:hover { color: var(--cyan); }
+        
+        .brand-logo { 
+            width: 38px; height: 38px; border-radius: 8px; object-fit: cover;
+            border: 1px solid var(--border);
         }
 
-        /* YOUR CUSTOM IMAGE LOGO */
-        .brand-logo { 
-            width: 42px; 
-            height: 42px; 
-            border-radius: 50%; /* Makes the square image round */
-            object-fit: cover;
-            border: 1px solid var(--border);
-            box-shadow: 0 0 15px rgba(0, 230, 255, 0.2);
+        .nav-links { display: flex; gap: 32px; align-items: center; }
+        .nav-link { 
+            color: var(--text-muted); font-size: 0.95rem; font-weight: 500; 
+            cursor: pointer; transition: 0.2s; position: relative;
         }
+        .nav-link:hover, .nav-link.active { color: var(--text-main); }
+        
+        /* Dropdown Logic */
+        .dropdown { position: relative; }
+        .dropdown-menu {
+            position: absolute; top: 100%; left: -20px; background: var(--surface);
+            border: 1px solid var(--border); border-radius: 8px; padding: 10px;
+            min-width: 220px; opacity: 0; visibility: hidden; transform: translateY(10px);
+            transition: 0.2s; box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+        .dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(15px); }
+        .dropdown-item {
+            display: block; padding: 10px 16px; color: var(--text-muted);
+            border-radius: 6px; transition: 0.2s; font-size: 0.9rem; font-weight: 500;
+        }
+        .dropdown-item:hover { background: rgba(255,255,255,0.03); color: var(--cyan); }
+        .dropdown-item span { display: block; font-size: 0.75rem; color: #64748b; margin-top: 2px; }
 
         .btn-header {
-            background: transparent; color: var(--text-main);
-            border: 1px solid var(--border); padding: 8px 16px; border-radius: 6px;
-            font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: 0.2s;
-            cursor: pointer;
+            background: var(--text-main); color: var(--bg);
+            padding: 8px 20px; border-radius: 6px; font-size: 0.9rem; font-weight: 600;
+            transition: 0.2s;
         }
-        .btn-header:hover { border-color: var(--text-main); background: rgba(255,255,255,0.05); }
+        .btn-header:hover { background: var(--text-muted); }
 
-        /* BACK BUTTON */
-        .btn-back {
-            display: inline-flex; align-items: center; gap: 8px;
-            color: var(--text-muted); font-size: 0.9rem; font-weight: 600;
-            margin-top: 40px; cursor: pointer; transition: 0.2s;
-        }
-        .btn-back:hover { color: #fff; }
-
-        /* HERO COPY */
-        .hero { padding: 100px 0 80px; text-align: center; }
+        /* HERO SECTION */
+        .hero { padding: 120px 0 80px; text-align: center; }
         .hero h1 {
-            font-size: clamp(3rem, 6vw, 4.5rem);
-            letter-spacing: -2px;
-            line-height: 1.1;
-            margin-bottom: 24px;
-            background: linear-gradient(180deg, #fff, #8b949e);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            font-size: clamp(3rem, 6vw, 4.5rem); line-height: 1.1; margin-bottom: 24px;
+            background: linear-gradient(180deg, #fff, #94a3b8);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
-        .hero p {
-            font-size: 1.2rem; color: var(--text-muted);
-            max-width: 600px; margin: 0 auto;
-        }
+        .hero p { font-size: 1.25rem; color: var(--text-muted); max-width: 650px; margin: 0 auto 40px; }
 
-        /* AGENT ROSTER - SIDE BY SIDE */
-        .roster-section { padding: 0 0 100px; }
-        .agent-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 24px;
-        }
-
-        .agent-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 40px;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .agent-card::before {
-            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px;
-        }
-        .agent-card.alicanto::before { background: var(--alicanto-cyan); }
-        .agent-card.kairos::before { background: var(--kairos-gold); opacity: 0.5; }
-
-        .agent-card:hover { transform: translateY(-4px); background: var(--surface-hover); }
-        .agent-card.alicanto:hover { box-shadow: var(--glow-alicanto); border-color: rgba(0, 230, 255, 0.3); }
-
-        .agent-tag {
-            display: inline-block; padding: 4px 10px; border-radius: 4px; font-size: 0.75rem;
-            font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px;
-        }
-        .tag-active { background: rgba(0, 230, 255, 0.1); color: var(--alicanto-cyan); border: 1px solid rgba(0, 230, 255, 0.2); }
-        .tag-dev { background: rgba(245, 196, 81, 0.1); color: var(--kairos-gold); border: 1px solid rgba(245, 196, 81, 0.2); }
-
-        .agent-card h2 { font-size: 2.2rem; margin-bottom: 12px; }
-        .agent-card p { color: var(--text-muted); font-size: 1rem; }
-
-        .click-hint {
-            display: flex; align-items: center; gap: 8px; margin-top: 30px;
-            color: var(--alicanto-cyan); font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;
-        }
-
-        /* ALICANTO DEDICATED PAGE */
-        .details-header { text-align: center; margin: 40px 0 60px; }
-        .details-header h1 { font-size: 3.5rem; color: var(--alicanto-cyan); margin-bottom: 16px; letter-spacing: -1px; }
-        .details-header p { color: var(--text-muted); font-size: 1.1rem; max-width: 700px; margin: auto; }
-
-        .tier-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 80px; }
-
-        .tier-card { background: #000; border: 1px solid var(--border); border-radius: 16px; padding: 50px; }
-        .tier-card.pro { border-color: rgba(255, 255, 255, 0.2); position: relative; overflow: hidden; }
-        .tier-card.pro::after {
-            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 50%); pointer-events: none;
-        }
-
-        .tier-title { font-size: 1.8rem; margin-bottom: 20px; font-family: 'Space Grotesk'; }
-        .tier-reality { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 30px; padding-bottom: 30px; border-bottom: 1px solid var(--border); line-height: 1.6; }
+        /* PRODUCT CARDS */
+        .agent-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; padding-bottom: 100px; }
         
-        .feature-block { margin-bottom: 30px; }
-        .feature-block h4 { color: #fff; font-size: 0.95rem; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
-        .feature-block p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; }
+        .card {
+            background: var(--surface); border: 1px solid var(--border);
+            border-radius: 16px; padding: 40px; transition: 0.3s; cursor: pointer;
+            position: relative; overflow: hidden;
+        }
+        .card:hover { transform: translateY(-4px); border-color: var(--border-highlight); box-shadow: var(--glow-cyan); }
         
-        .feature-list { list-style: none; }
-        .feature-list li { margin-bottom: 16px; padding-left: 20px; position: relative; color: var(--text-muted); font-size: 0.95rem; line-height: 1.5; }
-        .feature-list li::before { content: '→'; position: absolute; left: 0; color: var(--text-muted); }
-
-        .feature-list strong { color: #fff; }
-
-        .btn-hire {
-            display: block; width: 100%; text-align: center; padding: 16px; margin-top: 40px;
-            border-radius: 8px; font-weight: 700; text-decoration: none; transition: 0.2s; text-transform: uppercase; letter-spacing: 1px;
+        .tag {
+            display: inline-block; padding: 6px 12px; border-radius: 6px; font-size: 0.75rem;
+            font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 24px;
         }
-        .btn-hire.outline { border: 1px solid var(--border); color: #fff; }
-        .btn-hire.outline:hover { background: rgba(255,255,255,0.05); }
-        .btn-hire.solid { background: #fff; color: #000; }
-        .btn-hire.solid:hover { background: #e2e8f0; }
+        .tag.cyan { background: rgba(0, 230, 255, 0.1); color: var(--cyan); border: 1px solid rgba(0, 230, 255, 0.2); }
+        .tag.gold { background: rgba(245, 196, 81, 0.1); color: var(--gold); border: 1px solid rgba(245, 196, 81, 0.2); }
 
-        .bottom-line {
-            margin-top: 40px; padding: 30px; background: rgba(0, 230, 255, 0.05); border-radius: 12px;
-            border-left: 4px solid var(--alicanto-cyan); font-size: 1rem; color: #fff; line-height: 1.6;
+        .card h2 { font-size: 2rem; margin-bottom: 12px; }
+        .card p { color: var(--text-muted); font-size: 1.05rem; }
+
+        /* ALICANTO PRODUCT PAGE */
+        .product-header { text-align: center; padding: 80px 0 60px; }
+        .product-header h1 { font-size: 3.5rem; color: var(--cyan); margin-bottom: 16px; }
+        .product-header p { color: var(--text-muted); font-size: 1.15rem; max-width: 700px; margin: auto; }
+
+        /* PRICING / TIERS */
+        .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 100px; }
+
+        .tier {
+            background: #000; border: 1px solid var(--border);
+            border-radius: 16px; padding: 40px; display: flex; flex-direction: column;
+        }
+        .tier.pro { 
+            border-color: rgba(0, 230, 255, 0.3); 
+            background: linear-gradient(180deg, rgba(0, 230, 255, 0.03) 0%, transparent 100%);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
         }
 
-        /* RESPONSIVE */
+        .tier-header { margin-bottom: 30px; padding-bottom: 30px; border-bottom: 1px solid var(--border); }
+        .tier-name { font-size: 1.5rem; color: #fff; display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+        .tier-desc { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; }
+
+        .feature-list li { 
+            margin-bottom: 16px; padding-left: 24px; position: relative; 
+            color: var(--text-muted); font-size: 0.95rem; line-height: 1.5; 
+        }
+        .feature-list li::before { content: '✓'; position: absolute; left: 0; color: var(--cyan); font-weight: bold; }
+        .feature-list li strong { color: #fff; }
+
+        .btn-buy {
+            display: block; width: 100%; text-align: center; padding: 16px; margin-top: auto;
+            border-radius: 8px; font-weight: 600; transition: 0.2s; font-size: 1rem;
+        }
+        .btn-buy.outline { border: 1px solid var(--border); color: #fff; margin-top: 40px;}
+        .btn-buy.outline:hover { background: rgba(255,255,255,0.05); }
+        .btn-buy.solid { background: var(--cyan); color: #000; margin-top: 40px;}
+        .btn-buy.solid:hover { background: #00bccc; }
+
+        /* FOOTER */
+        footer {
+            text-align: center; padding: 40px 0; border-top: 1px solid var(--border);
+            color: var(--text-muted); font-size: 0.9rem;
+        }
+
         @media (max-width: 900px) {
-            .agent-grid, .tier-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; /* Add hamburger menu for mobile in production */ }
+            .agent-grid, .pricing-grid { grid-template-columns: 1fr; }
             .hero h1 { font-size: 2.5rem; }
-            .tier-card { padding: 30px; }
         }
     </style>
 </head>
@@ -202,146 +184,124 @@
 
     <header>
         <div class="container nav-wrapper">
-            <!-- Clicking the brand takes you back home -->
-            <div class="brand" onclick="openPage('home-page')">
-                <img src="6248802109012775016.jpg" alt="C. G. Capital AI Logo" class="brand-logo" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'42\' height=\'42\' viewBox=\'0 0 100 100\'><circle cx=\'50\' cy=\'50\' r=\'50\' fill=\'%23111\'/><text x=\'50\' y=\'65\' font-family=\'Arial\' font-size=\'40\' fill=\'%2300e6ff\' text-anchor=\'middle\'>CG</text></svg>';">
+            <div class="brand" onclick="openPage('home-view')">
+                <img src="6248802109012775016.jpg" alt="C. G. Capital AI" class="brand-logo" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><rect width=\'100\' height=\'100\' fill=\'%23111\'/><text x=\'50\' y=\'65\' font-family=\'Arial\' font-size=\'40\' fill=\'%2300e6ff\' text-anchor=\'middle\'>CG</text></svg>';">
                 C. G. Capital AI
             </div>
-            <a href="mailto:partners@cgcapitalai.online" class="btn-header">Global Contact</a>
+
+            <nav class="nav-links">
+                <div class="nav-link" onclick="openPage('home-view')">Home</div>
+                
+                <div class="dropdown">
+                    <div class="nav-link">Agents ▾</div>
+                    <div class="dropdown-menu">
+                        <a href="#" class="dropdown-item" onclick="openPage('alicanto-view')">
+                            Alicanto
+                            <span>Macro & Commodity Intelligence</span>
+                        </a>
+                        <a href="#" class="dropdown-item" style="opacity: 0.5; cursor: default;">
+                            Kairos (Coming Soon)
+                            <span>Indian Equity Swing Trading</span>
+                        </a>
+                    </div>
+                </div>
+
+                <a href="mailto:partners@cgcapitalai.online" class="nav-link">Support</a>
+                <a href="https://godhwanichetan.gumroad.com/l/baiglo" class="btn-header">Get Access</a>
+            </nav>
         </div>
     </header>
 
     <main class="container">
         
-        <!-- ========================================== -->
-        <!-- VIEW 1: HOME PAGE (Agent Roster)             -->
-        <!-- ========================================== -->
-        <div id="home-page" class="page-view active">
+        <div id="home-view" class="page-view active">
             <section class="hero">
-                <h1>Scale Your Intelligence.</h1>
-                <p>Hire your autonomous AI agents today. Institutional-grade quantitative research and systematic execution, without scaling your headcount.</p>
+                <h1>Trade with Institutional Intelligence.</h1>
+                <p>Deploy 24/7 autonomous AI agents designed to give you the ultimate edge in macro research, commodity tracking, and market execution.</p>
             </section>
 
-            <section class="roster-section">
-                <div class="agent-grid">
-                    <!-- ALICANTO -->
-                    <div class="agent-card alicanto" onclick="openPage('alicanto-page')">
-                        <span class="agent-tag tag-active">Active Deployment</span>
-                        <h2>Alicanto</h2>
-                        <p>Macro-intelligence agent monitoring global commodity flows, precious metals, and geopolitical disruption vectors.</p>
-                        <div class="click-hint">
-                            Access Terminal & Specifications →
-                        </div>
-                    </div>
+            <section class="agent-grid">
+                <div class="card" onclick="openPage('alicanto-view')">
+                    <span class="tag cyan">Available Now</span>
+                    <h2>Alicanto Base</h2>
+                    <p>Your private macro-intelligence analyst. Monitors global commodity flows, precious metals, and geopolitical disruption vectors in real-time.</p>
+                    <div style="margin-top: 24px; color: var(--cyan); font-weight: 600; font-size: 0.9rem;">View Features & Pricing →</div>
+                </div>
 
-                    <!-- KAIROS -->
-                    <div class="agent-card kairos">
-                        <span class="agent-tag tag-dev">In Development</span>
-                        <h2>Kairos</h2>
-                        <p>Systematic swing trading agent optimized for Indian Equities. Utilizing momentum squeeze filters and volatility sizing.</p>
-                        <div class="click-hint" style="color: var(--text-muted);">
-                            Access Locked 🔒
-                        </div>
-                    </div>
+                <div class="card">
+                    <span class="tag gold">In Development</span>
+                    <h2>Kairos Protocol</h2>
+                    <p>Systematic swing trading agent optimized for Indian Equities. Utilizes proprietary momentum squeeze filters and volatility sizing.</p>
+                    <div style="margin-top: 24px; color: var(--text-muted); font-weight: 600; font-size: 0.9rem;">Access Currently Locked 🔒</div>
                 </div>
             </section>
         </div>
 
-        <!-- ========================================== -->
-        <!-- VIEW 2: ALICANTO DETAILED PAGE               -->
-        <!-- ========================================== -->
-        <div id="alicanto-page" class="page-view">
+        <div id="alicanto-view" class="page-view">
             
-            <div class="btn-back" onclick="openPage('home-page')">
-                ← Back to Firm Overview
+            <div class="product-header">
+                <h1>Alicanto AI Agent</h1>
+                <p>Built for stackers, traders, and macro-focused investors who need high-signal intelligence without the noise. Choose your operational level below.</p>
             </div>
 
-            <div class="details-header">
-                <h1>Alicanto Base Protocol</h1>
-                <p>Review the operational capabilities of the Stacker and Macro Pro deployments.</p>
-            </div>
-
-            <div class="tier-grid">
-                <!-- STACKER TIER -->
-                <div class="tier-card">
-                    <div class="tier-title">🥈 STACKER TIER</div>
-                    <div class="tier-reality">
-                        <strong>The Reality:</strong> This is a read-only tier. It allows a user to ask the bot basic questions and view the current live market data, but it strictly locks them out of any advanced analysis, memory training, or the web dashboard.
+            <div class="pricing-grid">
+                <div class="tier">
+                    <div class="tier-header">
+                        <div class="tier-name">🥈 STACKER</div>
+                        <div class="tier-desc">
+                            <strong>The Essential Market Pulse.</strong> Built specifically for users who need fast, accurate live data and direct answers without complex analytics.
+                        </div>
                     </div>
                     
-                    <div class="feature-block">
-                        <h4>Market Data Access</h4>
-                        <p>Users can run <code>/price</code>, <code>/ratio</code>, <code>/status</code>, and <code>/defcon</code> to see the live metrics (COMEX, Shanghai spread, GSR, and threat levels).</p>
-                    </div>
-                    
-                    <div class="feature-block">
-                        <h4>Strict Constraints</h4>
-                        <ul class="feature-list">
-                            <li><strong>Chat Limits (Strict):</strong> They can only send 10 messages per hour to the AI.</li>
-                            <li><strong>Context Limits (Strict):</strong> Their messages are hard-capped at 150 words. If they type more, the bot rejects it.</li>
-                        </ul>
-                    </div>
+                    <ul class="feature-list">
+                        <li><strong>Live Market Matrix:</strong> Instantly check <code>/price</code>, <code>/ratio</code>, and global <code>/status</code> metrics including the COMEX to Shanghai spread.</li>
+                        <li><strong>Threat Monitoring:</strong> On-demand access to the global <code>/defcon</code> threat level assessment.</li>
+                        <li><strong>Streamlined AI Access:</strong> Ping the agent with basic market questions (up to 150 words per prompt).</li>
+                        <li><strong>Fair-Use Limits:</strong> 10 fast-response messages per hour ensures you get the data you need exactly when you need it.</li>
+                    </ul>
 
-                    <div class="feature-block">
-                        <h4>What is Locked 🔒</h4>
-                        <p>Stacker users are actively blocked by the premium_triggers gatekeeper. If they try to use <code>/brief</code>, <code>/inject</code>, <code>/clear</code>, <code>/alert</code>, <code>/connect</code>, or <code>/query</code>, the bot denies access. They do not get access to the visual Web Terminal link.</p>
-                    </div>
-
-                    <a href="https://godhwanichetan.gumroad.com/l/baiglo" class="btn-hire outline">Deploy Stacker</a>
+                    <a href="https://godhwanichetan.gumroad.com/l/baiglo" class="btn-buy outline">Subscribe to Stacker</a>
                 </div>
 
-                <!-- MACRO PRO TIER -->
-                <div class="tier-card pro">
-                    <div class="tier-title">🥇 MACRO PRO TIER</div>
-                    <div class="tier-reality">
-                        <strong>The Reality:</strong> This tier unlocks the full RAG (Retrieval-Augmented Generation) engine. It changes the bot from a simple price-checker into a programmable research assistant. Pro users can actively alter the bot's memory, set background triggers, and use the graphical dashboard.
+                <div class="tier pro">
+                    <div class="tier-header">
+                        <div class="tier-name">🥇 MACRO PRO</div>
+                        <div class="tier-desc">
+                            <strong>The Ultimate Alpha Engine.</strong> Transform Alicanto into your private quantitative researcher. Unlock full memory access, visual dashboards, and automated background tracking.
+                        </div>
                     </div>
 
-                    <div class="feature-block">
-                        <h4>Expanded Limits</h4>
-                        <p>The chat limit increases to 30 messages per hour, and the input limit increases to 250 words per message, allowing them to paste in larger chunks of text for analysis.</p>
-                    </div>
+                    <ul class="feature-list">
+                        <li><strong>Visual Web Terminal:</strong> Generate a secure PIN to access the live Flask-powered dashboard, featuring arbitrage charts and dark pool tickers.</li>
+                        <li><strong>Automated Executive Briefings:</strong> Force the LLM to synthesize macro news every 4 hours, plus a guaranteed Friday 5:00 PM market wrap-up.</li>
+                        <li><strong>Custom Background Alerts:</strong> Set up to 4 autonomous active triggers (e.g., <code>/alert price 35</code>) so you never miss a market shift.</li>
+                        <li><strong>Memory Vault Injection:</strong> Feed your private notes and data directly into the AI's memory (<code>/inject</code>) to personalize your future briefs.</li>
+                        <li><strong>Vector Deep-Search:</strong> Map global contagion events (<code>/connect</code>) and search the historical AI database (<code>/query</code>).</li>
+                        <li><strong>Expanded Bandwidth:</strong> Up to 30 messages per hour with expanded 250-word context windows.</li>
+                    </ul>
 
-                    <div class="feature-block">
-                        <h4>Deep Research Tools</h4>
-                        <ul class="feature-list">
-                            <li><strong>Web Terminal Access:</strong> Pro users get the 🌐 Open Terminal button, which passes a secure PIN to open the Flask-powered visual dashboard (showing the live arbitrage chart, data grid, and dark pool ticker).</li>
-                            <li><strong>Automated Briefings:</strong> They can run <code>/brief</code> once every 4 hours to force the LLM to synthesize the latest news into an executive summary. They automatically receive a push-notification briefing every Friday at 5:00 PM.</li>
-                            <li><strong>Custom Alerts (<code>/alert</code>):</strong> They can set up to 4 active triggers per day (e.g., <code>/alert price 35</code> or <code>/alert keyword shortage</code>). The background loop will ping them when those conditions are met.</li>
-                            <li><strong>Memory Injection:</strong> They can feed private notes or data directly into the AI's vault via <code>/inject</code> so it gets included in future summaries.</li>
-                            <li><strong>Query & Connect:</strong> They can search the vector database 10 times a day (<code>/query</code>) and generate up to 5 "Contagion Maps" a day (<code>/connect</code>).</li>
-                        </ul>
-                    </div>
-
-                    <a href="https://godhwanichetan.gumroad.com/l/baiglo" class="btn-hire solid">Deploy Macro Pro</a>
+                    <a href="https://godhwanichetan.gumroad.com/l/baiglo" class="btn-buy solid">Upgrade to Macro Pro</a>
                 </div>
-            </div>
-
-            <div class="bottom-line">
-                <strong>The Bottom Line:</strong> Stacker pays for basic API calls to check prices and ask simple questions. Pro pays for the computing power required to run continuous background tasks (alerts), vector database searches (queries), and large-token context summaries (briefings).
             </div>
 
         </div>
     </main>
 
     <footer>
-        <div class="container" style="text-align: center; padding: 40px 0; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.85rem;">
-            &copy; 2026 C. G. Capital AI Infrastructure &nbsp;|&nbsp; partners@cgcapitalai.online
+        <div class="container">
+            &copy; 2026 C. G. Capital AI &nbsp;|&nbsp; Built for the modern trader.
         </div>
     </footer>
 
-    <!-- INTERACTIVITY SCRIPT -->
     <script>
-        // This function handles the "page transfer" effect
         function openPage(pageId) {
             // Hide all pages
-            const pages = document.querySelectorAll('.page-view');
-            pages.forEach(page => page.classList.remove('active'));
-
-            // Show the requested page
+            document.querySelectorAll('.page-view').forEach(p => p.classList.remove('active'));
+            
+            // Show target page
             document.getElementById(pageId).classList.add('active');
-
-            // Scroll back to the top automatically like a real page load
+            
+            // Scroll to top
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     </script>
