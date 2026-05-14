@@ -33,24 +33,23 @@
         .nav-links a { color: var(--text-dim); text-decoration: none; font-family: 'Share Tech Mono'; font-size: 0.9rem; border: 1px solid #333; padding: 8px 15px; border-radius: 2px;}
         .nav-links a:hover { border-color: var(--accent-cyan); color: var(--accent-cyan); box-shadow: 0 0 10px var(--border-glow); }
 
-        /* REFINED INSTITUTIONAL HERO */
-        .hero { text-align: center; max-width: 1200px; margin: 0 auto; padding: 100px 20px 60px; position: relative;}
-        .hero-decor { position: absolute; top: 20px; left: 50%; transform: translateX(-50%); width: 1px; height: 80px; background: linear-gradient(to bottom, var(--accent-cyan), transparent); }
-        .hero-tag { color: var(--accent-cyan); font-family: 'Share Tech Mono'; letter-spacing: 8px; font-size: 0.8rem; margin-bottom: 25px; display: block; opacity: 0.8;}
-        .hero h1 { font-size: 4.5rem; line-height: 1.1; text-shadow: 0 0 40px rgba(0, 212, 255, 0.4); margin-bottom: 25px; color: #fff; font-weight: 800;}
-        .hero p { color: var(--text-dim); max-width: 850px; margin: 0 auto 50px; font-size: 1.2rem; line-height: 1.8; font-weight: 300; }
-        .hero-cta-box { display: flex; flex-direction: column; align-items: center; gap: 10px; margin-bottom: 20px; }
-        .hero-cta-sub { font-family: 'Share Tech Mono'; color: var(--accent-cyan); letter-spacing: 3px; font-size: 0.9rem; margin-bottom: 5px;}
-        .hire-btn { font-family: 'Cinzel'; font-size: 1.4rem; color: #fff; text-decoration: none; border: 1px solid #fff; padding: 15px 40px; transition: 0.4s; position: relative; overflow: hidden; letter-spacing: 2px;}
-        .hire-btn:hover { background: #fff; color: #000; box-shadow: 0 0 30px #fff; }
+        /* CREATIVE INSTITUTIONAL HERO */
+        .hero { text-align: center; max-width: 100%; margin: 0 auto; padding: 120px 20px 80px; position: relative; background-image: radial-gradient(circle at center, rgba(0, 212, 255, 0.05) 0%, transparent 60%), linear-gradient(rgba(255, 255, 255, 0.01) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.01) 1px, transparent 1px); background-size: 100% 100%, 40px 40px, 40px 40px; border-bottom: 1px solid #1a1e26;}
+        
+        .hero-decor { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 2px; height: 100px; background: linear-gradient(to bottom, var(--accent-cyan), transparent); }
+        .hero-tag { color: var(--text-dim); font-family: 'Share Tech Mono'; letter-spacing: 8px; font-size: 0.8rem; margin-bottom: 20px; display: block; text-transform: uppercase;}
+        
+        .hero-cta-box { display: inline-block; margin-bottom: 30px; padding: 10px 30px; border: 1px solid rgba(0, 212, 255, 0.3); border-radius: 4px; background: rgba(0, 0, 0, 0.5); box-shadow: 0 0 30px rgba(0, 212, 255, 0.1); }
+        .hero-cta-sub { font-family: 'Cinzel'; font-weight: 800; color: var(--accent-cyan); letter-spacing: 4px; font-size: 1.6rem; text-shadow: 0 0 20px rgba(0, 212, 255, 0.5); }
+        
+        .hero h1 { font-size: 4.8rem; line-height: 1.1; text-shadow: 0 0 40px rgba(255, 255, 255, 0.1); margin-bottom: 30px; color: #fff; max-width: 1200px; margin-left: auto; margin-right: auto;}
+        .hero p { color: var(--text-main); max-width: 850px; margin: 0 auto; font-size: 1.25rem; line-height: 1.8; font-weight: 300; background: rgba(0,0,0,0.4); padding: 20px; border-radius: 4px; border-left: 3px solid var(--accent-cyan);}
 
         /* COMPLEX TERMINAL SWARM ANIMATION UI */
-        .terminal-wrapper { background: #050505; border: 1px solid #222; border-radius: 6px; max-width: 1100px; margin: 0 auto 80px; padding: 40px 30px; position: relative; overflow-x: auto; box-shadow: 0 20px 50px rgba(0,0,0,0.8); }
+        .terminal-wrapper { background: #050505; border: 1px solid #222; border-radius: 6px; max-width: 1100px; margin: -40px auto 80px; padding: 40px 30px; position: relative; overflow-x: auto; box-shadow: 0 20px 50px rgba(0,0,0,0.8); z-index: 10;}
         .terminal-title { position: absolute; top: 15px; left: 20px; font-family: 'Share Tech Mono'; font-size: 0.8rem; color: #777; letter-spacing: 2px; }
-        
         .neural-core { display: flex; align-items: stretch; justify-content: space-between; gap: 10px; min-width: 950px; margin-top: 10px;}
-        
-        .hw-node { background: #0a0a0a; border: 1px solid #222; border-radius: 4px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; transition: all 0.3s; position: relative; padding: 20px; z-index: 10; }
+        .hw-node { background: #0a0a0a; border: 1px solid #222; border-radius: 4px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; transition: all 0.3s; position: relative; padding: 20px; z-index: 10; flex: 0.8;}
         .hw-title { font-family: 'Share Tech Mono'; font-size: 1.2rem; color: #fff; font-weight: bold; letter-spacing: 1px; margin-bottom: 4px; }
         .hw-sub { font-family: 'Share Tech Mono'; font-size: 0.75rem; color: #777; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; }
         .brain-status { font-family: 'Share Tech Mono'; font-size: 0.75rem; font-weight: bold; padding: 4px 10px; border-radius: 2px; background: #000; border: 1px solid #333; min-width: 100px; transition: 0.3s;}
@@ -63,19 +62,16 @@
         /* Dashed Routing Lines */
         .router-in, .router-out { position: relative; width: 40px; display: flex; align-items: center; }
         .route-path { position: absolute; border: 2px dashed #333; transition: all 0.3s; width: 100%; z-index: 1; opacity: 0.3; }
-        
         .router-in .route-path { border-right: none; right: 0; }
         .r-in-1 { top: 15%; height: 35%; border-bottom: none; border-top-left-radius: 6px; }
         .r-in-2 { top: 38%; height: 12%; border-bottom: none; border-top-left-radius: 6px; }
         .r-in-3 { bottom: 38%; height: 12%; border-top: none; border-bottom-left-radius: 6px; }
         .r-in-4 { bottom: 15%; height: 35%; border-top: none; border-bottom-left-radius: 6px; }
-
         .router-out .route-path { border-left: none; left: 0; }
         .r-out-1 { top: 15%; height: 35%; border-bottom: none; border-top-right-radius: 6px; }
         .r-out-2 { top: 38%; height: 12%; border-bottom: none; border-top-right-radius: 6px; }
         .r-out-3 { bottom: 38%; height: 12%; border-top: none; border-bottom-right-radius: 6px; }
         .r-out-4 { bottom: 15%; height: 35%; border-top: none; border-bottom-right-radius: 6px; }
-        
         .data-link { width: 30px; height: 2px; background: repeating-linear-gradient(90deg, #333 0, #333 5px, transparent 5px, transparent 10px); background-size: 20px 100%; align-self: center; flex-shrink: 0; transition: 0.3s;}
 
         @keyframes stream { 100% { background-position: -20px 0; } }
@@ -84,28 +80,34 @@
 
         /* DESCRIPTION SECTION */
         .description-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 1100px; margin: 0 auto 80px; padding: 0 20px;}
-        .desc-box h3 { font-size: 1.5rem; margin-bottom: 20px; color: var(--accent-cyan); }
+        .desc-box h3 { font-size: 1.5rem; margin-bottom: 20px; color: var(--accent-cyan); border-bottom: 1px solid #1a1e26; padding-bottom: 10px;}
         .desc-box p { color: var(--text-dim); line-height: 1.7; font-size: 0.95rem;}
         .step-list { list-style: none; padding: 0; margin-top: 20px; }
-        .step-list li { margin-bottom: 15px; display: flex; gap: 15px; }
-        .step-num { color: var(--accent-cyan); font-family: 'Share Tech Mono'; font-weight: bold; border: 1px solid var(--accent-cyan); width: 25px; height: 25px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 0.8rem;}
+        .step-list li { margin-bottom: 20px; display: flex; gap: 15px; }
+        .step-num { color: var(--accent-cyan); font-family: 'Share Tech Mono'; font-weight: bold; border: 1px solid var(--accent-cyan); width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 0.85rem; background: rgba(0, 212, 255, 0.05);}
 
-        /* PRICING TABLE */
-        .pricing-table { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; max-width: 1100px; margin: 40px auto 80px; padding: 0 20px; }
-        .tier-card { background: var(--panel-bg); border: 1px solid #1a1e26; padding: 50px; border-radius: 4px; text-align: center; position: relative; display: flex; flex-direction: column;}
-        .tier-card.pro { border: 1px solid var(--accent-cyan); box-shadow: 0 0 30px rgba(0, 212, 255, 0.05); background: linear-gradient(180deg, rgba(0,212,255,0.03) 0%, transparent 100%);}
-        .tier-card h3 { font-size: 2rem; margin-bottom: 20px; color: #fff;}
+        /* UPDATED PRICING TABLE */
+        .pricing-header { text-align: center; margin-bottom: 40px; }
+        .pricing-table { display: grid; grid-template-columns: 1fr 1.1fr; gap: 0; max-width: 1100px; margin: 0 auto 100px; padding: 0 20px; align-items: center;}
         
-        .status-pill { position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: var(--bg-deep); border: 1px solid var(--accent-cyan); color: var(--accent-cyan); font-family: 'Share Tech Mono'; padding: 5px 12px; font-size: 0.7rem; border-radius: 2px; letter-spacing: 1px;}
+        .tier-card { background: var(--panel-bg); border: 1px solid #1a1e26; padding: 50px 40px; text-align: center; position: relative; display: flex; flex-direction: column; z-index: 1;}
+        .tier-card h3 { font-size: 1.8rem; margin-bottom: 10px; color: #fff;}
+        .tier-desc { color: var(--text-dim); font-size: 0.9rem; margin-bottom: 30px; height: 40px;}
+        
+        /* Pro Card Pop-out */
+        .tier-card.pro { border: 1px solid var(--accent-cyan); box-shadow: 0 0 40px rgba(0, 212, 255, 0.1); background: linear-gradient(180deg, rgba(0,212,255,0.05) 0%, #0a0c10 100%); z-index: 2; padding: 60px 50px; border-radius: 8px;}
+        
+        .status-pill { position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: var(--accent-cyan); color: #000; font-family: 'Share Tech Mono'; padding: 6px 15px; font-size: 0.8rem; font-weight: bold; border-radius: 2px; letter-spacing: 1px; box-shadow: 0 0 20px rgba(0, 212, 255, 0.4);}
 
         .price-box { margin-bottom: 30px; border-bottom: 1px solid #1a1e26; padding-bottom: 30px; }
-        .price-main { font-size: 3rem; font-weight: 800; color: #fff; }
-        .price-sub { display: block; color: var(--text-dim); font-family: 'Share Tech Mono'; margin-top: 10px; font-size: 0.9rem;}
+        .price-main { font-size: 3.5rem; font-weight: 800; color: #fff; line-height: 1;}
+        .price-sub { display: block; color: var(--text-dim); font-family: 'Share Tech Mono'; margin-top: 10px; }
         
-        .feature-list { list-style: none; padding: 0; margin: 0 0 30px 0; text-align: left; flex-grow: 1;}
-        .feature-list li { padding: 12px 0; border-bottom: 1px solid #15181f; color: var(--text-dim); display: flex; align-items: flex-start; gap: 10px; line-height: 1.4; font-size: 0.95rem;}
-        .feature-list li::before { content: "»"; color: var(--accent-cyan); font-weight: bold; margin-top: 2px;}
-        .pro-exclusive { color: var(--accent-cyan) !important; font-weight: 600; }
+        .feature-list { list-style: none; padding: 0; margin: 0 0 40px 0; text-align: left; flex-grow: 1;}
+        .feature-list li { padding: 15px 0; border-bottom: 1px solid #15181f; color: var(--text-main); display: flex; align-items: flex-start; gap: 12px; line-height: 1.4; font-size: 0.95rem;}
+        .feature-list li::before { content: "■"; color: var(--accent-cyan); font-size: 0.8rem; margin-top: 2px;}
+        
+        .sub-feat { display: block; font-size: 0.8rem; color: var(--text-dim); margin-top: 4px; font-weight: 300;}
 
         .btn { display: block; width: 100%; padding: 18px; background: transparent; border: 1px solid var(--accent-cyan); color: var(--accent-cyan); font-family: 'Share Tech Mono'; text-transform: uppercase; font-weight: bold; cursor: pointer; text-decoration: none; margin-top: auto; text-align: center; letter-spacing: 1px;}
         .btn:hover { background: var(--accent-cyan); color: #000; box-shadow: 0 0 20px var(--accent-cyan); }
@@ -115,15 +117,17 @@
         /* FOOTER COMMAND HUB */
         footer { background: #0a0c10; padding: 80px 60px; border-top: 1px solid #1a1e26; }
         .footer-grid { display: grid; grid-template-columns: 2fr 1fr; max-width: 1200px; margin: 0 auto; gap: 60px;}
-        .footer-brand h2 { font-size: 1.8rem; margin-bottom: 15px; color: #fff;}
+        .footer-brand h2 { font-size: 1.8rem; margin-bottom: 15px; }
         .contact-hub { display: flex; flex-direction: column; gap: 20px; }
         .contact-link { display: flex; align-items: center; gap: 15px; text-decoration: none; color: var(--text-dim); font-family: 'Share Tech Mono'; font-size: 0.9rem; }
         .contact-link:hover { color: var(--accent-cyan); }
         .contact-icon { width: 40px; height: 40px; border: 1px solid #333; display: flex; align-items: center; justify-content: center; color: var(--accent-cyan); }
 
         @media (max-width: 900px) {
-            .pricing-table, .description-grid, .footer-grid { grid-template-columns: 1fr; }
+            .pricing-table, .description-grid, .footer-grid { grid-template-columns: 1fr; gap: 40px;}
+            .tier-card.pro { transform: none; border-radius: 4px;}
             .hero h1 { font-size: 2.8rem; }
+            .hero-cta-sub { font-size: 1.2rem; }
             nav { padding: 15px 25px; flex-direction: column; gap: 15px; }
         }
     </style>
@@ -136,28 +140,29 @@
             <span class="brand-name">C.G. CAPITAL</span>
         </a>
         <div class="nav-links">
-            <a href="index.html">← COMMAND CENTER</a>
+            <a href="index.html">← RETURN TO COMMAND CENTER</a>
         </div>
     </nav>
 
-    <!-- NEW AUTHORITATIVE HERO -->
     <div class="hero">
         <div class="hero-decor"></div>
+        <span class="hero-tag">COGNITIVE SOVEREIGNTY</span>
+        
         <div class="hero-cta-box">
-            <span class="hero-tag">COGNITIVE SOVEREIGNTY</span>
             <span class="hero-cta-sub">HIRE YOUR AI AGENT WORKFORCE TODAY</span>
         </div>
+        
         <h1>COMMAND A SOVEREIGN<br>INTELLIGENCE SWARM</h1>
-        <p>Deploy a Tier-1 Neural Sentinel workforce. Alicanto is a proprietary multi-agent ecosystem engineered to scan the tectonic shifts of global finance, providing an asymmetric information edge through non-linear intelligence synthesis.</p>
+        <p>Alicanto is a proprietary 6-agent neural ecosystem. It ingests 10,000+ daily macro inputs, ruthlessly filters retail noise, and synthesizes pure, actionable institutional alpha. You don't just get raw data—you get the verdict.</p>
     </div>
 
-    <!-- LIVE TERMINAL SWARM UI (INTACT) -->
+    <!-- LIVE TERMINAL SWARM UI -->
     <div class="terminal-wrapper">
         <div class="terminal-title">4-STAGE MULTI-AGENT SWARM :: LIVE SIMULATION</div>
         <div class="neural-core">
             
             <!-- STAGE 1: Feeder -->
-            <div class="hw-node" id="node-feeder" style="flex: 0.8; border-color: var(--accent-cyan); box-shadow: inset 0 0 20px rgba(0,212,255,0.1);">
+            <div class="hw-node" id="node-feeder" style="border-color: var(--accent-cyan); box-shadow: inset 0 0 20px rgba(0,212,255,0.1);">
                 <div class="hw-title">DATA FEEDER</div>
                 <div class="hw-sub">8vCPU | 32GB ECC</div>
                 <div class="brain-status" style="border-color: #00ff88; color: #00ff88;">ONLINE</div>
@@ -208,8 +213,8 @@
             <div class="data-link" id="link-2"></div>
 
             <!-- STAGE 3: Senior Veto -->
-            <div class="hw-node" id="node-senior" style="flex: 0.8;">
-                <div class="hw-title" style="color: #b142ff;">SENIOR ANALYST</div>
+            <div class="hw-node" id="node-senior">
+                <div class="hw-title" style="color: #b142ff;">SENIOR VETO</div>
                 <div class="hw-sub">GPT-4 EDITOR</div>
                 <div class="brain-status" id="stat-sr" style="color: #777;">IDLE</div>
             </div>
@@ -217,8 +222,8 @@
             <div class="data-link" id="link-3"></div>
 
             <!-- STAGE 4: Executive Lead -->
-            <div class="hw-node" id="node-lead" style="flex: 0.8;">
-                <div class="hw-title" style="color: #ffe600;">LEAD ANALYST</div>
+            <div class="hw-node" id="node-lead">
+                <div class="hw-title" style="color: #ffe600;">EXECUTIVE LEAD</div>
                 <div class="hw-sub">70B SYNTHESIS</div>
                 <div class="brain-status" id="stat-lead" style="color: #555;">DORMANT</div>
             </div>
@@ -226,71 +231,71 @@
         </div>
     </div>
 
-    <!-- NEW DESCRIPTION BLOCK -->
+    <!-- HOW IT WORKS -->
     <div class="description-grid">
         <div class="desc-box">
-            <h3>How the Swarm Works</h3>
-            <p>Alicanto utilizes a proprietary hierarchical agent framework. A multi-stage swarm collaborates to verify truth, filter retail noise, and calculate institutional macro impact before executing a verdict.</p>
+            <h3>The Intelligence Pipeline</h3>
+            <p>Alicanto utilizes a proprietary hierarchical framework. Data is not just queried; it is cross-examined by multiple independent agents to verify truth and filter out market noise.</p>
             <ul class="step-list">
-                <li><div class="step-num">1</div><p><b>Extraction Desk:</b> 4 Junior Agents ingest 10,000+ data points daily from geopolitical supply chains, physical vault registries, and kinetic economic prints.</p></li>
-                <li><div class="step-num">2</div><p><b>Veto Desk:</b> A Senior Analyst Agent subjects every incoming signal to a rigorous cognitive noise sieve, ruthlessly killing 99% of retail hype traps.</p></li>
+                <li><div class="step-num">1</div><div><p style="margin:0; color:#fff; font-weight:bold;">Extraction Desk</p><span class="sub-feat">4 Junior Agents ingest 10,000+ data points from geopolitical supply chains, physical vault registries, and economic prints.</span></div></li>
+                <li><div class="step-num">2</div><div><p style="margin:0; color:#fff; font-weight:bold;">Veto Sifter</p><span class="sub-feat">A Senior Analyst Agent subjects every signal to a cognitive noise sieve, ruthlessly killing 99% of retail hype traps.</span></div></li>
             </ul>
         </div>
         <div class="desc-box">
-            <h3 style="color: var(--gold);">The Output Verdict</h3>
+            <h3 style="color: var(--gold); border-bottom-color: #332b00;">The Output Verdict</h3>
             <p>The Lead Executive (70B Model) only activates when a signal is verified. It translates raw, filtered data into pure macro alpha, delivered directly to your command terminal.</p>
             <ul class="step-list">
-                <li><div class="step-num">3</div><p><b>Synthesis:</b> The Lead Analyst calculates the DEFCON Threat Level and identifies specific physical liquidity drains globally.</p></li>
-                <li><div class="step-num">4</div><p><b>Deployment:</b> High-conviction intelligence is dispatched to Pro License holders every 4 hours via automated Executive Briefs.</p></li>
+                <li><div class="step-num" style="border-color:var(--gold); color:var(--gold); background:rgba(255,204,0,0.05);">3</div><div><p style="margin:0; color:#fff; font-weight:bold;">Synthesis</p><span class="sub-feat">The Lead Analyst calculates the DEFCON Threat Level and identifies specific physical liquidity drains globally.</span></div></li>
+                <li><div class="step-num" style="border-color:var(--gold); color:var(--gold); background:rgba(255,204,0,0.05);">4</div><div><p style="margin:0; color:#fff; font-weight:bold;">Deployment</p><span class="sub-feat">High-conviction intelligence is dispatched to Pro License holders every 4 hours via automated Executive Briefs.</span></div></li>
             </ul>
         </div>
     </div>
 
-    <!-- NEW PRICING BLOCK WITH GUMROAD LINKS -->
-    <div class="hero" style="padding-top: 20px; padding-bottom: 0;">
+    <!-- UPDATED PRICING COMPARISON -->
+    <div class="pricing-header">
         <h2>AUTHORIZATION TIERS</h2>
     </div>
 
     <div class="pricing-table">
+        <!-- STACKER -->
         <div class="tier-card">
             <h3>STACKER AGENT</h3>
+            <p class="tier-desc">Foundational macro surveillance. You get the raw data feeds, but you do the analysis.</p>
             <div class="price-box">
-                <span class="price-main">$19</span><span class="mono">/MONTH</span>
+                <span class="price-main">$19</span><span class="mono">/MO</span>
                 <span class="price-sub">₹1,800 / MONTH</span>
             </div>
             <ul class="feature-list">
-                <li>Live Global Market Matrix (COMEX/SGE/MCX)</li>
-                <li>Gold-to-Silver Ratio & Fair Value Analytics</li>
-                <li>Global Threat Index (DEFCON) Stream</li>
-                <li>Base Agent Query Bandwidth (10/hr)</li>
-                <li style="color: #555;">3-Month Plan: $54 / ₹5,100</li>
-                <li style="color: #555;">6-Month Plan: $102 / ₹9,650</li>
+                <li><div>Live Global Market Matrix<span class="sub-feat">Real-time COMEX, SGE, and MCX spread tracking.</span></div></li>
+                <li><div>Gold-to-Silver Ratio Analytics<span class="sub-feat">Historical fair value bounds and divergence alerts.</span></div></li>
+                <li><div>Global Threat Index Stream<span class="sub-feat">Live DEFCON macro tracking.</span></div></li>
+                <li><div>Basic Query Access<span class="sub-feat">Limited to 10 manual queries per hour.</span></div></li>
+                <li style="border:none; padding-top:20px; opacity: 0.6;"><div class="mono" style="font-size: 0.85rem;">3-Mo Plan: $54 &nbsp;|&nbsp; 6-Mo Plan: $102</div></li>
             </ul>
             <a href="https://godhwanichetan.gumroad.com/l/baiglo" target="_blank" class="btn btn-outline">Deploy Stacker Agent</a>
         </div>
         
+        <!-- PRO SWARM -->
         <div class="tier-card pro">
             <div class="status-pill">MAXIMUM ALIGNMENT</div>
             <h3 style="color: var(--accent-cyan);">MACRO PRO SWARM</h3>
+            <p class="tier-desc" style="color: #fff;">The ultimate information edge. Full autonomous synthesis and vetted executive action.</p>
             <div class="price-box">
-                <span class="price-main">$69</span><span class="mono">/MONTH</span>
-                <span class="price-sub">₹6,500 / MONTH</span>
+                <span class="price-main">$69</span><span class="mono">/MO</span>
+                <span class="price-sub" style="color: var(--accent-cyan);">₹6,500 / MONTH</span>
             </div>
             <ul class="feature-list">
-                <li><b style="color: #fff;">Full Neural Swarm Access (6 Agents)</b></li>
-                <li class="pro-exclusive">Automated 4-Hour Executive Synthesis</li>
-                <li class="pro-exclusive">Exclusive 70B Lead Analyst Verdicts</li>
-                <li class="pro-exclusive">Institutional Private Vault Injection</li>
-                <li>Full Tier-1 Web Terminal UI Access</li>
-                <li class="pro-exclusive">Maximum Query Bandwidth (30/hr)</li>
-                <li style="color: var(--accent-cyan); opacity: 0.8;">3-Month Plan: $197 / ₹18,650</li>
-                <li style="color: var(--accent-cyan); opacity: 0.8;">6-Month Plan: $372 / ₹35,200</li>
+                <li><div><b>Full 6-Agent Swarm Integration</b><span class="sub-feat" style="color: var(--accent-cyan);">Unlocks the Senior Veto and 70B Executive Lead desks to eliminate false signals.</span></div></li>
+                <li><div><b>Automated Executive Briefs</b><span class="sub-feat" style="color: var(--accent-cyan);">Receive fully formatted macro briefs every 4 hours. No manual querying required.</span></div></li>
+                <li><div><b>Custom Matrix Triggers</b><span class="sub-feat">Set specific keyword or price alerts for instant notification.</span></div></li>
+                <li><div><b>Institutional Vault Access</b><span class="sub-feat">Access historical, private cross-current reports.</span></div></li>
+                <li><div><b>Maximum Query Bandwidth</b><span class="sub-feat">Elevated to 30 manual deep-dives per hour.</span></div></li>
+                <li style="border:none; padding-top:20px;"><div class="mono" style="font-size: 0.85rem; color: var(--accent-cyan);">3-Mo Plan: $197 &nbsp;|&nbsp; 6-Mo Plan: $372</div></li>
             </ul>
-            <a href="https://godhwanichetan.gumroad.com/l/baiglo" target="_blank" class="btn">Command Pro Swarm</a>
+            <a href="https://godhwanichetan.gumroad.com/l/baiglo" target="_blank" class="btn" style="background: var(--accent-cyan); color: #000;">Command Pro Swarm</a>
         </div>
     </div>
 
-    <!-- NEW CONTACT HUB FOOTER -->
     <footer>
         <div class="footer-grid">
             <div class="footer-brand">
@@ -302,12 +307,11 @@
                 <div class="mono" style="color: var(--accent-cyan); margin-bottom: 10px;">OPERATIONS & SUPPORT</div>
                 <a href="mailto:support@cgcapitalai.online" class="contact-link"><div class="contact-icon">@</div> support@cgcapitalai.online</a>
                 <a href="https://t.me/c_g_capital_ai" target="_blank" class="contact-link"><div class="contact-icon">T</div> Telegram: @c_g_capital_ai</a>
-                <a href="https://t.me/Silver_agent_gb_bot" target="_blank" class="contact-link"><div class="contact-icon">A</div> Terminal Bot Access</a>
+                <a href="https://t.me/Silver_agent_gb_bot" target="_blank" class="contact-link"><div class="contact-icon">A</div> Terminal Access: @Silver_agent_gb_bot</a>
             </div>
         </div>
     </footer>
 
-    <!-- INTACT JS ANIMATION SCRIPT -->
     <script>
         // --- Live Swarm Simulation Engine ---
         const configs = [
