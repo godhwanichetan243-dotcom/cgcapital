@@ -3,127 +3,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>C.G. Capital | Algorithmic Macro Intelligence</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@300;400;600&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <title>C.G. Capital | Institutional Algorithmic Intelligence</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Inter:wght@300;400;600&family=Share+Tech+Mono&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #030303;
-            --panel-bg: #0a0a0a;
-            --text-main: #e0e0e0;
-            --text-muted: #888888;
+            --bg-deep: #050608;
+            --panel-bg: #0d0f14;
             --accent-cyan: #00d4ff;
             --accent-silver: #c0c0c0;
-            --border-color: #1f1f1f;
+            --text-main: #e0e6ed;
+            --text-dim: #8a949d;
+            --border-glow: rgba(0, 212, 255, 0.15);
+            --gold: #d4af37;
         }
 
-        body, html { margin: 0; padding: 0; background-color: var(--bg-color); color: var(--text-main); font-family: 'Inter', sans-serif; overflow-x: hidden; }
+        * { box-sizing: border-box; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        body, html { margin: 0; padding: 0; background-color: var(--bg-deep); color: var(--text-main); font-family: 'Inter', sans-serif; overflow-x: hidden; }
         
-        /* Institutional Typography */
-        h1, h2, h3 { font-family: 'Cinzel', serif; letter-spacing: 2px; font-weight: 500; margin: 0; }
+        body::before { content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.02), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.02)); background-size: 100% 4px, 3px 100%; z-index: 1000; pointer-events: none; }
+
+        h1, h2, h3 { font-family: 'Cinzel', serif; letter-spacing: 3px; text-transform: uppercase; }
         .mono { font-family: 'Share Tech Mono', monospace; }
 
-        /* Navigation */
-        nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 50px; border-bottom: 1px solid var(--border-color); background: rgba(3,3,3,0.9); position: sticky; top: 0; z-index: 100; }
-        .nav-logo-container { display: flex; align-items: center; gap: 15px; }
-        .nav-logo { height: 40px; width: 40px; border-radius: 50%; box-shadow: 0 0 10px rgba(0, 212, 255, 0.3); }
-        .nav-brand { font-size: 1.2rem; color: var(--accent-silver); text-decoration: none; font-weight: 700; }
-        .nav-links a { color: var(--text-muted); text-decoration: none; margin-left: 30px; font-size: 0.9rem; transition: color 0.3s; }
-        .nav-links a:hover { color: var(--accent-cyan); }
-
-        /* Hero Section */
-        .hero { min-height: 70vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 20px; background: radial-gradient(circle at center, #0a1118 0%, #030303 100%); position: relative; }
-        .hero::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 212, 255, 0.03) 2px, rgba(0, 212, 255, 0.03) 4px); pointer-events: none; }
-        .hero h1 { font-size: 4rem; color: #ffffff; text-shadow: 0 0 20px rgba(0, 212, 255, 0.2); margin-bottom: 10px; z-index: 1; }
-        .hero p { font-size: 1.2rem; color: var(--accent-silver); max-width: 600px; line-height: 1.6; z-index: 1; margin-bottom: 30px;}
-        .hero-tagline { font-family: 'Share Tech Mono'; color: var(--accent-cyan); font-size: 0.9rem; letter-spacing: 4px; margin-bottom: 20px; z-index: 1; }
-
-        /* Products Section */
-        .products { padding: 80px 50px; max-width: 1200px; margin: 0 auto; }
-        .section-title { font-size: 2rem; color: var(--accent-silver); margin-bottom: 40px; border-bottom: 1px solid var(--border-color); padding-bottom: 15px; }
-        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 60px; background: rgba(5, 6, 8, 0.95); border-bottom: 1px solid #1a1e26; position: sticky; top: 0; z-index: 999; backdrop-filter: blur(10px); }
+        .logo-block { display: flex; align-items: center; gap: 15px; text-decoration: none; }
+        .logo-img { height: 45px; width: 45px; border-radius: 50%; border: 1px solid var(--accent-cyan); box-shadow: 0 0 15px var(--border-glow); }
+        .brand-name { font-size: 1.4rem; font-weight: 800; color: #fff; }
         
-        .card { background: var(--panel-bg); border: 1px solid var(--border-color); padding: 40px; border-radius: 4px; transition: transform 0.3s, border-color 0.3s; position: relative; overflow: hidden; }
-        .card::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 2px; background: transparent; transition: background 0.3s; }
-        .card:hover { transform: translateY(-5px); border-color: #333; }
-        .card:hover::before { background: linear-gradient(90deg, transparent, var(--accent-cyan), transparent); }
+        .nav-links { display: flex; gap: 40px; }
+        .nav-links a { color: var(--text-dim); text-decoration: none; font-family: 'Share Tech Mono'; font-size: 0.9rem; cursor: pointer; }
+        .nav-links a:hover { color: var(--accent-cyan); text-shadow: 0 0 10px var(--accent-cyan); }
+
+        .hero { text-align: center; max-width: 1200px; margin: 0 auto; padding-top: 100px; }
+        .hero-tag { color: var(--accent-cyan); font-family: 'Share Tech Mono'; letter-spacing: 5px; font-size: 1rem; margin-bottom: 20px; }
+        .hero h1 { font-size: 4.5rem; margin: 0; line-height: 1; text-shadow: 0 0 30px rgba(0, 212, 255, 0.3); }
+        .hero p { color: var(--text-dim); max-width: 750px; margin: 30px auto; font-size: 1.1rem; line-height: 1.8; }
+
+        .live-ticker { background: #0a0c10; border: 1px solid #1a1e26; padding: 10px; font-family: 'Share Tech Mono'; font-size: 0.8rem; overflow: hidden; white-space: nowrap; margin-bottom: 50px; color: var(--accent-cyan); }
+        .ticker-wrap { display: inline-block; animation: marquee 30s linear infinite; }
+        @keyframes marquee { from { transform: translateX(100%); } to { transform: translateX(-100%); } }
+
+        .product-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 1200px; margin: 60px auto; padding: 0 20px; }
+        .product-card { background: var(--panel-bg); border: 1px solid #1a1e26; border-radius: 4px; overflow: hidden; position: relative; text-decoration: none; color: inherit; display: block;}
+        .product-card:hover { border-color: var(--accent-cyan); box-shadow: 0 10px 40px rgba(0,0,0,0.5); transform: scale(1.02); }
+        .product-img { width: 100%; height: 350px; object-fit: cover; opacity: 0.6; filter: grayscale(50%); }
+        .product-card:hover .product-img { opacity: 0.9; filter: grayscale(0%); }
+        .product-info { padding: 30px; position: relative; background: linear-gradient(transparent, var(--panel-bg)); margin-top: -100px; }
         
-        .card h3 { font-size: 1.8rem; color: #fff; margin-bottom: 15px; }
-        .card p { color: var(--text-muted); line-height: 1.6; margin-bottom: 30px; font-size: 0.95rem; }
-        
-        .btn { display: inline-block; padding: 12px 24px; font-family: 'Share Tech Mono', monospace; text-decoration: none; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; transition: all 0.3s; border-radius: 2px; border: 1px solid var(--accent-cyan); color: var(--accent-cyan); background: transparent; cursor: pointer; }
-        .btn:hover { background: rgba(0, 212, 255, 0.1); box-shadow: 0 0 15px rgba(0, 212, 255, 0.2); }
-        .btn-disabled { border-color: #333; color: #555; cursor: not-allowed; }
-        .btn-disabled:hover { background: transparent; box-shadow: none; }
+        .status-pill { position: absolute; top: 20px; right: 20px; background: rgba(0, 212, 255, 0.1); border: 1px solid var(--accent-cyan); color: var(--accent-cyan); font-family: 'Share Tech Mono'; padding: 5px 12px; font-size: 0.7rem; border-radius: 2px; }
+        .status-pill.soon { border-color: var(--gold); color: var(--gold); background: rgba(212, 175, 55, 0.1); }
 
-        .status-tag { position: absolute; top: 20px; right: 20px; font-family: 'Share Tech Mono'; font-size: 0.7rem; padding: 4px 8px; border: 1px solid; border-radius: 2px; }
-        .tag-active { border-color: var(--accent-cyan); color: var(--accent-cyan); }
-        .tag-dev { border-color: #ffcc00; color: #ffcc00; }
+        footer { text-align: center; padding: 60px; border-top: 1px solid #1a1e26; color: var(--text-dim); font-size: 0.8rem; margin-top: 60px; }
 
-        /* Footer */
-        footer { padding: 40px 50px; background: var(--panel-bg); border-top: 1px solid var(--border-color); text-align: center; color: #555; font-size: 0.8rem; }
-        footer a { color: var(--text-muted); text-decoration: none; }
-        footer a:hover { color: var(--accent-silver); }
-        .disclaimer { max-width: 800px; margin: 20px auto 0; font-size: 0.7rem; line-height: 1.5; color: #444; }
-
-        @media (max-width: 768px) {
-            .grid { grid-template-columns: 1fr; }
-            .hero h1 { font-size: 2.5rem; }
-            nav { padding: 15px 20px; }
+        @media (max-width: 900px) {
+            .product-grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2.8rem; }
+            nav { padding: 15px 25px; flex-direction: column; gap: 15px; }
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="nav-logo-container">
-            <!-- Using your specific logo -->
-            <img src="6248802109012775016.jpg" alt="C.G. Capital Logo" class="nav-logo">
-            <a href="index.html" class="nav-brand">C.G. CAPITAL</a>
-        </div>
+        <a href="index.html" class="logo-block">
+            <img src="6248802109012775016.jpg" class="logo-img" alt="CG Capital">
+            <span class="brand-name">C.G. CAPITAL</span>
+        </a>
         <div class="nav-links">
-            <a href="#products">Products</a>
-            <a href="mailto:support@cgcapitalai.online">Support</a>
+            <a href="mailto:support@cgcapitalai.online">SUPPORT</a>
+            <a href="https://t.me/c_g_capital_ai" target="_blank">TELEGRAM</a>
         </div>
     </nav>
 
-    <div class="hero">
-        <div class="hero-tagline">INTELLIGENCE • EXECUTION • GROWTH</div>
-        <h1>ALGORITHMIC MACRO INTELLIGENCE</h1>
-        <p>C.G. Capital engineers proprietary, multi-agent AI systems designed to identify structural market deficits, track global supply chains, and secure institutional-grade alpha before it reaches the retail market.</p>
+    <div class="live-ticker">
+        <div class="ticker-wrap">
+            SYST STATUS: OPTIMAL // ALICANTO CORE: ONLINE // KAIROS: BACKTESTING PHASE 4 // COMEX SILVER SPREAD: +$4.82 // SHANGHAI PREMIUM: MONITORING // 4-STAGE SWARM: ACTIVE // 
+        </div>
     </div>
 
-    <div class="products" id="products">
-        <h2 class="section-title">Proprietary Arsenal</h2>
-        <div class="grid">
-            
-            <!-- ALICANTO CARD -->
-            <div class="card">
-                <div class="status-tag tag-active">SYSTEM ONLINE</div>
+    <div class="hero">
+        <div class="hero-tag">INTELLIGENCE • EXECUTION • GROWTH</div>
+        <h1>ALGORITHMIC MACRO<br>INTELLIGENCE</h1>
+        <p>C.G. Capital develops proprietary, multi-agent AI ecosystems engineered to extract institutional-grade alpha from structural global imbalances. We don't track the market; we monitor the plumbing of global finance.</p>
+    </div>
+
+    <div class="product-grid">
+        <a href="alicanto.html" class="product-card">
+            <div class="status-pill">ONLINE</div>
+            <img src="image_a308fa.jpg" class="product-img" alt="Alicanto">
+            <div class="product-info">
                 <h3>ALICANTO</h3>
-                <p>The flagship Macro Sentinel. A 4-stage neural swarm engineered to hunt structural supply disruptions, track dark pool physical flows, and calculate real-time fiat debasement metrics across global channels.</p>
-                <a href="alicanto.html" class="btn">Explore Alicanto</a>
+                <p>Global Macro & Physical Supply Engine. Powered by a 4-stage neural swarm hunting for systemic deficits 24/7.</p>
+                <span class="mono" style="color: var(--accent-cyan);">ENTER TERMINAL ›</span>
             </div>
-
-            <!-- KAIROS CARD -->
-            <div class="card">
-                <div class="status-tag tag-dev">IN DEVELOPMENT</div>
+        </a>
+        
+        <div class="product-card" style="cursor: default; border-color: #1a1e26; transform: none; box-shadow: none;">
+            <div class="status-pill soon">COMING SOON</div>
+            <img src="image_a30882.jpg" class="product-img" alt="Kairos">
+            <div class="product-info">
                 <h3>KAIROS</h3>
-                <p>Advanced Quantitative Momentum Engine. Designed for high-frequency volatility filtering and momentum execution across large-cap and mid-cap equities. Currently undergoing rigorous backtesting.</p>
-                <span class="btn btn-disabled">Deployment Pending</span>
+                <p>Quantitative Momentum & Volatility Engine. High-frequency filtering for large-cap and mid-cap equity execution.</p>
+                <span class="mono" style="color: var(--gold);">BACKTESTING IN PROGRESS ›</span>
             </div>
-
         </div>
     </div>
 
     <footer>
-        <div>
-            <a href="mailto:support@cgcapitalai.online">support@cgcapitalai.online</a> &nbsp;|&nbsp; 
-            <a href="https://t.me/c_g_capital_ai" target="_blank">Telegram: @c_g_capital_ai</a>
-        </div>
-        <div class="disclaimer">
-            © 2026 C.G. Capital. All rights reserved.<br>
-            DISCLAIMER: The intelligence provided by C.G. Capital and its algorithmic systems (including Alicanto) is for informational and educational purposes only. It does not constitute financial, investment, or trading advice. Markets are inherently volatile, and past performance or systemic identification does not guarantee future results.
-        </div>
+        <div class="mono" style="margin-bottom: 20px;">C.G. CAPITAL // FIRM_ID: 9325-ALPHA</div>
+        <a href="mailto:support@cgcapitalai.online" style="color: var(--accent-cyan); text-decoration: none;">support@cgcapitalai.online</a> | Telegram: @c_g_capital_ai
+        <p style="opacity: 0.3; margin-top: 30px; font-size: 0.7rem;">© 2026 C.G. Capital. Algorithmic intelligence involves significant risk. All data is for institutional research purposes only.</p>
     </footer>
 
 </body>
