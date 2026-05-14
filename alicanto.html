@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alicanto | C.G. Capital</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@300;400;600&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #030303;
+            --panel-bg: #0a0a0a;
+            --text-main: #e0e0e0;
+            --text-muted: #888888;
+            --accent-cyan: #00d4ff;
+            --accent-silver: #c0c0c0;
+            --border-color: #1f1f1f;
+            --gold: #ffcc00;
+        }
+
+        body, html { margin: 0; padding: 0; background-color: var(--bg-color); color: var(--text-main); font-family: 'Inter', sans-serif; overflow-x: hidden; }
+        h1, h2, h3 { font-family: 'Cinzel', serif; letter-spacing: 2px; font-weight: 500; margin: 0; }
+        .mono { font-family: 'Share Tech Mono', monospace; }
+
+        /* Navigation */
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 50px; border-bottom: 1px solid var(--border-color); background: rgba(3,3,3,0.9); position: sticky; top: 0; z-index: 100; }
+        .nav-logo-container { display: flex; align-items: center; gap: 15px; }
+        .nav-logo { height: 40px; width: 40px; border-radius: 50%; box-shadow: 0 0 10px rgba(0, 212, 255, 0.3); }
+        .nav-brand { font-size: 1.2rem; color: var(--accent-silver); text-decoration: none; font-weight: 700; }
+        .nav-links a { color: var(--text-muted); text-decoration: none; margin-left: 30px; font-size: 0.9rem; }
+        .nav-links a:hover { color: var(--accent-cyan); }
+
+        /* Product Hero */
+        .product-hero { padding: 80px 20px; text-align: center; border-bottom: 1px solid var(--border-color); background: linear-gradient(180deg, rgba(0, 212, 255, 0.02) 0%, transparent 100%); }
+        .product-hero h1 { font-size: 3.5rem; color: var(--accent-cyan); margin-bottom: 15px; text-shadow: 0 0 20px rgba(0, 212, 255, 0.3); }
+        .product-hero p { font-size: 1.2rem; color: var(--accent-silver); max-width: 700px; margin: 0 auto 30px; line-height: 1.6; }
+        
+        /* Architecture/Features */
+        .features { padding: 60px 50px; max-width: 1200px; margin: 0 auto; }
+        .feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 40px; }
+        .feat-box { background: var(--panel-bg); border: 1px solid var(--border-color); padding: 30px; border-radius: 4px; }
+        .feat-box h4 { font-family: 'Share Tech Mono'; color: var(--accent-cyan); margin-bottom: 15px; font-size: 1.1rem; }
+        .feat-box p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; }
+
+        /* Pricing Tiers */
+        .pricing-section { padding: 60px 50px 100px; max-width: 1000px; margin: 0 auto; }
+        .section-title { text-align: center; font-size: 2rem; color: #fff; margin-bottom: 50px; }
+        .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+        
+        .tier { background: var(--panel-bg); border: 1px solid var(--border-color); border-radius: 4px; padding: 40px; display: flex; flex-direction: column; position: relative; }
+        .tier-pro { border-color: rgba(0, 212, 255, 0.4); box-shadow: 0 0 30px rgba(0, 212, 255, 0.05); }
+        .tier-pro::before { content: "INSTITUTIONAL STANDARD"; position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--bg-color); color: var(--accent-cyan); border: 1px solid var(--accent-cyan); padding: 4px 12px; font-family: 'Share Tech Mono'; font-size: 0.7rem; letter-spacing: 1px; border-radius: 2px; }
+        
+        .tier h3 { font-size: 1.8rem; margin-bottom: 10px; color: #fff; }
+        .price { font-family: 'Share Tech Mono'; font-size: 2rem; color: var(--accent-silver); margin-bottom: 20px; }
+        .price span { font-size: 1rem; color: var(--text-muted); }
+        
+        .tier ul { list-style: none; padding: 0; margin: 0 0 40px 0; flex-grow: 1; }
+        .tier ul li { color: var(--text-muted); margin-bottom: 15px; font-size: 0.95rem; display: flex; align-items: flex-start; }
+        .tier ul li::before { content: "›"; color: var(--accent-cyan); margin-right: 10px; font-family: 'Share Tech Mono'; font-weight: bold; }
+        
+        .btn-buy { text-align: center; padding: 15px; background: transparent; border: 1px solid var(--accent-silver); color: var(--accent-silver); font-family: 'Share Tech Mono'; text-decoration: none; text-transform: uppercase; transition: 0.3s; cursor: pointer; }
+        .btn-buy:hover { background: rgba(255,255,255,0.05); }
+        
+        .btn-pro { border-color: var(--accent-cyan); color: var(--accent-cyan); }
+        .btn-pro:hover { background: rgba(0, 212, 255, 0.1); box-shadow: 0 0 15px rgba(0, 212, 255, 0.2); }
+
+        .btn-telegram { display: inline-block; background: #222; color: #fff; text-decoration: none; padding: 10px 20px; font-family: 'Share Tech Mono'; border: 1px solid #444; border-radius: 2px; margin-top: 10px; transition: 0.3s; }
+        .btn-telegram:hover { border-color: #fff; }
+
+        /* Footer */
+        footer { padding: 40px 50px; background: var(--panel-bg); border-top: 1px solid var(--border-color); text-align: center; color: #555; font-size: 0.8rem; }
+        footer a { color: var(--text-muted); text-decoration: none; }
+        footer a:hover { color: var(--accent-silver); }
+
+        @media (max-width: 768px) {
+            .feature-grid, .pricing-grid { grid-template-columns: 1fr; }
+            .product-hero h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-logo-container">
+            <img src="6248802109012775016.jpg" alt="C.G. Capital Logo" class="nav-logo">
+            <a href="index.html" class="nav-brand">C.G. CAPITAL</a>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">← Back to Arsenal</a>
+        </div>
+    </nav>
+
+    <div class="product-hero">
+        <h1>ALICANTO ENGINE</h1>
+        <p>The legendary sentinel, re-engineered into a relentless macro powerhouse. Alicanto consumes global data 24/7 to identify fiat instability and physical supply drains before they manifest in standard markets.</p>
+        <a href="https://t.me/Silver_agent_gb_bot" target="_blank" class="btn-telegram">Initialize Terminal Bot via Telegram</a>
+    </div>
+
+    <div class="features">
+        <h2 class="section-title" style="text-align: left; border-bottom: 1px solid var(--border-color); padding-bottom: 15px; font-size: 1.5rem; margin-bottom: 0;">System Architecture</h2>
+        <div class="feature-grid">
+            <div class="feat-box">
+                <h4>[01] 4-STAGE NEURAL SWARM</h4>
+                <p>Data undergoes rigorous synthesis through multiple AI strata. Junior extraction models pull raw data, Senior models filter retail noise, and the Executive 70B model formulates the final macro verdict.</p>
+            </div>
+            <div class="feat-box">
+                <h4>[02] OMNISCIENT NET</h4>
+                <p>Continuous monitoring of 240+ global geopolitical, economic, and physical supply channels. Analyzes kinetic events, tariff shifts, and structural supply chain disruptions in real-time.</p>
+            </div>
+            <div class="feat-box">
+                <h4>[03] LIVE MACRO MATRIX</h4>
+                <p>Direct tracking of the East/West arbitrage spread (COMEX vs. Shanghai), Gold-to-Silver Ratios, DXY pressure, and yield curves, calculated alongside a proprietary 6-point DEFCON Threat Index.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="pricing-section">
+        <h2 class="section-title">Terminal Authorization</h2>
+        <div class="pricing-grid">
+            
+            <!-- STACKER TIER -->
+            <div class="tier">
+                <h3>STACKER TIER</h3>
+                <div class="price">$9.99 <span>/ month</span></div>
+                <ul>
+                    <li>Live Global Market Matrix (COMEX, SGE, MCX)</li>
+                    <li>Gold-to-Silver Ratio Analysis & Fair Value</li>
+                    <li>Global Threat Index (DEFCON) Calculation</li>
+                    <li>Basic AI Chat Engine (10 queries/hour)</li>
+                </ul>
+                <a href="https://t.me/Silver_agent_gb_bot" target="_blank" class="btn-buy" style="margin-bottom: 10px;">Free Terminal Setup</a>
+                <span style="text-align: center; font-size: 0.75rem; color: #555;">Upgrade inside the Telegram Terminal</span>
+            </div>
+
+            <!-- PRO TIER -->
+            <div class="tier tier-pro">
+                <h3>MACRO PRO TIER</h3>
+                <div class="price">$14.99 <span>/ month</span></div>
+                <ul>
+                    <li><strong>Full Stacker Tier Access</strong></li>
+                    <li>Executive Briefs (AI-synthesized macro reports)</li>
+                    <li>Custom Live Matrix Triggers (Price/Keyword)</li>
+                    <li>Private Alpha Vault Injection</li>
+                    <li>Full Tier-1 Web Dashboard UI Access</li>
+                    <li>Expanded API Bandwidth (30 queries/hour)</li>
+                </ul>
+                <a href="https://godhwanichetan.gumroad.com/l/baiglo" target="_blank" class="btn-buy btn-pro">Secure Pro License</a>
+            </div>
+
+        </div>
+    </div>
+
+    <footer>
+        <div>
+            Technical Support: <a href="mailto:support@cgcapitalai.online">support@cgcapitalai.online</a> &nbsp;|&nbsp; 
+            <a href="https://t.me/c_g_capital_ai" target="_blank">Telegram: @c_g_capital_ai</a>
+        </div>
+        <div style="margin-top: 20px; font-size: 0.7rem; color: #444;">
+            © 2026 C.G. Capital. All rights reserved.
+        </div>
+    </footer>
+
+</body>
+</html>
