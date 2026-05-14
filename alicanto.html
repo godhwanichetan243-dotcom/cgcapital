@@ -24,17 +24,21 @@
         h1, h2, h3 { font-family: 'Cinzel', serif; letter-spacing: 3px; text-transform: uppercase; margin: 0;}
         .mono { font-family: 'Share Tech Mono', monospace; }
 
-        /* UPDATED NAVIGATION: Removed link, centered the brand */
-        nav { display: flex; justify-content: center; align-items: center; padding: 15px 60px; background: rgba(3, 4, 6, 0.95); border-bottom: 1px solid #1a1e26; position: sticky; top: 0; z-index: 999; backdrop-filter: blur(10px); }
-        .logo-block { display: flex; align-items: center; gap: 15px; text-decoration: none; }
-        .brand-name { font-size: 1.6rem; font-weight: 800; color: #fff; letter-spacing: 3px; font-family: 'Cinzel', serif;}
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 60px; background: rgba(3, 4, 6, 0.95); border-bottom: 1px solid #1a1e26; position: sticky; top: 0; z-index: 999; backdrop-filter: blur(10px); }
         
+        .logo-block { display: flex; align-items: center; gap: 15px; text-decoration: none; }
+        .css-logo { height: 45px; width: 45px; border-radius: 50%; border: 2px solid var(--accent-cyan); display: flex; align-items: center; justify-content: center; font-family: 'Cinzel', serif; font-weight: 800; color: var(--accent-cyan); font-size: 1.2rem; box-shadow: 0 0 15px var(--border-glow); background: radial-gradient(circle, #0a0a0a, #000); }
+        .brand-name { font-size: 1.4rem; font-weight: 800; color: #fff; letter-spacing: 2px;}
+        
+        .nav-links a { color: var(--text-dim); text-decoration: none; font-family: 'Share Tech Mono'; font-size: 0.9rem; border: 1px solid #333; padding: 8px 15px; border-radius: 2px;}
+        .nav-links a:hover { border-color: var(--accent-cyan); color: var(--accent-cyan); box-shadow: 0 0 10px var(--border-glow); }
+
         /* CREATIVE INSTITUTIONAL HERO */
         .hero { text-align: center; max-width: 100%; margin: 0 auto; padding: 120px 20px 80px; position: relative; background-image: radial-gradient(circle at center, rgba(0, 212, 255, 0.03) 0%, transparent 60%), linear-gradient(rgba(255, 255, 255, 0.01) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.01) 1px, transparent 1px); background-size: 100% 100%, 50px 50px, 50px 50px; border-bottom: 1px solid #1a1e26;}
         
         .hero-tag { color: #555; font-family: 'Share Tech Mono'; letter-spacing: 6px; font-size: 0.85rem; margin-bottom: 30px; display: block; text-transform: uppercase;}
         
-        .hero-cta-box { display: inline-block; margin-bottom: 30px; padding: 10px 30px; border: 1px solid rgba(0, 212, 255, 0.3); border-radius: 4px; background: rgba(0, 0, 0, 0.5); box-shadow: 0 0 30px rgba(0, 212, 255, 0.1); }
+        .hero-cta-box { display: inline-block; margin-bottom: 30px; }
         .hero-cta-sub { font-family: 'Cinzel'; font-weight: 800; color: var(--accent-cyan); letter-spacing: 4px; font-size: 2.2rem; text-shadow: 0 0 25px rgba(0, 212, 255, 0.6); }
         
         .hero h1 { font-size: 4.5rem; line-height: 1.1; text-shadow: 0 0 40px rgba(255, 255, 255, 0.1); margin-bottom: 30px; color: #fff; max-width: 1200px; margin-left: auto; margin-right: auto;}
@@ -55,6 +59,7 @@
         .jr-desk { background: #0a0c10; border: 1px solid #222; border-radius: 4px; padding: 15px; text-align: center; transition: all 0.3s; position: relative; }
         .jr-title { font-family: 'Share Tech Mono'; font-size: 1rem; font-weight: bold; letter-spacing: 1px; margin-bottom: 4px; text-transform: uppercase; }
         
+        /* Dashed Routing Lines */
         .router-in, .router-out { position: relative; width: 40px; display: flex; align-items: center; }
         .route-path { position: absolute; border: 2px dashed #333; transition: all 0.3s; width: 100%; z-index: 1; opacity: 0.3; }
         .router-in .route-path { border-right: none; right: 0; }
@@ -92,6 +97,7 @@
         .tier-card h3 { font-size: 2rem; margin-bottom: 10px; color: #fff;}
         .tier-desc { color: var(--text-dim); font-size: 0.95rem; margin-bottom: 30px; height: 45px; line-height: 1.5;}
         
+        /* Pro Card Styling (Balanced, no pop-out) */
         .tier-card.pro { border: 1px solid rgba(0, 212, 255, 0.3); background: radial-gradient(circle at top, rgba(0,212,255,0.05) 0%, rgba(10, 12, 16, 0.8) 70%); }
         
         .status-pill { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--accent-cyan); color: #000; font-family: 'Share Tech Mono'; padding: 6px 15px; font-size: 0.75rem; font-weight: bold; border-radius: 2px; letter-spacing: 2px; box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);}
@@ -126,7 +132,7 @@
             .pricing-table, .description-grid, .footer-grid { grid-template-columns: 1fr; gap: 40px;}
             .hero h1 { font-size: 2.8rem; }
             .hero-cta-sub { font-size: 1.5rem; }
-            nav { padding: 15px 25px; }
+            nav { padding: 15px 25px; flex-direction: column; gap: 15px; }
         }
     </style>
 </head>
@@ -134,35 +140,15 @@
 
     <nav>
         <a href="index.html" class="logo-block">
-            <!-- NEW REPLICATED SVG LOGO -->
-            <svg viewBox="0 0 100 100" width="55" height="55" style="display: block;">
-                <defs>
-                    <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                        <stop offset="0%" stop-color="rgba(0, 212, 255, 0.3)" />
-                        <stop offset="100%" stop-color="rgba(0, 0, 0, 0.8)" />
-                    </linearGradient>
-                    <filter id="cyanGlow">
-                        <feGaussianBlur stdDeviation="2" result="blur" />
-                        <feComposite in="SourceGraphic" in2="blur" operator="over" />
-                    </filter>
-                </defs>
-                <!-- Segmented Outer Ring -->
-                <circle cx="50" cy="50" r="46" fill="#030406" stroke="#005577" stroke-width="2"/>
-                <circle cx="50" cy="50" r="46" fill="none" stroke="#00d4ff" stroke-width="2" stroke-dasharray="15 10" filter="url(#cyanGlow)"/>
-                <!-- Background Shield -->
-                <path d="M 50 18 L 78 26 L 78 55 C 78 75, 50 88, 50 88 C 50 88, 22 75, 22 55 L 22 26 Z" fill="url(#shieldGrad)" stroke="#00d4ff" stroke-width="1.5" filter="url(#cyanGlow)"/>
-                <!-- Interlocking C -->
-                <text x="25" y="62" font-family="'Cinzel', serif" font-size="34" font-weight="800" fill="#ffffff">C</text>
-                <!-- The Upward Arrow -->
-                <path d="M 52 58 L 80 25" stroke="#ffffff" stroke-width="4" stroke-linecap="square"/>
-                <polygon points="68 25, 84 21, 80 37" fill="#ffffff"/>
-                <!-- Interlocking G -->
-                <text x="48" y="62" font-family="'Cinzel', serif" font-size="34" font-weight="800" fill="#00d4ff" filter="url(#cyanGlow)">G</text>
-            </svg>
+            <div class="css-logo">CG</div>
             <span class="brand-name">C.G. CAPITAL</span>
         </a>
+        <div class="nav-links">
+            <a href="index.html">← COMMAND CENTER</a>
+        </div>
     </nav>
 
+    <!-- REDESIGNED INSTITUTIONAL HERO -->
     <div class="hero">
         <span class="hero-tag">COGNITIVE SOVEREIGNTY</span>
         
@@ -287,7 +273,7 @@
                 <li><div>Basic Query Access<span class="sub-feat">Limited to 10 manual queries per hour.</span></div></li>
                 <li style="border:none; padding-top:20px; opacity: 0.6;"><div class="mono" style="font-size: 0.85rem;">3-Mo Plan: $54 &nbsp;|&nbsp; 6-Mo Plan: $102</div></li>
             </ul>
-            <a href="https://godhwanichetan.gumroad.com/l/baiglo" target="_blank" class="btn btn-outline">Deploy Stacker Agent</a>
+            <a href="https://godhwanichetan.gumroad.com/l/baiglo" target="_blank" class="btn">Deploy Stacker Agent</a>
         </div>
         
         <!-- PRO SWARM -->
