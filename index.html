@@ -10,48 +10,61 @@
             --bg-deep: #050608;
             --panel-bg: #0d0f14;
             --accent-cyan: #00d4ff;
-            --accent-silver: #c0c0c0;
             --text-main: #e0e6ed;
             --text-dim: #8a949d;
             --border-glow: rgba(0, 212, 255, 0.15);
             --gold: #d4af37;
         }
 
-        * { box-sizing: border-box; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        * { box-sizing: border-box; transition: all 0.4s ease; }
         body, html { margin: 0; padding: 0; background-color: var(--bg-deep); color: var(--text-main); font-family: 'Inter', sans-serif; overflow-x: hidden; }
         
+        /* Terminal Background Animation */
         body::before { content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.02), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.02)); background-size: 100% 4px, 3px 100%; z-index: 1000; pointer-events: none; }
 
-        h1, h2, h3 { font-family: 'Cinzel', serif; letter-spacing: 3px; text-transform: uppercase; }
+        h1, h2, h3 { font-family: 'Cinzel', serif; letter-spacing: 3px; text-transform: uppercase; margin: 0;}
         .mono { font-family: 'Share Tech Mono', monospace; }
 
+        /* Navigation */
         nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 60px; background: rgba(5, 6, 8, 0.95); border-bottom: 1px solid #1a1e26; position: sticky; top: 0; z-index: 999; backdrop-filter: blur(10px); }
+        
+        /* CSS Generated Logo */
         .logo-block { display: flex; align-items: center; gap: 15px; text-decoration: none; }
-        .logo-img { height: 45px; width: 45px; border-radius: 50%; border: 1px solid var(--accent-cyan); box-shadow: 0 0 15px var(--border-glow); }
-        .brand-name { font-size: 1.4rem; font-weight: 800; color: #fff; }
+        .css-logo { height: 45px; width: 45px; border-radius: 50%; border: 2px solid var(--accent-cyan); display: flex; align-items: center; justify-content: center; font-family: 'Cinzel', serif; font-weight: 800; color: var(--accent-cyan); font-size: 1.2rem; box-shadow: 0 0 15px var(--border-glow); background: radial-gradient(circle, #111, #000); }
+        .brand-name { font-size: 1.4rem; font-weight: 800; color: #fff; letter-spacing: 2px;}
         
         .nav-links { display: flex; gap: 40px; }
         .nav-links a { color: var(--text-dim); text-decoration: none; font-family: 'Share Tech Mono'; font-size: 0.9rem; cursor: pointer; }
         .nav-links a:hover { color: var(--accent-cyan); text-shadow: 0 0 10px var(--accent-cyan); }
 
+        /* Hero Dashboard */
         .hero { text-align: center; max-width: 1200px; margin: 0 auto; padding-top: 100px; }
         .hero-tag { color: var(--accent-cyan); font-family: 'Share Tech Mono'; letter-spacing: 5px; font-size: 1rem; margin-bottom: 20px; }
-        .hero h1 { font-size: 4.5rem; margin: 0; line-height: 1; text-shadow: 0 0 30px rgba(0, 212, 255, 0.3); }
+        .hero h1 { font-size: 4.5rem; line-height: 1.1; text-shadow: 0 0 30px rgba(0, 212, 255, 0.3); }
         .hero p { color: var(--text-dim); max-width: 750px; margin: 30px auto; font-size: 1.1rem; line-height: 1.8; }
 
-        .live-ticker { background: #0a0c10; border: 1px solid #1a1e26; padding: 10px; font-family: 'Share Tech Mono'; font-size: 0.8rem; overflow: hidden; white-space: nowrap; margin-bottom: 50px; color: var(--accent-cyan); }
+        /* Live Feed Simulation */
+        .live-ticker { background: #0a0c10; border: 1px solid #1a1e26; padding: 10px; font-family: 'Share Tech Mono'; font-size: 0.8rem; overflow: hidden; white-space: nowrap; margin-bottom: 50px; color: var(--accent-cyan); border-left: none; border-right: none;}
         .ticker-wrap { display: inline-block; animation: marquee 30s linear infinite; }
         @keyframes marquee { from { transform: translateX(100%); } to { transform: translateX(-100%); } }
 
+        /* Product Cards (No Images Required) */
         .product-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 1200px; margin: 60px auto; padding: 0 20px; }
-        .product-card { background: var(--panel-bg); border: 1px solid #1a1e26; border-radius: 4px; overflow: hidden; position: relative; text-decoration: none; color: inherit; display: block;}
-        .product-card:hover { border-color: var(--accent-cyan); box-shadow: 0 10px 40px rgba(0,0,0,0.5); transform: scale(1.02); }
-        .product-img { width: 100%; height: 350px; object-fit: cover; opacity: 0.6; filter: grayscale(50%); }
-        .product-card:hover .product-img { opacity: 0.9; filter: grayscale(0%); }
-        .product-info { padding: 30px; position: relative; background: linear-gradient(transparent, var(--panel-bg)); margin-top: -100px; }
         
-        .status-pill { position: absolute; top: 20px; right: 20px; background: rgba(0, 212, 255, 0.1); border: 1px solid var(--accent-cyan); color: var(--accent-cyan); font-family: 'Share Tech Mono'; padding: 5px 12px; font-size: 0.7rem; border-radius: 2px; }
+        .product-card { background: var(--panel-bg); border: 1px solid #1a1e26; border-radius: 4px; padding: 50px 40px; position: relative; text-decoration: none; color: inherit; display: flex; flex-direction: column; justify-content: center; min-height: 400px; overflow: hidden;}
+        .product-card::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at top right, rgba(0, 212, 255, 0.05), transparent 60%); pointer-events: none; }
+        .product-card:hover { border-color: var(--accent-cyan); box-shadow: 0 10px 40px rgba(0,0,0,0.5); transform: translateY(-5px); }
+        
+        /* Secondary Card Styling */
+        .card-kairos::before { background: radial-gradient(circle at top right, rgba(212, 175, 55, 0.05), transparent 60%); }
+        .card-kairos:hover { border-color: var(--gold); box-shadow: none; transform: none; cursor: default; }
+
+        .status-pill { position: absolute; top: 20px; right: 20px; background: rgba(0, 212, 255, 0.1); border: 1px solid var(--accent-cyan); color: var(--accent-cyan); font-family: 'Share Tech Mono'; padding: 5px 12px; font-size: 0.7rem; border-radius: 2px; letter-spacing: 1px;}
         .status-pill.soon { border-color: var(--gold); color: var(--gold); background: rgba(212, 175, 55, 0.1); }
+
+        .product-card h3 { font-size: 2.5rem; margin-bottom: 20px; z-index: 1;}
+        .product-card p { color: var(--text-dim); line-height: 1.6; margin-bottom: 30px; font-size: 1rem; z-index: 1;}
+        .action-link { font-family: 'Share Tech Mono'; color: var(--accent-cyan); font-size: 0.9rem; letter-spacing: 1px; z-index: 1;}
 
         footer { text-align: center; padding: 60px; border-top: 1px solid #1a1e26; color: var(--text-dim); font-size: 0.8rem; margin-top: 60px; }
 
@@ -66,7 +79,7 @@
 
     <nav>
         <a href="index.html" class="logo-block">
-            <img src="6248802109012775016.jpg" class="logo-img" alt="CG Capital">
+            <div class="css-logo">CG</div>
             <span class="brand-name">C.G. CAPITAL</span>
         </a>
         <div class="nav-links">
@@ -89,23 +102,17 @@
 
     <div class="product-grid">
         <a href="alicanto.html" class="product-card">
-            <div class="status-pill">ONLINE</div>
-            <img src="image_a308fa.jpg" class="product-img" alt="Alicanto">
-            <div class="product-info">
-                <h3>ALICANTO</h3>
-                <p>Global Macro & Physical Supply Engine. Powered by a 4-stage neural swarm hunting for systemic deficits 24/7.</p>
-                <span class="mono" style="color: var(--accent-cyan);">ENTER TERMINAL ›</span>
-            </div>
+            <div class="status-pill">SYSTEM ONLINE</div>
+            <h3>ALICANTO</h3>
+            <p>Global Macro & Physical Supply Engine. Powered by a 4-stage neural swarm hunting for systemic deficits 24/7. Identifies physical drains before they manifest in paper markets.</p>
+            <span class="action-link">ENTER TERMINAL ›</span>
         </a>
         
-        <div class="product-card" style="cursor: default; border-color: #1a1e26; transform: none; box-shadow: none;">
+        <div class="product-card card-kairos">
             <div class="status-pill soon">COMING SOON</div>
-            <img src="image_a30882.jpg" class="product-img" alt="Kairos">
-            <div class="product-info">
-                <h3>KAIROS</h3>
-                <p>Quantitative Momentum & Volatility Engine. High-frequency filtering for large-cap and mid-cap equity execution.</p>
-                <span class="mono" style="color: var(--gold);">BACKTESTING IN PROGRESS ›</span>
-            </div>
+            <h3>KAIROS</h3>
+            <p>Quantitative Momentum & Volatility Engine. High-frequency filtering for large-cap and mid-cap equity execution. Designed for asymmetric risk/reward capture.</p>
+            <span class="action-link" style="color: var(--gold);">BACKTESTING IN PROGRESS ›</span>
         </div>
     </div>
 
