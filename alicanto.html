@@ -139,12 +139,31 @@
 <body>
 
     <nav>
-        <a href="index.html" class="logo-block">
-            <div class="css-logo">CG</div>
-            <span class="brand-name">C.G. CAPITAL</span>
+        <a href="index.html" class="logo-block" style="text-decoration: none;">
+            <svg class="brand-svg" viewBox="0 0 100 100" width="55" height="55" style="display: block;">
+                <defs>
+                    <linearGradient id="cyanGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#005577" />
+                        <stop offset="100%" stop-color="#00d4ff" />
+                    </linearGradient>
+                    <filter id="neonGlow">
+                        <feGaussianBlur stdDeviation="3" result="blur" />
+                        <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                    </filter>
+                </defs>
+                <!-- Glowing Hexagon Shield -->
+                <path d="M50 5 L90 25 L90 75 L50 95 L10 75 L10 25 Z" fill="rgba(0, 212, 255, 0.05)" stroke="url(#cyanGrad)" stroke-width="4" filter="url(#neonGlow)"/>
+                <!-- Algorithmic Upward Arrow -->
+                <path d="M 25 75 L 75 25" fill="none" stroke="#00d4ff" stroke-width="5" stroke-linecap="round"/>
+                <polygon points="62 25, 80 20, 75 38" fill="#00d4ff" filter="url(#neonGlow)"/>
+                <!-- Interlocking Firm Initials -->
+                <text x="26" y="62" font-family="'Cinzel', serif" font-size="32" font-weight="800" fill="#ffffff">C</text>
+                <text x="50" y="62" font-family="'Cinzel', serif" font-size="32" font-weight="800" fill="#a0aab5">G</text>
+            </svg>
+            <span class="brand-name" style="font-size: 1.5rem; font-weight: 800; color: #fff; letter-spacing: 2px; margin-left: 10px;">C.G. CAPITAL</span>
         </a>
         <div class="nav-links">
-            <a href="index.html">← COMMAND CENTER</a>
+            <a href="index.html">← RETURN TO COMMAND CENTER</a>
         </div>
     </nav>
 
