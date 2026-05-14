@@ -38,35 +38,51 @@
         .hero h1 { font-size: 4.5rem; line-height: 1.1; text-shadow: 0 0 30px rgba(0, 212, 255, 0.3); color: var(--accent-cyan); }
         .hero p { color: var(--text-dim); margin: 30px auto; font-size: 1.1rem; line-height: 1.8; }
 
-        /* --- THE LIVE SWARM ANIMATIONS --- */
-        @keyframes pulse-cyan { 0% { box-shadow: inset 0 0 10px rgba(0,212,255,0.05); } 50% { box-shadow: inset 0 0 30px rgba(0,212,255,0.2); border-color: #00ffff; } 100% { box-shadow: inset 0 0 10px rgba(0,212,255,0.05); } }
-        @keyframes pulse-purple { 0% { box-shadow: inset 0 0 10px rgba(177,66,255,0.05); } 50% { box-shadow: inset 0 0 30px rgba(177,66,255,0.2); border-color: #d884ff; } 100% { box-shadow: inset 0 0 10px rgba(177,66,255,0.05); } }
-        @keyframes pulse-gold { 0% { box-shadow: inset 0 0 10px rgba(255,204,0,0.05); } 50% { box-shadow: inset 0 0 30px rgba(255,204,0,0.2); border-color: #ffe600; } 100% { box-shadow: inset 0 0 10px rgba(255,204,0,0.05); } }
-        @keyframes flow { 0% { transform: translateX(-5px); opacity: 0.3; } 50% { transform: translateX(5px); opacity: 1; } 100% { transform: translateX(-5px); opacity: 0.3; } }
-        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+        /* ========================================================= */
+        /* COMPLEX TERMINAL SWARM ANIMATION UI */
+        /* ========================================================= */
+        .terminal-wrapper { background: #050505; border: 1px solid #222; border-radius: 6px; max-width: 1100px; margin: 0 auto 80px; padding: 40px 30px; position: relative; overflow-x: auto; box-shadow: 0 20px 50px rgba(0,0,0,0.8); }
+        .terminal-title { position: absolute; top: 15px; left: 20px; font-family: 'Share Tech Mono'; font-size: 0.8rem; color: #777; letter-spacing: 2px; }
+        
+        .neural-core { display: flex; align-items: stretch; justify-content: space-between; gap: 10px; min-width: 950px; margin-top: 10px;}
+        
+        .hw-node { background: #0a0a0a; border: 1px solid #222; border-radius: 4px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; transition: all 0.3s; position: relative; padding: 20px; z-index: 10; }
+        .hw-title { font-family: 'Share Tech Mono'; font-size: 1.2rem; color: #fff; font-weight: bold; letter-spacing: 1px; margin-bottom: 4px; }
+        .hw-sub { font-family: 'Share Tech Mono'; font-size: 0.75rem; color: #777; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; }
+        .brain-status { font-family: 'Share Tech Mono'; font-size: 0.75rem; font-weight: bold; padding: 4px 10px; border-radius: 2px; background: #000; border: 1px solid #333; min-width: 100px; transition: 0.3s;}
 
-        .swarm-section { background: #080a0e; border: 1px solid #1a1e26; padding: 60px 40px; margin: 40px 20px; border-radius: 8px; text-align: center; position: relative;}
-        .swarm-header { margin-bottom: 50px; }
+        .swarm-container { display: flex; align-items: stretch; flex: 1.5; position: relative; }
+        .junior-stack { display: flex; flex-direction: column; gap: 15px; flex: 1; justify-content: center; z-index: 10; padding: 0 10px; }
+        .jr-desk { background: #0a0a0a; border: 1px solid #222; border-radius: 4px; padding: 15px; text-align: center; transition: all 0.3s; position: relative; }
+        .jr-title { font-family: 'Share Tech Mono'; font-size: 1rem; font-weight: bold; letter-spacing: 1px; margin-bottom: 4px; text-transform: uppercase; }
         
-        .css-diagram { display: flex; align-items: center; justify-content: center; gap: 20px; max-width: 1000px; margin: 0 auto; flex-wrap: wrap;}
-        .node { background: #050608; border: 1px solid #333; padding: 25px 20px; border-radius: 4px; flex: 1; min-width: 200px; position: relative;}
-        .node h4 { font-family: 'Share Tech Mono'; margin: 0 0 10px 0; font-size: 1.1rem; letter-spacing: 1px;}
-        .node p { font-size: 0.85rem; color: #777; margin: 0; line-height: 1.5;}
+        /* Dashed Routing Lines */
+        .router-in, .router-out { position: relative; width: 40px; display: flex; align-items: center; }
+        .route-path { position: absolute; border: 2px dashed #333; transition: all 0.3s; width: 100%; z-index: 1; opacity: 0.3; }
         
-        .status-text { font-family: 'Share Tech Mono', monospace; font-size: 0.75rem; margin-top: 15px; font-weight: bold; animation: blink 1.5s infinite; letter-spacing: 1px;}
+        /* Left Splitters */
+        .router-in .route-path { border-right: none; right: 0; }
+        .r-in-1 { top: 15%; height: 35%; border-bottom: none; border-top-left-radius: 6px; }
+        .r-in-2 { top: 38%; height: 12%; border-bottom: none; border-top-left-radius: 6px; }
+        .r-in-3 { bottom: 38%; height: 12%; border-top: none; border-bottom-left-radius: 6px; }
+        .r-in-4 { bottom: 15%; height: 35%; border-top: none; border-bottom-left-radius: 6px; }
+
+        /* Right Mergers */
+        .router-out .route-path { border-left: none; left: 0; }
+        .r-out-1 { top: 15%; height: 35%; border-bottom: none; border-top-right-radius: 6px; }
+        .r-out-2 { top: 38%; height: 12%; border-bottom: none; border-top-right-radius: 6px; }
+        .r-out-3 { bottom: 38%; height: 12%; border-top: none; border-bottom-right-radius: 6px; }
+        .r-out-4 { bottom: 15%; height: 35%; border-top: none; border-bottom-right-radius: 6px; }
         
-        .arrow { color: #555; font-size: 1.5rem; font-family: monospace; font-weight: bold; animation: flow 2s infinite ease-in-out; }
-        
-        /* Apply Animations */
-        .node-ext { border-color: var(--accent-cyan); animation: pulse-cyan 3s infinite; }
-        .node-ext h4 { color: var(--accent-cyan); }
-        .node-veto { border-color: #b142ff; animation: pulse-purple 4s infinite 1s; }
-        .node-veto h4 { color: #b142ff; }
-        .node-verd { border-color: var(--gold); animation: pulse-gold 3.5s infinite 2s; }
-        .node-verd h4 { color: var(--gold); }
+        .data-link { width: 30px; height: 2px; background: repeating-linear-gradient(90deg, #333 0, #333 5px, transparent 5px, transparent 10px); background-size: 20px 100%; align-self: center; flex-shrink: 0; transition: 0.3s;}
+
+        /* Active Animation Classes */
+        @keyframes stream { 100% { background-position: -20px 0; } }
+        .path-active { opacity: 1 !important; filter: drop-shadow(0 0 5px currentColor); }
+        .link-active { animation: stream 0.5s linear infinite !important; }
 
         /* Pricing Table */
-        .pricing-table { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; max-width: 1000px; margin: 50px auto; padding: 0 20px; }
+        .pricing-table { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; max-width: 1000px; margin: 0 auto 50px; padding: 0 20px; }
         .tier-card { background: var(--panel-bg); border: 1px solid #1a1e26; padding: 50px; border-radius: 4px; text-align: center; position: relative; display: flex; flex-direction: column;}
         .tier-card.pro { border: 1px solid var(--accent-cyan); box-shadow: 0 0 30px rgba(0, 212, 255, 0.05); }
         .tier-card h3 { font-size: 2rem; margin-bottom: 20px; }
@@ -89,10 +105,9 @@
         footer { text-align: center; padding: 60px; border-top: 1px solid #1a1e26; color: var(--text-dim); font-size: 0.8rem; margin-top: 60px; }
 
         @media (max-width: 900px) {
-            .pricing-table, .css-diagram { grid-template-columns: 1fr; flex-direction: column; }
+            .pricing-table { grid-template-columns: 1fr; }
             .hero h1 { font-size: 2.8rem; }
             nav { padding: 15px 25px; flex-direction: column; gap: 15px; }
-            .arrow { transform: rotate(90deg); margin: 10px 0; }
         }
     </style>
 </head>
@@ -115,31 +130,78 @@
         <a href="https://t.me/Silver_agent_gb_bot" target="_blank" class="btn btn-outline" style="max-width: 300px; margin: 0 auto;">Initialize Telegram Bot</a>
     </div>
 
-    <!-- Live Animated CSS Diagram -->
-    <div class="swarm-section">
-        <div class="swarm-header">
-            <h2>THE 6-ANALYST SWARM</h2>
-            <p class="mono" style="color: var(--text-dim);">Proprietary 4-Stage Intelligence Synthesis Architecture</p>
-        </div>
-        
-        <div class="css-diagram">
-            <div class="node node-ext">
-                <h4>1. EXTRACTION</h4>
-                <p>4 Junior Analysts filter raw macro noise and kinetic data.</p>
-                <div class="status-text" style="color: var(--accent-cyan);">[ DATA STREAM: ACTIVE ]</div>
+    <!-- LIVE TERMINAL SWARM UI -->
+    <div class="terminal-wrapper">
+        <div class="terminal-title">4-STAGE MULTI-AGENT SWARM</div>
+        <div class="neural-core">
+            
+            <!-- STAGE 1: Feeder -->
+            <div class="hw-node" id="node-feeder" style="flex: 0.8; border-color: var(--accent-cyan); box-shadow: inset 0 0 20px rgba(0,212,255,0.1);">
+                <div class="hw-title">DATA FEEDER</div>
+                <div class="hw-sub">8vCPU | 32GB ECC</div>
+                <div class="brain-status" style="border-color: #00ff88; color: #00ff88;">ONLINE</div>
             </div>
-            <div class="arrow">==&gt;</div>
-            <div class="node node-veto">
-                <h4>2. VETO CHECK</h4>
-                <p>Senior Analysts apply rigorous context checks to kill retail traps.</p>
-                <div class="status-text" style="color: #b142ff;">[ CONTEXT FILTER: PROCESSING ]</div>
+
+            <div class="data-link" id="link-1"></div>
+
+            <!-- STAGE 2: Junior Swarm -->
+            <div class="swarm-container">
+                <div class="router-in">
+                    <div class="route-path r-in-1" id="path-in-1"></div>
+                    <div class="route-path r-in-2" id="path-in-2"></div>
+                    <div class="route-path r-in-3" id="path-in-3"></div>
+                    <div class="route-path r-in-4" id="path-in-4"></div>
+                </div>
+                
+                <div class="junior-stack">
+                    <div class="jr-desk" id="desk-1">
+                        <div class="jr-title" style="color: #00d4ff;">FIN ANALYST</div>
+                        <div class="hw-sub">GPT-4o-Mini</div>
+                        <div class="brain-status" id="stat-1" style="color: #777;">IDLE</div>
+                    </div>
+                    <div class="jr-desk" id="desk-2">
+                        <div class="jr-title" style="color: #ff9900;">PHY ANALYST</div>
+                        <div class="hw-sub">GPT-4o-Mini</div>
+                        <div class="brain-status" id="stat-2" style="color: #777;">IDLE</div>
+                    </div>
+                    <div class="jr-desk" id="desk-3">
+                        <div class="jr-title" style="color: #ff3366;">GEO ANALYST</div>
+                        <div class="hw-sub">GPT-4o-Mini</div>
+                        <div class="brain-status" id="stat-3" style="color: #777;">IDLE</div>
+                    </div>
+                    <div class="jr-desk" id="desk-4">
+                        <div class="jr-title" style="color: #b142ff;">DP ANALYST</div>
+                        <div class="hw-sub">GPT-4o-Mini</div>
+                        <div class="brain-status" id="stat-4" style="color: #777;">IDLE</div>
+                    </div>
+                </div>
+                
+                <div class="router-out">
+                    <div class="route-path r-out-1" id="path-out-1"></div>
+                    <div class="route-path r-out-2" id="path-out-2"></div>
+                    <div class="route-path r-out-3" id="path-out-3"></div>
+                    <div class="route-path r-out-4" id="path-out-4"></div>
+                </div>
             </div>
-            <div class="arrow">==&gt;</div>
-            <div class="node node-verd">
-                <h4>3. VERDICT</h4>
-                <p>Executive 70B Synthesis provides the final macro implication.</p>
-                <div class="status-text" style="color: var(--gold);">[ LLM SYNTHESIS: ONLINE ]</div>
+
+            <div class="data-link" id="link-2"></div>
+
+            <!-- STAGE 3: Senior Veto -->
+            <div class="hw-node" id="node-senior" style="flex: 0.8;">
+                <div class="hw-title" style="color: #b142ff;">SENIOR ANALYST</div>
+                <div class="hw-sub">GPT-4 EDITOR</div>
+                <div class="brain-status" id="stat-sr" style="color: #777;">IDLE</div>
             </div>
+
+            <div class="data-link" id="link-3"></div>
+
+            <!-- STAGE 4: Executive Lead -->
+            <div class="hw-node" id="node-lead" style="flex: 0.8;">
+                <div class="hw-title" style="color: #ffe600;">LEAD ANALYST</div>
+                <div class="hw-sub">70B SYNTHESIS</div>
+                <div class="brain-status" id="stat-lead" style="color: #555;">DORMANT</div>
+            </div>
+
         </div>
     </div>
 
@@ -191,5 +253,140 @@
         <p style="opacity: 0.3; margin-top: 30px; font-size: 0.7rem;">© 2026 C.G. Capital. Algorithmic intelligence involves significant risk. All data is for institutional research purposes only.</p>
     </footer>
 
+    <script>
+        // --- Live Swarm Simulation Engine ---
+        // This JavaScript brings the diagram to life automatically.
+        const configs = [
+            { id: 1, color: '#00d4ff' }, // Fin Analyst
+            { id: 2, color: '#ff9900' }, // Phy Analyst
+            { id: 3, color: '#ff3366' }, // Geo Analyst
+            { id: 4, color: '#b142ff' }  // DP Analyst
+        ];
+
+        function resetSwarm() {
+            // Reset Links
+            document.getElementById('link-1').style.background = 'repeating-linear-gradient(90deg, #333 0, #333 5px, transparent 5px, transparent 10px)';
+            document.getElementById('link-2').style.background = 'repeating-linear-gradient(90deg, #333 0, #333 5px, transparent 5px, transparent 10px)';
+            document.getElementById('link-3').style.background = 'repeating-linear-gradient(90deg, #333 0, #333 5px, transparent 5px, transparent 10px)';
+            document.querySelectorAll('.data-link').forEach(l => l.classList.remove('link-active'));
+
+            // Reset Desks & Paths
+            for(let i=1; i<=4; i++) {
+                let desk = document.getElementById('desk-' + i);
+                desk.style.borderColor = '#222';
+                desk.style.boxShadow = 'none';
+                document.getElementById('stat-' + i).innerHTML = '<span style="color:#777;">IDLE</span>';
+                document.getElementById('stat-' + i).style.borderColor = '#333';
+                
+                let pIn = document.getElementById('path-in-' + i);
+                pIn.style.borderColor = '#333';
+                pIn.classList.remove('path-active');
+                
+                let pOut = document.getElementById('path-out-' + i);
+                pOut.style.borderColor = '#333';
+                pOut.classList.remove('path-active');
+            }
+
+            // Reset Senior & Lead
+            let sr = document.getElementById('node-senior');
+            sr.style.borderColor = '#222';
+            sr.style.boxShadow = 'none';
+            document.getElementById('stat-sr').innerHTML = '<span style="color:#777;">IDLE</span>';
+            document.getElementById('stat-sr').style.borderColor = '#333';
+
+            let lead = document.getElementById('node-lead');
+            lead.style.borderColor = '#222';
+            lead.style.boxShadow = 'none';
+            document.getElementById('stat-lead').innerHTML = '<span style="color:#555;">DORMANT</span>';
+            document.getElementById('stat-lead').style.borderColor = '#333';
+        }
+
+        function runSwarmCycle() {
+            resetSwarm();
+            
+            // Pick a random Junior Analyst desk to simulate processing
+            const target = configs[Math.floor(Math.random() * configs.length)];
+            
+            // Step 1: Feeder routes data to Junior Analyst
+            setTimeout(() => {
+                let link1 = document.getElementById('link-1');
+                link1.style.background = `repeating-linear-gradient(90deg, ${target.color} 0, ${target.color} 5px, transparent 5px, transparent 10px)`;
+                link1.classList.add('link-active');
+
+                let pIn = document.getElementById('path-in-' + target.id);
+                pIn.style.borderColor = target.color;
+                pIn.style.color = target.color;
+                pIn.classList.add('path-active');
+
+                let desk = document.getElementById('desk-' + target.id);
+                desk.style.borderColor = target.color;
+                desk.style.boxShadow = `inset 0 0 15px ${target.color}20, 0 0 20px ${target.color}20`;
+                
+                let stat = document.getElementById('stat-' + target.id);
+                stat.innerHTML = `<span style="color:${target.color};">AUDITING...</span>`;
+                stat.style.borderColor = target.color;
+            }, 1000);
+
+            // Step 2: Junior approves and passes to Senior Veto Check
+            setTimeout(() => {
+                document.getElementById('link-1').classList.remove('link-active');
+                
+                document.getElementById('stat-' + target.id).innerHTML = `<span style="color:#00ff88;">APPROVED</span>`;
+                document.getElementById('stat-' + target.id).style.borderColor = '#00ff88';
+
+                let pOut = document.getElementById('path-out-' + target.id);
+                pOut.style.borderColor = target.color;
+                pOut.style.color = target.color;
+                pOut.classList.add('path-active');
+
+                let link2 = document.getElementById('link-2');
+                link2.style.background = `repeating-linear-gradient(90deg, #b142ff 0, #b142ff 5px, transparent 5px, transparent 10px)`;
+                link2.classList.add('link-active');
+
+                let sr = document.getElementById('node-senior');
+                sr.style.borderColor = '#b142ff';
+                sr.style.boxShadow = `inset 0 0 15px #b142ff20, 0 0 20px #b142ff20`;
+                let statSr = document.getElementById('stat-sr');
+                statSr.innerHTML = `<span style="color:#b142ff;">VETO CHECK...</span>`;
+                statSr.style.borderColor = '#b142ff';
+
+            }, 3500);
+
+            // Step 3: Senior approves and passes to Executive Lead
+            setTimeout(() => {
+                document.getElementById('link-2').classList.remove('link-active');
+                document.getElementById('path-out-' + target.id).classList.remove('path-active');
+                
+                document.getElementById('stat-sr').innerHTML = `<span style="color:#00ff88;">APPROVED</span>`;
+                document.getElementById('stat-sr').style.borderColor = '#00ff88';
+
+                let link3 = document.getElementById('link-3');
+                link3.style.background = `repeating-linear-gradient(90deg, #ffe600 0, #ffe600 5px, transparent 5px, transparent 10px)`;
+                link3.classList.add('link-active');
+
+                let lead = document.getElementById('node-lead');
+                lead.style.borderColor = '#ffe600';
+                lead.style.boxShadow = `inset 0 0 15px #ffe60020, 0 0 20px #ffe60020`;
+                let statLead = document.getElementById('stat-lead');
+                statLead.innerHTML = `<span style="color:#ffe600;">SYNTHESIZING...</span>`;
+                statLead.style.borderColor = '#ffe600';
+
+            }, 6000);
+
+            // Step 4: Complete the cycle and prepare to restart
+            setTimeout(() => {
+                document.getElementById('stat-lead').innerHTML = `<span style="color:#00ff88;">LOGGED</span>`;
+                document.getElementById('stat-lead').style.borderColor = '#00ff88';
+                document.getElementById('link-3').classList.remove('link-active');
+            }, 8500);
+
+            // Loop forever
+            setTimeout(runSwarmCycle, 10000);
+        }
+
+        // Initialize the animation when the page loads
+        runSwarmCycle();
+
+    </script>
 </body>
 </html>
