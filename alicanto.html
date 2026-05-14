@@ -33,19 +33,18 @@
         .nav-links a { color: var(--text-dim); text-decoration: none; font-family: 'Share Tech Mono'; font-size: 0.9rem; border: 1px solid #333; padding: 8px 15px; border-radius: 2px;}
         .nav-links a:hover { border-color: var(--accent-cyan); color: var(--accent-cyan); box-shadow: 0 0 10px var(--border-glow); }
 
-        .hero { text-align: center; max-width: 1000px; margin: 0 auto; padding-top: 80px; padding-bottom: 40px; padding-left: 20px; padding-right: 20px;}
-        .hero-tag { color: var(--accent-cyan); font-family: 'Share Tech Mono'; letter-spacing: 5px; font-size: 1rem; margin-bottom: 20px; }
-        .hero h1 { font-size: 4.5rem; line-height: 1.1; text-shadow: 0 0 30px rgba(0, 212, 255, 0.3); color: var(--accent-cyan); }
-        .hero p { color: var(--text-dim); margin: 30px auto; font-size: 1.1rem; line-height: 1.8; }
+        /* CREATIVE HERO INTERFACE */
+        .hero { text-align: center; max-width: 1200px; margin: 0 auto; padding: 100px 20px 60px; position: relative;}
+        .hero-decor { position: absolute; top: 20px; left: 50%; transform: translateX(-50%); width: 1px; height: 80px; background: linear-gradient(to bottom, var(--accent-cyan), transparent); }
+        .hero-tag { color: var(--accent-cyan); font-family: 'Share Tech Mono'; letter-spacing: 5px; font-size: 0.9rem; margin-bottom: 25px; display: block;}
+        .hero h1 { font-size: 4rem; line-height: 1.1; text-shadow: 0 0 30px rgba(0, 212, 255, 0.3); margin-bottom: 20px; color: #fff;}
+        .hero p { color: var(--text-dim); max-width: 800px; margin: 0 auto 40px; font-size: 1.1rem; line-height: 1.8; }
+        .hero .cta-main { font-family: 'Cinzel'; font-size: 1.5rem; color: #fff; text-shadow: 0 0 10px var(--accent-cyan); margin-bottom: 10px; display: block;}
 
-        /* ========================================================= */
         /* COMPLEX TERMINAL SWARM ANIMATION UI */
-        /* ========================================================= */
         .terminal-wrapper { background: #050505; border: 1px solid #222; border-radius: 6px; max-width: 1100px; margin: 0 auto 80px; padding: 40px 30px; position: relative; overflow-x: auto; box-shadow: 0 20px 50px rgba(0,0,0,0.8); }
         .terminal-title { position: absolute; top: 15px; left: 20px; font-family: 'Share Tech Mono'; font-size: 0.8rem; color: #777; letter-spacing: 2px; }
-        
         .neural-core { display: flex; align-items: stretch; justify-content: space-between; gap: 10px; min-width: 950px; margin-top: 10px;}
-        
         .hw-node { background: #0a0a0a; border: 1px solid #222; border-radius: 4px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; transition: all 0.3s; position: relative; padding: 20px; z-index: 10; }
         .hw-title { font-family: 'Share Tech Mono'; font-size: 1.2rem; color: #fff; font-weight: bold; letter-spacing: 1px; margin-bottom: 4px; }
         .hw-sub { font-family: 'Share Tech Mono'; font-size: 0.75rem; color: #777; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; }
@@ -59,30 +58,32 @@
         /* Dashed Routing Lines */
         .router-in, .router-out { position: relative; width: 40px; display: flex; align-items: center; }
         .route-path { position: absolute; border: 2px dashed #333; transition: all 0.3s; width: 100%; z-index: 1; opacity: 0.3; }
-        
-        /* Left Splitters */
         .router-in .route-path { border-right: none; right: 0; }
         .r-in-1 { top: 15%; height: 35%; border-bottom: none; border-top-left-radius: 6px; }
         .r-in-2 { top: 38%; height: 12%; border-bottom: none; border-top-left-radius: 6px; }
         .r-in-3 { bottom: 38%; height: 12%; border-top: none; border-bottom-left-radius: 6px; }
         .r-in-4 { bottom: 15%; height: 35%; border-top: none; border-bottom-left-radius: 6px; }
-
-        /* Right Mergers */
         .router-out .route-path { border-left: none; left: 0; }
         .r-out-1 { top: 15%; height: 35%; border-bottom: none; border-top-right-radius: 6px; }
         .r-out-2 { top: 38%; height: 12%; border-bottom: none; border-top-right-radius: 6px; }
         .r-out-3 { bottom: 38%; height: 12%; border-top: none; border-bottom-right-radius: 6px; }
         .r-out-4 { bottom: 15%; height: 35%; border-top: none; border-bottom-right-radius: 6px; }
-        
         .data-link { width: 30px; height: 2px; background: repeating-linear-gradient(90deg, #333 0, #333 5px, transparent 5px, transparent 10px); background-size: 20px 100%; align-self: center; flex-shrink: 0; transition: 0.3s;}
 
-        /* Active Animation Classes */
         @keyframes stream { 100% { background-position: -20px 0; } }
         .path-active { opacity: 1 !important; filter: drop-shadow(0 0 5px currentColor); }
         .link-active { animation: stream 0.5s linear infinite !important; }
 
-        /* Pricing Table */
-        .pricing-table { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; max-width: 1000px; margin: 0 auto 50px; padding: 0 20px; }
+        /* DESCRIPTION SECTION */
+        .description-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 1100px; margin: 0 auto 80px; padding: 0 20px;}
+        .desc-box h3 { font-size: 1.5rem; margin-bottom: 20px; color: var(--accent-cyan); }
+        .desc-box p { color: var(--text-dim); line-height: 1.7; font-size: 0.95rem;}
+        .step-list { list-style: none; padding: 0; margin-top: 20px; }
+        .step-list li { margin-bottom: 15px; display: flex; gap: 15px; }
+        .step-num { color: var(--accent-cyan); font-family: 'Share Tech Mono'; font-weight: bold; border: 1px solid var(--accent-cyan); width: 25px; height: 25px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 0.8rem;}
+
+        /* PRICING TABLE */
+        .pricing-table { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; max-width: 1000px; margin: 40px auto 80px; padding: 0 20px; }
         .tier-card { background: var(--panel-bg); border: 1px solid #1a1e26; padding: 50px; border-radius: 4px; text-align: center; position: relative; display: flex; flex-direction: column;}
         .tier-card.pro { border: 1px solid var(--accent-cyan); box-shadow: 0 0 30px rgba(0, 212, 255, 0.05); }
         .tier-card h3 { font-size: 2rem; margin-bottom: 20px; }
@@ -99,13 +100,18 @@
 
         .btn { display: block; width: 100%; padding: 18px; background: transparent; border: 1px solid var(--accent-cyan); color: var(--accent-cyan); font-family: 'Share Tech Mono'; text-transform: uppercase; font-weight: bold; cursor: pointer; text-decoration: none; margin-top: auto; text-align: center;}
         .btn:hover { background: var(--accent-cyan); color: #000; box-shadow: 0 0 20px var(--accent-cyan); }
-        .btn-outline { border-color: #444; color: #fff; }
-        .btn-outline:hover { border-color: #fff; background: transparent; color: #fff; box-shadow: none; }
 
-        footer { text-align: center; padding: 60px; border-top: 1px solid #1a1e26; color: var(--text-dim); font-size: 0.8rem; margin-top: 60px; }
+        /* FOOTER COMMAND HUB */
+        footer { background: #0a0c10; padding: 80px 60px; border-top: 1px solid #1a1e26; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr; max-width: 1200px; margin: 0 auto; gap: 60px;}
+        .footer-brand h2 { font-size: 1.8rem; margin-bottom: 15px; }
+        .contact-hub { display: flex; flex-direction: column; gap: 20px; }
+        .contact-link { display: flex; align-items: center; gap: 15px; text-decoration: none; color: var(--text-dim); font-family: 'Share Tech Mono'; font-size: 0.9rem; }
+        .contact-link:hover { color: var(--accent-cyan); }
+        .contact-icon { width: 40px; height: 40px; border: 1px solid #333; display: flex; align-items: center; justify-content: center; color: var(--accent-cyan); }
 
         @media (max-width: 900px) {
-            .pricing-table { grid-template-columns: 1fr; }
+            .pricing-table, .description-grid, .footer-grid { grid-template-columns: 1fr; }
             .hero h1 { font-size: 2.8rem; }
             nav { padding: 15px 25px; flex-direction: column; gap: 15px; }
         }
@@ -124,15 +130,16 @@
     </nav>
 
     <div class="hero">
-        <div class="hero-tag">PRODUCT ID: ALICANTO_V1.1</div>
-        <h1>THE SENTINEL</h1>
-        <p>Alicanto is a relentless intelligence swarm that consumes 10,000+ data points daily across geopolitical, economic, and physical supply channels to identify the exact moment fiat currency loses its grip on reality.</p>
-        <a href="https://t.me/Silver_agent_gb_bot" target="_blank" class="btn btn-outline" style="max-width: 300px; margin: 0 auto;">Initialize Telegram Bot</a>
+        <div class="hero-decor"></div>
+        <span class="hero-tag">COGNITIVE SOVEREIGNTY</span>
+        <span class="cta-main">HIRE YOUR AI AGENT WORKFORCE TODAY</span>
+        <h1>COMMAND A SOVEREIGN<br>INTELLIGENCE SWARM</h1>
+        <p>Alicanto is not a "bot." It is a fully autonomous decentralized workforce of specialized AI agents engineered to monitor the plumbing of global finance and secure institutional alpha on autopilot.</p>
     </div>
 
     <!-- LIVE TERMINAL SWARM UI -->
     <div class="terminal-wrapper">
-        <div class="terminal-title">4-STAGE MULTI-AGENT SWARM</div>
+        <div class="terminal-title">4-STAGE MULTI-AGENT SWARM :: LIVE SIMULATION</div>
         <div class="neural-core">
             
             <!-- STAGE 1: Feeder -->
@@ -155,22 +162,22 @@
                 
                 <div class="junior-stack">
                     <div class="jr-desk" id="desk-1">
-                        <div class="jr-title" style="color: #00d4ff;">FIN ANALYST</div>
+                        <div class="jr-title" style="color: #00d4ff;">FIN AGENT</div>
                         <div class="hw-sub">GPT-4o-Mini</div>
                         <div class="brain-status" id="stat-1" style="color: #777;">IDLE</div>
                     </div>
                     <div class="jr-desk" id="desk-2">
-                        <div class="jr-title" style="color: #ff9900;">PHY ANALYST</div>
+                        <div class="jr-title" style="color: #ff9900;">PHY AGENT</div>
                         <div class="hw-sub">GPT-4o-Mini</div>
                         <div class="brain-status" id="stat-2" style="color: #777;">IDLE</div>
                     </div>
                     <div class="jr-desk" id="desk-3">
-                        <div class="jr-title" style="color: #ff3366;">GEO ANALYST</div>
+                        <div class="jr-title" style="color: #ff3366;">GEO AGENT</div>
                         <div class="hw-sub">GPT-4o-Mini</div>
                         <div class="brain-status" id="stat-3" style="color: #777;">IDLE</div>
                     </div>
                     <div class="jr-desk" id="desk-4">
-                        <div class="jr-title" style="color: #b142ff;">DP ANALYST</div>
+                        <div class="jr-title" style="color: #b142ff;">DP AGENT</div>
                         <div class="hw-sub">GPT-4o-Mini</div>
                         <div class="brain-status" id="stat-4" style="color: #777;">IDLE</div>
                     </div>
@@ -188,7 +195,7 @@
 
             <!-- STAGE 3: Senior Veto -->
             <div class="hw-node" id="node-senior" style="flex: 0.8;">
-                <div class="hw-title" style="color: #b142ff;">SENIOR ANALYST</div>
+                <div class="hw-title" style="color: #b142ff;">SENIOR VETO</div>
                 <div class="hw-sub">GPT-4 EDITOR</div>
                 <div class="brain-status" id="stat-sr" style="color: #777;">IDLE</div>
             </div>
@@ -197,7 +204,7 @@
 
             <!-- STAGE 4: Executive Lead -->
             <div class="hw-node" id="node-lead" style="flex: 0.8;">
-                <div class="hw-title" style="color: #ffe600;">LEAD ANALYST</div>
+                <div class="hw-title" style="color: #ffe600;">EXECUTIVE LEAD</div>
                 <div class="hw-sub">70B SYNTHESIS</div>
                 <div class="brain-status" id="stat-lead" style="color: #555;">DORMANT</div>
             </div>
@@ -205,13 +212,34 @@
         </div>
     </div>
 
+    <!-- HOW IT WORKS -->
+    <div class="description-grid">
+        <div class="desc-box">
+            <h3>How the Swarm Works</h3>
+            <p>Alicanto utilizes a proprietary hierarchical agent framework. Unlike simple chatbots, a swarm collaborates across levels to verify truth, filter retail misinformation, and calculate macro impact.</p>
+            <ul class="step-list">
+                <li><div class="step-num">1</div><p><b>Extraction Desk:</b> 4 Junior Agents ingest 10,000+ data points from geopolitical supply chains, physical vault registries, and economic prints.</p></li>
+                <li><div class="step-num">2</div><p><b>Veto Desk:</b> A Senior Analyst Agent subjects every signal to a cognitive noise sieve, ruthlessly killing 99% of retail hype traps.</p></li>
+            </ul>
+        </div>
+        <div class="desc-box">
+            <h3 style="color: var(--gold);">The Output Verdict</h3>
+            <p>The Lead Executive (70B Model) only activates when a signal is verified. It translates raw, filtered data into pure macro alpha, delivered directly to your command terminal.</p>
+            <ul class="step-list">
+                <li><div class="step-num">3</div><p><b>Synthesis:</b> The Lead Analyst calculates the DEFCON Threat Level and identifies specific physical liquidity drains globally.</p></li>
+                <li><div class="step-num">4</div><p><b>Deployment:</b> High-conviction intelligence is dispatched to Pro License holders every 4 hours via automated Executive Briefs.</p></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- PRICING -->
     <div class="hero" style="padding-top: 20px; padding-bottom: 0;">
         <h2>AUTHORIZATION TIERS</h2>
     </div>
 
     <div class="pricing-table">
         <div class="tier-card">
-            <h3>STACKER</h3>
+            <h3>STACKER AGENT</h3>
             <div class="price-box">
                 <span class="price-main">$19</span><span class="mono">/MONTH</span>
                 <span class="price-sub">₹1,800 / MONTH</span>
@@ -220,16 +248,16 @@
                 <li>Live Global Market Matrix (COMEX/SGE/MCX)</li>
                 <li>Gold-to-Silver Ratio & Fair Value Analytics</li>
                 <li>Global Threat Index (DEFCON) Stream</li>
-                <li>Basic AI Chat Engine Access</li>
+                <li>Basic AI Agent Engine Access</li>
                 <li style="color: #555;">3-Month Plan: $54 / ₹5,100</li>
                 <li style="color: #555;">6-Month Plan: $102 / ₹9,650</li>
             </ul>
-            <a href="https://t.me/Silver_agent_gb_bot" target="_blank" class="btn btn-outline">Free Setup via Telegram</a>
+            <a href="https://godhwanichetan.gumroad.com/l/baiglo" target="_blank" class="btn">Deploy Stacker Agent</a>
         </div>
         
         <div class="tier-card pro">
-            <div class="status-pill">INSTITUTIONAL STANDARD</div>
-            <h3 style="color: var(--accent-cyan);">MACRO PRO</h3>
+            <div class="status-pill">SOVEREIGN STANDARD</div>
+            <h3 style="color: var(--accent-cyan);">MACRO PRO SWARM</h3>
             <div class="price-box">
                 <span class="price-main">$69</span><span class="mono">/MONTH</span>
                 <span class="price-sub">₹6,500 / MONTH</span>
@@ -243,19 +271,28 @@
                 <li style="color: var(--accent-cyan);">3-Month Plan: $197 / ₹18,650</li>
                 <li style="color: var(--accent-cyan);">6-Month Plan: $372 / ₹35,200</li>
             </ul>
-            <a href="https://godhwanichetan.gumroad.com/l/baiglo" target="_blank" class="btn">Secure Pro License</a>
+            <a href="https://godhwanichetan.gumroad.com/l/baiglo" target="_blank" class="btn">Command Pro Swarm</a>
         </div>
     </div>
 
     <footer>
-        <div class="mono" style="margin-bottom: 20px;">C.G. CAPITAL // FIRM_ID: 9325-ALPHA</div>
-        <a href="mailto:support@cgcapitalai.online" style="color: var(--accent-cyan); text-decoration: none;">support@cgcapitalai.online</a> | Telegram: @c_g_capital_ai
-        <p style="opacity: 0.3; margin-top: 30px; font-size: 0.7rem;">© 2026 C.G. Capital. Algorithmic intelligence involves significant risk. All data is for institutional research purposes only.</p>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <h2>C.G. CAPITAL</h2>
+                <p style="color: #555; max-width: 500px;">Algorithmic Macro Research & Sovereign Intelligence. We develop the agents that monitor the plumbing of the global economy.</p>
+                <p style="font-size: 0.7rem; opacity: 0.3; margin-top: 40px;">© 2026 C.G. CAPITAL // FIRM_ID: 9325-ALPHA. ALL DATA IS FOR INSTITUTIONAL RESEARCH ONLY.</p>
+            </div>
+            <div class="contact-hub">
+                <div class="mono" style="color: var(--accent-cyan); margin-bottom: 10px;">OPERATIONS & SUPPORT</div>
+                <a href="mailto:support@cgcapitalai.online" class="contact-link"><div class="contact-icon">@</div> support@cgcapitalai.online</a>
+                <a href="https://t.me/c_g_capital_ai" target="_blank" class="contact-link"><div class="contact-icon">T</div> Telegram: @c_g_capital_ai</a>
+                <a href="https://t.me/Silver_agent_gb_bot" target="_blank" class="contact-link"><div class="contact-icon">A</div> Alicanto Access: @Silver_agent_gb_bot</a>
+            </div>
+        </div>
     </footer>
 
     <script>
         // --- Live Swarm Simulation Engine ---
-        // This JavaScript brings the diagram to life automatically.
         const configs = [
             { id: 1, color: '#00d4ff' }, // Fin Analyst
             { id: 2, color: '#ff9900' }, // Phy Analyst
