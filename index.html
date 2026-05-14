@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>C.G. Capital | Institutional Algorithmic Intelligence</title>
+    <title>C.G. Capital | Algorithmic Macro Intelligence</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Inter:wght@300;400;600&family=Share+Tech+Mono&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -13,13 +13,13 @@
             --text-main: #e0e6ed;
             --text-dim: #8a949d;
             --border-glow: rgba(0, 212, 255, 0.15);
-            --gold: #ffcc00;
+            --gold: #d4af37;
         }
 
         * { box-sizing: border-box; transition: all 0.4s ease; }
         body, html { margin: 0; padding: 0; background-color: var(--bg-deep); color: var(--text-main); font-family: 'Inter', sans-serif; overflow-x: hidden; }
         
-        /* Terminal Background Animation */
+        /* Terminal Scanline Overlay */
         body::before { content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.02), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.02)); background-size: 100% 4px, 3px 100%; z-index: 1000; pointer-events: none; }
 
         h1, h2, h3 { font-family: 'Cinzel', serif; letter-spacing: 3px; text-transform: uppercase; margin: 0;}
@@ -27,108 +27,38 @@
 
         /* Navigation */
         nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 60px; background: rgba(5, 6, 8, 0.95); border-bottom: 1px solid #1a1e26; position: sticky; top: 0; z-index: 999; backdrop-filter: blur(10px); }
-        
         .logo-block { display: flex; align-items: center; gap: 15px; text-decoration: none; }
         .css-logo { height: 45px; width: 45px; border-radius: 50%; border: 2px solid var(--accent-cyan); display: flex; align-items: center; justify-content: center; font-family: 'Cinzel', serif; font-weight: 800; color: var(--accent-cyan); font-size: 1.2rem; box-shadow: 0 0 15px var(--border-glow); background: radial-gradient(circle, #111, #000); }
         .brand-name { font-size: 1.4rem; font-weight: 800; color: #fff; letter-spacing: 2px;}
         
         .nav-links { display: flex; gap: 40px; }
         .nav-links a { color: var(--text-dim); text-decoration: none; font-family: 'Share Tech Mono'; font-size: 0.9rem; cursor: pointer; }
-        .nav-links a:hover, .nav-links a.active { color: var(--accent-cyan); text-shadow: 0 0 10px var(--accent-cyan); }
+        .nav-links a:hover { color: var(--accent-cyan); text-shadow: 0 0 10px var(--accent-cyan); }
 
-        /* Page Management */
-        .page { display: none; padding: 0 20px; min-height: 90vh; animation: fadeIn 0.6s ease-out; }
-        .page.active { display: block; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-        /* Hero Section */
-        .hero { text-align: center; max-width: 1200px; margin: 0 auto; padding-top: 100px; padding-bottom: 60px;}
+        /* Hero */
+        .hero { text-align: center; max-width: 1200px; margin: 0 auto; padding-top: 120px; padding-bottom: 80px; }
         .hero-tag { color: var(--accent-cyan); font-family: 'Share Tech Mono'; letter-spacing: 5px; font-size: 1rem; margin-bottom: 20px; }
         .hero h1 { font-size: 4.5rem; line-height: 1.1; text-shadow: 0 0 30px rgba(0, 212, 255, 0.3); }
         .hero p { color: var(--text-dim); max-width: 750px; margin: 30px auto; font-size: 1.1rem; line-height: 1.8; }
 
         /* Product Cards */
-        .product-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 1200px; margin: 0 auto 100px; padding: 0 20px; }
-        .product-card { background: var(--panel-bg); border: 1px solid #1a1e26; border-radius: 4px; padding: 50px 40px; position: relative; text-decoration: none; color: inherit; display: flex; flex-direction: column; justify-content: center; min-height: 350px; overflow: hidden;}
-        .product-card::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at top right, rgba(0, 212, 255, 0.05), transparent 60%); pointer-events: none; }
-        .product-card:hover { border-color: var(--accent-cyan); box-shadow: 0 10px 40px rgba(0,0,0,0.5); transform: translateY(-5px); }
+        .product-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 1100px; margin: 0 auto 100px; padding: 0 20px; }
+        .product-card { background: var(--panel-bg); border: 1px solid #1a1e26; border-radius: 4px; padding: 50px 40px; position: relative; text-decoration: none; color: inherit; display: flex; flex-direction: column; justify-content: center; min-height: 380px; }
+        .product-card:hover { border-color: var(--accent-cyan); box-shadow: 0 10px 40px rgba(0,0,0,0.6); transform: translateY(-5px); }
         
-        .card-kairos::before { background: radial-gradient(circle at top right, rgba(212, 175, 55, 0.05), transparent 60%); }
-        .card-kairos:hover { border-color: var(--gold); box-shadow: none; transform: none; cursor: default; }
+        .card-kairos:hover { border-color: var(--gold); transform: none; cursor: default; box-shadow: none; }
 
-        .status-pill { position: absolute; top: 20px; right: 20px; background: rgba(0, 212, 255, 0.1); border: 1px solid var(--accent-cyan); color: var(--accent-cyan); font-family: 'Share Tech Mono'; padding: 5px 12px; font-size: 0.7rem; border-radius: 2px; letter-spacing: 1px;}
+        .status-pill { position: absolute; top: 20px; right: 20px; background: rgba(0, 212, 255, 0.1); border: 1px solid var(--accent-cyan); color: var(--accent-cyan); font-family: 'Share Tech Mono'; padding: 5px 12px; font-size: 0.7rem; border-radius: 2px; }
         .status-pill.soon { border-color: var(--gold); color: var(--gold); background: rgba(212, 175, 55, 0.1); }
 
-        .product-card h3 { font-size: 2.5rem; margin-bottom: 20px; z-index: 1;}
-        .product-card p { color: var(--text-dim); line-height: 1.6; margin-bottom: 30px; font-size: 1rem; z-index: 1;}
-        .action-link { font-family: 'Share Tech Mono'; color: var(--accent-cyan); font-size: 0.9rem; letter-spacing: 1px; z-index: 1;}
+        .product-card h3 { font-size: 2.2rem; margin-bottom: 20px; }
+        .product-card p { color: var(--text-dim); line-height: 1.6; margin-bottom: 30px; font-size: 1rem; }
+        .action-link { font-family: 'Share Tech Mono'; color: var(--accent-cyan); font-size: 0.9rem; letter-spacing: 1px; }
 
-        /* ========================================================= */
-        /* TERMINAL SWARM ANIMATION UI */
-        /* ========================================================= */
-        .terminal-wrapper { background: #050505; border: 1px solid #222; border-radius: 6px; max-width: 1100px; margin: 0 auto 80px; padding: 30px; position: relative; overflow-x: auto; box-shadow: 0 20px 50px rgba(0,0,0,0.8); }
-        .terminal-title { position: absolute; top: 10px; left: 15px; font-family: 'Share Tech Mono'; font-size: 0.7rem; color: #555; letter-spacing: 2px; }
-        
-        .neural-core { display: flex; align-items: stretch; justify-content: space-between; gap: 10px; min-width: 900px; margin-top: 20px;}
-        
-        .hw-node { background: #0a0a0a; border: 1px solid #222; border-radius: 4px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; transition: all 0.3s; position: relative; padding: 20px; z-index: 10; }
-        .hw-title { font-family: 'Share Tech Mono'; font-size: 1.1rem; color: #fff; font-weight: bold; letter-spacing: 1px; margin-bottom: 4px; }
-        .hw-sub { font-family: 'Share Tech Mono'; font-size: 0.7rem; color: #777; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; }
-        .brain-status { font-family: 'Share Tech Mono'; font-size: 0.75rem; font-weight: bold; padding: 3px 8px; border-radius: 2px; background: #000; border: 1px solid #333; min-width: 100px; transition: 0.3s;}
-
-        .swarm-container { display: flex; align-items: stretch; flex: 1.5; position: relative; }
-        .junior-stack { display: flex; flex-direction: column; gap: 15px; flex: 1; justify-content: center; z-index: 10; padding: 0 10px; }
-        .jr-desk { background: #0a0a0a; border: 1px solid #222; border-radius: 4px; padding: 15px; text-align: center; transition: all 0.3s; position: relative; }
-        .jr-title { font-family: 'Share Tech Mono'; font-size: 1rem; font-weight: bold; letter-spacing: 1px; margin-bottom: 4px; text-transform: uppercase; }
-        
-        /* Dashed Routing Lines */
-        .router-in, .router-out { position: relative; width: 40px; display: flex; align-items: center; }
-        .route-path { position: absolute; border: 2px dashed #333; transition: all 0.3s; width: 100%; z-index: 1; opacity: 0.3; }
-        
-        /* Left Splitters */
-        .router-in .route-path { border-right: none; right: 0; }
-        .r-in-1 { top: 15%; height: 35%; border-bottom: none; border-top-left-radius: 6px; }
-        .r-in-2 { top: 38%; height: 12%; border-bottom: none; border-top-left-radius: 6px; }
-        .r-in-3 { bottom: 38%; height: 12%; border-top: none; border-bottom-left-radius: 6px; }
-        .r-in-4 { bottom: 15%; height: 35%; border-top: none; border-bottom-left-radius: 6px; }
-
-        /* Right Mergers */
-        .router-out .route-path { border-left: none; left: 0; }
-        .r-out-1 { top: 15%; height: 35%; border-bottom: none; border-top-right-radius: 6px; }
-        .r-out-2 { top: 38%; height: 12%; border-bottom: none; border-top-right-radius: 6px; }
-        .r-out-3 { bottom: 38%; height: 12%; border-top: none; border-bottom-right-radius: 6px; }
-        .r-out-4 { bottom: 15%; height: 35%; border-top: none; border-bottom-right-radius: 6px; }
-        
-        .data-link { width: 30px; height: 2px; background: repeating-linear-gradient(90deg, #333 0, #333 5px, transparent 5px, transparent 10px); background-size: 20px 100%; align-self: center; flex-shrink: 0; transition: 0.3s;}
-
-        /* Active Animation Classes */
-        @keyframes stream { 100% { background-position: -20px 0; } }
-        .path-active { opacity: 1 !important; filter: drop-shadow(0 0 5px currentColor); }
-        .link-active { animation: stream 0.5s linear infinite !important; }
-
-        /* Pricing Table */
-        .pricing-table { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; max-width: 1000px; margin: 0 auto 50px; padding: 0 20px; }
-        .tier-card { background: var(--panel-bg); border: 1px solid #1a1e26; padding: 50px; border-radius: 4px; text-align: center; position: relative; display: flex; flex-direction: column;}
-        .tier-card.pro { border: 1px solid var(--accent-cyan); box-shadow: 0 0 30px rgba(0, 212, 255, 0.05); }
-        .tier-card h3 { font-size: 2rem; margin-bottom: 20px; }
-        
-        .price-box { margin-bottom: 30px; border-bottom: 1px solid #1a1e26; padding-bottom: 30px; }
-        .price-main { font-size: 3rem; font-weight: 800; color: #fff; }
-        .price-sub { display: block; color: var(--text-dim); font-family: 'Share Tech Mono'; margin-top: 10px; }
-        
-        .feature-list { list-style: none; padding: 0; margin: 0 0 30px 0; text-align: left; flex-grow: 1;}
-        .feature-list li { padding: 12px 0; border-bottom: 1px solid #15181f; color: var(--text-dim); display: flex; align-items: flex-start; gap: 10px; line-height: 1.4;}
-        .feature-list li::before { content: "»"; color: var(--accent-cyan); font-weight: bold; margin-top: 2px;}
-
-        .btn { display: block; width: 100%; padding: 18px; background: transparent; border: 1px solid var(--accent-cyan); color: var(--accent-cyan); font-family: 'Share Tech Mono'; text-transform: uppercase; font-weight: bold; cursor: pointer; text-decoration: none; margin-top: auto; text-align: center;}
-        .btn:hover { background: var(--accent-cyan); color: #000; box-shadow: 0 0 20px var(--accent-cyan); }
-        .btn-outline { border-color: #444; color: #fff; }
-        .btn-outline:hover { border-color: #fff; background: transparent; color: #fff; box-shadow: none; }
-
-        footer { text-align: center; padding: 60px; border-top: 1px solid #1a1e26; color: var(--text-dim); font-size: 0.8rem; margin-top: 60px; }
+        footer { text-align: center; padding: 60px; border-top: 1px solid #1a1e26; color: var(--text-dim); font-size: 0.8rem; }
 
         @media (max-width: 900px) {
-            .product-grid, .pricing-table { grid-template-columns: 1fr; }
+            .product-grid { grid-template-columns: 1fr; }
             .hero h1 { font-size: 2.8rem; }
             nav { padding: 15px 25px; flex-direction: column; gap: 15px; }
         }
@@ -137,334 +67,45 @@
 <body>
 
     <nav>
-        <a href="#" onclick="showPage('home')" class="logo-block">
+        <a href="index.html" class="logo-block">
             <div class="css-logo">CG</div>
             <span class="brand-name">C.G. CAPITAL</span>
         </a>
         <div class="nav-links">
-            <a onclick="showPage('home')" id="link-home" class="active">SYSTEMS</a>
-            <a onclick="showPage('alicanto')" id="link-alicanto">ALICANTO</a>
-            <a onclick="showPage('kairos')" id="link-kairos">KAIROS</a>
             <a href="mailto:support@cgcapitalai.online">SUPPORT</a>
+            <a href="https://t.me/c_g_capital_ai" target="_blank">TELEGRAM</a>
         </div>
     </nav>
 
-    <!-- HOME PAGE -->
-    <div id="home" class="page active">
-        <div class="hero">
-            <div class="hero-tag">INTELLIGENCE • EXECUTION • GROWTH</div>
-            <h1>ALGORITHMIC MACRO<br>INTELLIGENCE</h1>
-            <p>C.G. Capital develops proprietary, multi-agent AI ecosystems engineered to extract institutional-grade alpha from structural global imbalances. We don't track the market; we monitor the plumbing of global finance.</p>
-        </div>
-
-        <div class="product-grid">
-            <a href="#" onclick="showPage('alicanto')" class="product-card">
-                <div class="status-pill">SYSTEM ONLINE</div>
-                <h3>ALICANTO</h3>
-                <p>Global Macro & Physical Supply Engine. Powered by a 4-stage neural swarm hunting for systemic deficits 24/7. Identifies physical drains before they manifest in paper markets.</p>
-                <span class="action-link">ENTER TERMINAL ›</span>
-            </a>
-            
-            <div class="product-card card-kairos">
-                <div class="status-pill soon">COMING SOON</div>
-                <h3>KAIROS</h3>
-                <p>Quantitative Momentum & Volatility Engine. High-frequency filtering for large-cap and mid-cap equity execution. Designed for asymmetric risk/reward capture.</p>
-                <span class="action-link" style="color: var(--gold);">BACKTESTING IN PROGRESS ›</span>
-            </div>
-        </div>
+    <div class="hero">
+        <div class="hero-tag">INTELLIGENCE • EXECUTION • GROWTH</div>
+        <h1>ALGORITHMIC MACRO<br>INTELLIGENCE</h1>
+        <p>C.G. Capital engineers proprietary, multi-agent AI ecosystems designed to identify structural market deficits, monitor the global plumbing of finance, and extract institutional alpha before it hits the retail tape.</p>
     </div>
 
-    <!-- ALICANTO PAGE -->
-    <div id="alicanto" class="page">
-        <div class="hero">
-            <div class="hero-tag">PRODUCT ID: ALICANTO_V1.1</div>
-            <h1 style="color: var(--accent-cyan);">THE SENTINEL</h1>
-            <p>Alicanto is a relentless intelligence swarm that consumes 10,000+ data points daily across geopolitical, economic, and physical supply channels to identify the exact moment fiat currency loses its grip on reality.</p>
-            <a href="https://t.me/Silver_agent_gb_bot" target="_blank" class="btn btn-outline" style="max-width: 300px; margin: 0 auto;">Initialize Telegram Bot</a>
-        </div>
-
-        <!-- LIVE TERMINAL SWARM UI -->
-        <div class="terminal-wrapper">
-            <div class="terminal-title">4-STAGE MULTI-AGENT SWARM</div>
-            <div class="neural-core">
-                
-                <!-- STAGE 1: Feeder -->
-                <div class="hw-node" id="node-feeder" style="flex: 0.8; border-color: var(--accent-cyan); box-shadow: inset 0 0 20px rgba(0,212,255,0.1);">
-                    <div class="hw-title">DATA FEEDER</div>
-                    <div class="hw-sub">8vCPU | 32GB ECC</div>
-                    <div class="brain-status" style="border-color: #00ff88; color: #00ff88;">ONLINE</div>
-                </div>
-
-                <div class="data-link" id="link-1"></div>
-
-                <!-- STAGE 2: Junior Swarm -->
-                <div class="swarm-container">
-                    <div class="router-in">
-                        <div class="route-path r-in-1" id="path-in-1"></div>
-                        <div class="route-path r-in-2" id="path-in-2"></div>
-                        <div class="route-path r-in-3" id="path-in-3"></div>
-                        <div class="route-path r-in-4" id="path-in-4"></div>
-                    </div>
-                    
-                    <div class="junior-stack">
-                        <div class="jr-desk" id="desk-1">
-                            <div class="jr-title" style="color: #00d4ff;">FIN ANALYST</div>
-                            <div class="hw-sub">GPT-4o-Mini</div>
-                            <div class="brain-status" id="stat-1" style="color: #777;">IDLE</div>
-                        </div>
-                        <div class="jr-desk" id="desk-2">
-                            <div class="jr-title" style="color: #ff9900;">PHY ANALYST</div>
-                            <div class="hw-sub">GPT-4o-Mini</div>
-                            <div class="brain-status" id="stat-2" style="color: #777;">IDLE</div>
-                        </div>
-                        <div class="jr-desk" id="desk-3">
-                            <div class="jr-title" style="color: #ff3366;">GEO ANALYST</div>
-                            <div class="hw-sub">GPT-4o-Mini</div>
-                            <div class="brain-status" id="stat-3" style="color: #777;">IDLE</div>
-                        </div>
-                        <div class="jr-desk" id="desk-4">
-                            <div class="jr-title" style="color: #b142ff;">DP ANALYST</div>
-                            <div class="hw-sub">GPT-4o-Mini</div>
-                            <div class="brain-status" id="stat-4" style="color: #777;">IDLE</div>
-                        </div>
-                    </div>
-                    
-                    <div class="router-out">
-                        <div class="route-path r-out-1" id="path-out-1"></div>
-                        <div class="route-path r-out-2" id="path-out-2"></div>
-                        <div class="route-path r-out-3" id="path-out-3"></div>
-                        <div class="route-path r-out-4" id="path-out-4"></div>
-                    </div>
-                </div>
-
-                <div class="data-link" id="link-2"></div>
-
-                <!-- STAGE 3: Senior Veto -->
-                <div class="hw-node" id="node-senior" style="flex: 0.8;">
-                    <div class="hw-title" style="color: #b142ff;">SENIOR ANALYST</div>
-                    <div class="hw-sub">GPT-4 EDITOR</div>
-                    <div class="brain-status" id="stat-sr" style="color: #777;">IDLE</div>
-                </div>
-
-                <div class="data-link" id="link-3"></div>
-
-                <!-- STAGE 4: Executive Lead -->
-                <div class="hw-node" id="node-lead" style="flex: 0.8;">
-                    <div class="hw-title" style="color: #ffe600;">LEAD ANALYST</div>
-                    <div class="hw-sub">70B SYNTHESIS</div>
-                    <div class="brain-status" id="stat-lead" style="color: #555;">DORMANT</div>
-                </div>
-
-            </div>
-        </div>
-
-        <div class="hero" style="padding-top: 20px; padding-bottom: 0;">
-            <h2>AUTHORIZATION TIERS</h2>
-        </div>
-
-        <div class="pricing-table">
-            <div class="tier-card">
-                <h3>STACKER</h3>
-                <div class="price-box">
-                    <span class="price-main">$19</span><span class="mono">/MONTH</span>
-                    <span class="price-sub">₹1,800 / MONTH</span>
-                </div>
-                <ul class="feature-list">
-                    <li>Live Global Market Matrix (COMEX/SGE/MCX)</li>
-                    <li>Gold-to-Silver Ratio & Fair Value Analytics</li>
-                    <li>Global Threat Index (DEFCON) Stream</li>
-                    <li>Basic AI Chat Engine Access</li>
-                    <li style="color: #555;">3-Month Plan: $54 / ₹5,100</li>
-                    <li style="color: #555;">6-Month Plan: $102 / ₹9,650</li>
-                </ul>
-                <a href="https://t.me/Silver_agent_gb_bot" target="_blank" class="btn btn-outline">Free Setup via Telegram</a>
-            </div>
-            
-            <div class="tier-card pro">
-                <div class="status-pill" style="top: -15px; left: 50%; transform: translateX(-50%); background: var(--bg-deep);">INSTITUTIONAL STANDARD</div>
-                <h3 style="color: var(--accent-cyan);">MACRO PRO</h3>
-                <div class="price-box">
-                    <span class="price-main">$69</span><span class="mono">/MONTH</span>
-                    <span class="price-sub">₹6,500 / MONTH</span>
-                </div>
-                <ul class="feature-list">
-                    <li><b style="color: #fff;">All Stacker Features Included</b></li>
-                    <li>AI-Synthesized Executive Macro Briefs</li>
-                    <li>Custom Live Matrix Triggers (Price/Keyword)</li>
-                    <li>Institutional Private Vault Access</li>
-                    <li>Full Tier-1 Web Terminal UI Access</li>
-                    <li style="color: var(--accent-cyan);">3-Month Plan: $197 / ₹18,650</li>
-                    <li style="color: var(--accent-cyan);">6-Month Plan: $372 / ₹35,200</li>
-                </ul>
-                <a href="https://godhwanichetan.gumroad.com/l/baiglo" target="_blank" class="btn">Secure Pro License</a>
-            </div>
-        </div>
-    </div>
-
-    <!-- KAIROS PAGE -->
-    <div id="kairos" class="page">
-        <div class="hero" style="padding-top: 150px;">
-            <div class="hero-tag" style="color: var(--gold);">RESTRICTED ACCESS</div>
-            <h1 style="color: var(--gold);">KAIROS ENGINE</h1>
-            <p>Kairos is an advanced quantitative momentum engine designed for volatility compression filtering. Deployment is currently restricted to internal C.G. Capital testing.</p>
-            <div class="mono" style="color: var(--gold); margin-top: 40px; font-size: 1.2rem;">[ STATUS: BACKTESTING PHASE 4 / STOCHASTIC OPTIMIZATION ]</div>
+    <div class="product-grid">
+        <!-- ALICANTO -->
+        <a href="alicanto.html" class="product-card">
+            <div class="status-pill">SYSTEM ONLINE</div>
+            <h3>ALICANTO</h3>
+            <p>The flagship Macro Sentinel. A 4-stage neural swarm engineered to hunt physical supply disruptions and track dark pool flows in real-time.</p>
+            <span class="action-link">ENTER TERMINAL ›</span>
+        </a>
+        
+        <!-- KAIROS -->
+        <div class="product-card card-kairos">
+            <div class="status-pill soon">COMING SOON</div>
+            <h3>KAIROS</h3>
+            <p>Quantitative Momentum Engine. Advanced high-frequency filtering for volatility capture across large-cap and mid-cap equity sectors.</p>
+            <span class="action-link" style="color: var(--gold);">BACKTESTING PHASE 4 ›</span>
         </div>
     </div>
 
     <footer>
         <div class="mono" style="margin-bottom: 20px;">C.G. CAPITAL // FIRM_ID: 9325-ALPHA</div>
         <a href="mailto:support@cgcapitalai.online" style="color: var(--accent-cyan); text-decoration: none;">support@cgcapitalai.online</a> | Telegram: @c_g_capital_ai
-        <p style="opacity: 0.3; margin-top: 30px; font-size: 0.7rem;">© 2026 C.G. Capital. Algorithmic intelligence involves significant risk. All data is for institutional research purposes only.</p>
+        <p style="opacity: 0.3; margin-top: 30px; font-size: 0.7rem;">© 2026 C.G. Capital. All data is for institutional research purposes only.</p>
     </footer>
 
-    <script>
-        // --- Page Routing ---
-        function showPage(pageId) {
-            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
-            document.getElementById(pageId).classList.add('active');
-            
-            document.querySelectorAll('.nav-links a').forEach(link => link.classList.remove('active'));
-            const activeLink = document.getElementById('link-' + pageId);
-            if(activeLink) activeLink.classList.add('active');
-            
-            window.scrollTo(0, 0);
-        }
-
-        // --- Live Swarm Simulation Engine ---
-        const configs = [
-            { id: 1, color: '#00d4ff' }, // Fin
-            { id: 2, color: '#ff9900' }, // Phy
-            { id: 3, color: '#ff3366' }, // Geo
-            { id: 4, color: '#b142ff' }  // DP
-        ];
-
-        function resetSwarm() {
-            // Reset Links
-            document.getElementById('link-1').style.background = 'repeating-linear-gradient(90deg, #333 0, #333 5px, transparent 5px, transparent 10px)';
-            document.getElementById('link-2').style.background = 'repeating-linear-gradient(90deg, #333 0, #333 5px, transparent 5px, transparent 10px)';
-            document.getElementById('link-3').style.background = 'repeating-linear-gradient(90deg, #333 0, #333 5px, transparent 5px, transparent 10px)';
-            document.querySelectorAll('.data-link').forEach(l => l.classList.remove('link-active'));
-
-            // Reset Desks & Paths
-            for(let i=1; i<=4; i++) {
-                let desk = document.getElementById('desk-' + i);
-                desk.style.borderColor = '#222';
-                desk.style.boxShadow = 'none';
-                document.getElementById('stat-' + i).innerHTML = '<span style="color:#777;">IDLE</span>';
-                document.getElementById('stat-' + i).style.borderColor = '#333';
-                
-                let pIn = document.getElementById('path-in-' + i);
-                pIn.style.borderColor = '#333';
-                pIn.classList.remove('path-active');
-                
-                let pOut = document.getElementById('path-out-' + i);
-                pOut.style.borderColor = '#333';
-                pOut.classList.remove('path-active');
-            }
-
-            // Reset Senior & Lead
-            let sr = document.getElementById('node-senior');
-            sr.style.borderColor = '#222';
-            sr.style.boxShadow = 'none';
-            document.getElementById('stat-sr').innerHTML = '<span style="color:#777;">IDLE</span>';
-            document.getElementById('stat-sr').style.borderColor = '#333';
-
-            let lead = document.getElementById('node-lead');
-            lead.style.borderColor = '#222';
-            lead.style.boxShadow = 'none';
-            document.getElementById('stat-lead').innerHTML = '<span style="color:#555;">DORMANT</span>';
-            document.getElementById('stat-lead').style.borderColor = '#333';
-        }
-
-        function runSwarmCycle() {
-            resetSwarm();
-            
-            // Pick a random desk to simulate processing
-            const target = configs[Math.floor(Math.random() * configs.length)];
-            
-            // Step 1: Feeder to Junior
-            setTimeout(() => {
-                let link1 = document.getElementById('link-1');
-                link1.style.background = `repeating-linear-gradient(90deg, ${target.color} 0, ${target.color} 5px, transparent 5px, transparent 10px)`;
-                link1.classList.add('link-active');
-
-                let pIn = document.getElementById('path-in-' + target.id);
-                pIn.style.borderColor = target.color;
-                pIn.style.color = target.color;
-                pIn.classList.add('path-active');
-
-                let desk = document.getElementById('desk-' + target.id);
-                desk.style.borderColor = target.color;
-                desk.style.boxShadow = `inset 0 0 15px ${target.color}20, 0 0 20px ${target.color}20`;
-                
-                let stat = document.getElementById('stat-' + target.id);
-                stat.innerHTML = `<span style="color:${target.color};">AUDITING...</span>`;
-                stat.style.borderColor = target.color;
-            }, 1000);
-
-            // Step 2: Junior passes to Senior
-            setTimeout(() => {
-                // Turn off feed link
-                document.getElementById('link-1').classList.remove('link-active');
-                
-                // Junior Approved
-                document.getElementById('stat-' + target.id).innerHTML = `<span style="color:#00ff88;">APPROVED</span>`;
-                document.getElementById('stat-' + target.id).style.borderColor = '#00ff88';
-
-                // Light up output path
-                let pOut = document.getElementById('path-out-' + target.id);
-                pOut.style.borderColor = target.color;
-                pOut.style.color = target.color;
-                pOut.classList.add('path-active');
-
-                // Activate Senior
-                let link2 = document.getElementById('link-2');
-                link2.style.background = `repeating-linear-gradient(90deg, #b142ff 0, #b142ff 5px, transparent 5px, transparent 10px)`;
-                link2.classList.add('link-active');
-
-                let sr = document.getElementById('node-senior');
-                sr.style.borderColor = '#b142ff';
-                sr.style.boxShadow = `inset 0 0 15px #b142ff20, 0 0 20px #b142ff20`;
-                let statSr = document.getElementById('stat-sr');
-                statSr.innerHTML = `<span style="color:#b142ff;">VETO CHECK...</span>`;
-                statSr.style.borderColor = '#b142ff';
-
-            }, 3500);
-
-            // Step 3: Senior passes to Lead
-            setTimeout(() => {
-                document.getElementById('link-2').classList.remove('link-active');
-                document.getElementById('path-out-' + target.id).classList.remove('path-active');
-                
-                document.getElementById('stat-sr').innerHTML = `<span style="color:#00ff88;">APPROVED</span>`;
-                document.getElementById('stat-sr').style.borderColor = '#00ff88';
-
-                let link3 = document.getElementById('link-3');
-                link3.style.background = `repeating-linear-gradient(90deg, #ffe600 0, #ffe600 5px, transparent 5px, transparent 10px)`;
-                link3.classList.add('link-active');
-
-                let lead = document.getElementById('node-lead');
-                lead.style.borderColor = '#ffe600';
-                lead.style.boxShadow = `inset 0 0 15px #ffe60020, 0 0 20px #ffe60020`;
-                let statLead = document.getElementById('stat-lead');
-                statLead.innerHTML = `<span style="color:#ffe600;">SYNTHESIZING...</span>`;
-                statLead.style.borderColor = '#ffe600';
-
-            }, 6000);
-
-            // Step 4: Complete & Restart
-            setTimeout(() => {
-                document.getElementById('stat-lead').innerHTML = `<span style="color:#00ff88;">LOGGED</span>`;
-                document.getElementById('stat-lead').style.borderColor = '#00ff88';
-                document.getElementById('link-3').classList.remove('link-active');
-            }, 8500);
-
-            setTimeout(runSwarmCycle, 10000);
-        }
-
-        // Start the infinite loop
-        runSwarmCycle();
-
-    </script>
 </body>
 </html>
