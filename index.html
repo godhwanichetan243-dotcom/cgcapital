@@ -3,254 +3,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>C. G. Capital AI | Institutional Intelligence Terminal</title>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-    
+    <title>C.G. Capital | Algorithmic Macro Intelligence</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@300;400;600&family=Share+Tech+Mono&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #050608;
-            --surface: #0d0f14;
-            --border: rgba(255, 255, 255, 0.08);
-            --cyan: #00e6ff;
-            --gold: #f5c451;
-            --red: #ff4d4d;
-            --green: #00ff66;
-            --purple: #bf5af2;
-            --text-main: #f8fafc;
-            --text-muted: #64748b;
-            --mono: 'JetBrains Mono', monospace;
+            --bg-color: #030303;
+            --panel-bg: #0a0a0a;
+            --text-main: #e0e0e0;
+            --text-muted: #888888;
+            --accent-cyan: #00d4ff;
+            --accent-silver: #c0c0c0;
+            --border-color: #1f1f1f;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body { background-color: var(--bg); color: var(--text-main); font-family: 'Inter', sans-serif; line-height: 1.6; }
+        body, html { margin: 0; padding: 0; background-color: var(--bg-color); color: var(--text-main); font-family: 'Inter', sans-serif; overflow-x: hidden; }
+        
+        /* Institutional Typography */
+        h1, h2, h3 { font-family: 'Cinzel', serif; letter-spacing: 2px; font-weight: 500; margin: 0; }
+        .mono { font-family: 'Share Tech Mono', monospace; }
 
-        .container { width: min(1300px, 94%); margin: auto; }
+        /* Navigation */
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 50px; border-bottom: 1px solid var(--border-color); background: rgba(3,3,3,0.9); position: sticky; top: 0; z-index: 100; }
+        .nav-logo-container { display: flex; align-items: center; gap: 15px; }
+        .nav-logo { height: 40px; width: 40px; border-radius: 50%; box-shadow: 0 0 10px rgba(0, 212, 255, 0.3); }
+        .nav-brand { font-size: 1.2rem; color: var(--accent-silver); text-decoration: none; font-weight: 700; }
+        .nav-links a { color: var(--text-muted); text-decoration: none; margin-left: 30px; font-size: 0.9rem; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--accent-cyan); }
 
-        /* NAVIGATION */
-        header { padding: 20px 0; border-bottom: 1px solid var(--border); background: rgba(5,6,8,0.9); backdrop-filter: blur(15px); position: sticky; top: 0; z-index: 1000; }
-        .nav-wrapper { display: flex; justify-content: space-between; align-items: center; }
-        .brand { display: flex; align-items: center; gap: 12px; font-family: 'Space Grotesk'; font-size: 1.4rem; font-weight: 700; cursor: pointer; }
-        .brand-logo { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 1px solid var(--cyan); }
-        .nav-links { display: flex; gap: 30px; align-items: center; }
-        .nav-link { color: var(--text-muted); font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: 0.2s; }
-        .nav-link:hover { color: var(--cyan); }
+        /* Hero Section */
+        .hero { min-height: 70vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 20px; background: radial-gradient(circle at center, #0a1118 0%, #030303 100%); position: relative; }
+        .hero::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 212, 255, 0.03) 2px, rgba(0, 212, 255, 0.03) 4px); pointer-events: none; }
+        .hero h1 { font-size: 4rem; color: #ffffff; text-shadow: 0 0 20px rgba(0, 212, 255, 0.2); margin-bottom: 10px; z-index: 1; }
+        .hero p { font-size: 1.2rem; color: var(--accent-silver); max-width: 600px; line-height: 1.6; z-index: 1; margin-bottom: 30px;}
+        .hero-tagline { font-family: 'Share Tech Mono'; color: var(--accent-cyan); font-size: 0.9rem; letter-spacing: 4px; margin-bottom: 20px; z-index: 1; }
 
-        /* MULTI-PAGE SYSTEM */
-        .page-view { display: none; animation: fadeIn 0.4s ease-out; }
-        .page-view.active { display: block; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        /* Products Section */
+        .products { padding: 80px 50px; max-width: 1200px; margin: 0 auto; }
+        .section-title { font-size: 2rem; color: var(--accent-silver); margin-bottom: 40px; border-bottom: 1px solid var(--border-color); padding-bottom: 15px; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+        
+        .card { background: var(--panel-bg); border: 1px solid var(--border-color); padding: 40px; border-radius: 4px; transition: transform 0.3s, border-color 0.3s; position: relative; overflow: hidden; }
+        .card::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 2px; background: transparent; transition: background 0.3s; }
+        .card:hover { transform: translateY(-5px); border-color: #333; }
+        .card:hover::before { background: linear-gradient(90deg, transparent, var(--accent-cyan), transparent); }
+        
+        .card h3 { font-size: 1.8rem; color: #fff; margin-bottom: 15px; }
+        .card p { color: var(--text-muted); line-height: 1.6; margin-bottom: 30px; font-size: 0.95rem; }
+        
+        .btn { display: inline-block; padding: 12px 24px; font-family: 'Share Tech Mono', monospace; text-decoration: none; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; transition: all 0.3s; border-radius: 2px; border: 1px solid var(--accent-cyan); color: var(--accent-cyan); background: transparent; cursor: pointer; }
+        .btn:hover { background: rgba(0, 212, 255, 0.1); box-shadow: 0 0 15px rgba(0, 212, 255, 0.2); }
+        .btn-disabled { border-color: #333; color: #555; cursor: not-allowed; }
+        .btn-disabled:hover { background: transparent; box-shadow: none; }
 
-        /* HOME PAGE HERO */
-        .hero { padding: 120px 0 80px; text-align: center; }
-        .hero h1 { font-size: clamp(3rem, 7vw, 5rem); line-height: 1; margin-bottom: 24px; font-family: 'Space Grotesk'; font-weight: 700; letter-spacing: -2px; }
-        .hero p { font-size: 1.3rem; color: var(--text-muted); max-width: 700px; margin: 0 auto 50px; }
+        .status-tag { position: absolute; top: 20px; right: 20px; font-family: 'Share Tech Mono'; font-size: 0.7rem; padding: 4px 8px; border: 1px solid; border-radius: 2px; }
+        .tag-active { border-color: var(--accent-cyan); color: var(--accent-cyan); }
+        .tag-dev { border-color: #ffcc00; color: #ffcc00; }
 
-        /* AGENT GRID */
-        .agent-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-bottom: 100px; }
-        .card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 45px; cursor: pointer; transition: 0.3s; }
-        .card:hover { border-color: var(--cyan); transform: translateY(-5px); box-shadow: 0 0 30px rgba(0,230,255,0.1); }
-        .card h2 { font-size: 2.2rem; margin-bottom: 15px; font-family: 'Space Grotesk'; }
-        .tag { display: inline-block; padding: 5px 12px; border-radius: 4px; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; margin-bottom: 20px; letter-spacing: 1px; }
-        .tag-cyan { background: rgba(0,230,255,0.1); color: var(--cyan); border: 1px solid var(--cyan); }
+        /* Footer */
+        footer { padding: 40px 50px; background: var(--panel-bg); border-top: 1px solid var(--border-color); text-align: center; color: #555; font-size: 0.8rem; }
+        footer a { color: var(--text-muted); text-decoration: none; }
+        footer a:hover { color: var(--accent-silver); }
+        .disclaimer { max-width: 800px; margin: 20px auto 0; font-size: 0.7rem; line-height: 1.5; color: #444; }
 
-        /* TERMINAL INTERFACE RECREATION (PRO ONLY) */
-        .terminal-container { 
-            background: #000; border: 1px solid #222; border-radius: 8px; padding: 20px; 
-            font-family: var(--mono); font-size: 0.75rem; color: var(--cyan); 
-            margin: 40px 0; overflow-x: auto;
+        @media (max-width: 768px) {
+            .grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2.5rem; }
+            nav { padding: 15px 20px; }
         }
-        .terminal-header { display: flex; justify-content: space-between; border-bottom: 1px solid #222; padding-bottom: 10px; margin-bottom: 20px; }
-        
-        /* THE SWARM VISUALIZATION */
-        .swarm-grid { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 40px 0; position: relative; }
-        .swarm-node { border: 1px solid #333; padding: 15px; border-radius: 4px; text-align: center; min-width: 140px; background: #080808; position: relative; }
-        .node-active { border-color: var(--red); box-shadow: 0 0 15px rgba(255,77,77,0.2); }
-        .node-label { display: block; font-weight: bold; margin-bottom: 5px; text-transform: uppercase; }
-        .node-status { font-size: 0.6rem; opacity: 0.7; }
-
-        /* THE MACRO MATRIX DASHBOARD */
-        .dashboard-grid { display: grid; grid-template-columns: 1fr 2fr 1fr; gap: 15px; margin-top: 20px; }
-        .dash-panel { border: 1px solid #222; padding: 15px; background: #050505; }
-        .defcon-box { border: 1px solid var(--red); color: var(--red); padding: 10px; text-align: center; font-weight: bold; margin: 15px 0; }
-        .price-row { display: flex; justify-content: space-between; margin: 8px 0; border-bottom: 1px solid #111; padding-bottom: 4px; }
-        
-        .progress-bar { height: 4px; background: #222; margin-top: 5px; position: relative; }
-        .progress-fill { height: 100%; background: var(--green); }
-
-        /* TIERS */
-        .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 60px; }
-        .tier-card { background: var(--surface); border: 1px solid var(--border); padding: 40px; border-radius: 12px; }
-        .pro-tier { border-color: var(--cyan); box-shadow: 0 0 40px rgba(0,230,255,0.05); }
-
-        .btn-buy { display: block; width: 100%; text-align: center; padding: 15px; border-radius: 6px; font-weight: 700; margin-top: 30px; }
-        .btn-cyan { background: var(--cyan); color: #000; }
-        .btn-outline { border: 1px solid var(--border); color: #fff; }
-
-        /* FOOTER & CONTACT */
-        .contact-section { padding: 80px 0; border-top: 1px solid var(--border); text-align: center; }
-        .link-group { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 30px; }
-        .link-item { padding: 12px 24px; border: 1px solid var(--border); border-radius: 6px; font-weight: 600; font-size: 0.9rem; }
     </style>
 </head>
 <body>
 
-<header>
-    <div class="container nav-wrapper">
-        <div class="brand" onclick="showPage('home')">
-            <img src="6248802109012775016.jpg" alt="CG" class="brand-logo" onerror="this.style.display='none'">
-            C. G. Capital AI
+    <nav>
+        <div class="nav-logo-container">
+            <!-- Using your specific logo -->
+            <img src="6248802109012775016.jpg" alt="C.G. Capital Logo" class="nav-logo">
+            <a href="index.html" class="nav-brand">C.G. CAPITAL</a>
         </div>
-        <nav class="nav-links">
-            <span class="nav-link" onclick="showPage('home')">Overview</span>
-            <span class="nav-link" onclick="showPage('alicanto')">Alicanto</span>
-            <span class="nav-link" onclick="document.getElementById('contact').scrollIntoView()">Contact</span>
-        </nav>
+        <div class="nav-links">
+            <a href="#products">Products</a>
+            <a href="mailto:support@cgcapitalai.online">Support</a>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <div class="hero-tagline">INTELLIGENCE • EXECUTION • GROWTH</div>
+        <h1>ALGORITHMIC MACRO INTELLIGENCE</h1>
+        <p>C.G. Capital engineers proprietary, multi-agent AI systems designed to identify structural market deficits, track global supply chains, and secure institutional-grade alpha before it reaches the retail market.</p>
     </div>
-</header>
 
-<div class="container">
-
-    <main id="page-home" class="page-view active">
-        <section class="hero">
-            <h1>Scale Intelligence.</h1>
-            <p>Institutional-grade AI agents for macro tracking and equity research. 24/7 autonomous monitoring of global capital flows.</p>
-            <div class="agent-grid">
-                <div class="card" onclick="showPage('alicanto')">
-                    <span class="tag tag-cyan">Online</span>
-                    <h2>Alicanto Agent</h2>
-                    <p>Macro-intelligence engine. Commodity flows, supply chain disruption, and geopolitical alpha.</p>
-                </div>
-                <div class="card" style="opacity: 0.5; cursor: not-allowed;">
-                    <span class="tag" style="background:#222;">In Dev</span>
-                    <h2>Kairos</h2>
-                    <p>Indian Equity swing trading agent. Systematic momentum filters for NSE/BSE stocks.</p>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <main id="page-alicanto" class="page-view">
-        <section style="padding: 60px 0;">
-            <span class="nav-link" onclick="showPage('home')" style="margin-bottom: 20px; display: inline-block;">← Back to Overview</span>
-            <h1 style="font-size: 3.5rem; font-family: 'Space Grotesk';">Alicanto Protocol</h1>
+    <div class="products" id="products">
+        <h2 class="section-title">Proprietary Arsenal</h2>
+        <div class="grid">
             
-            <div class="pricing-grid">
-                <div class="tier-card">
-                    <h3 style="font-size: 1.5rem; margin-bottom: 10px;">🥈 STACKER TIER</h3>
-                    <p style="color:var(--text-muted); margin-bottom: 20px;">Read-only market pulse. Live data access for casual tracking.</p>
-                    <ul style="list-style: none; font-size: 0.9rem; color: var(--text-muted);">
-                        <li style="margin: 10px 0;">✓ /price, /ratio, /status</li>
-                        <li style="margin: 10px 0;">✓ Global /defcon tracking</li>
-                        <li style="margin: 10px 0;">✓ 10 Messages / Hour</li>
-                    </ul>
-                    <a href="https://godhwanichetan.gumroad.com/l/baiglo" class="btn-buy btn-outline">Subscribe Stacker</a>
-                </div>
-
-                <div class="tier-card pro-tier">
-                    <h3 style="font-size: 1.5rem; margin-bottom: 10px; color: var(--cyan);">🥇 MACRO PRO TIER</h3>
-                    <p style="color:var(--text-muted); margin-bottom: 20px;">Full RAG engine. Programmable research assistant with visual dashboard.</p>
-                    <ul style="list-style: none; font-size: 0.9rem; color: var(--text-muted);">
-                        <li style="margin: 10px 0; color: #fff;">✓ Full Visual Web Terminal Access</li>
-                        <li style="margin: 10px 0; color: #fff;">✓ Custom /alert Triggers (4/day)</li>
-                        <li style="margin: 10px 0; color: #fff;">✓ /inject Memory Injection</li>
-                        <li style="margin: 10px 0; color: #fff;">✓ /query Vector DB Search</li>
-                    </ul>
-                    <a href="https://godhwanichetan.gumroad.com/l/baiglo" class="btn-buy btn-cyan">Subscribe Macro Pro</a>
-                </div>
+            <!-- ALICANTO CARD -->
+            <div class="card">
+                <div class="status-tag tag-active">SYSTEM ONLINE</div>
+                <h3>ALICANTO</h3>
+                <p>The flagship Macro Sentinel. A 4-stage neural swarm engineered to hunt structural supply disruptions, track dark pool physical flows, and calculate real-time fiat debasement metrics across global channels.</p>
+                <a href="alicanto.html" class="btn">Explore Alicanto</a>
             </div>
 
-            <div style="margin-top: 80px;">
-                <h2 style="font-family: 'Space Grotesk'; color: var(--cyan);">[PRO ACCESS ONLY] SYSTEM ARCHITECTURE</h2>
-                <p style="color: var(--text-muted); font-size: 0.9rem;">Visualizing the 4-Stage Multi-Agent Swarm & Terminal Data Feed</p>
-
-                <div class="terminal-container">
-                    <div class="terminal-header">
-                        <span>ALICANTO AI TERMINAL // V1.1.0 ENGINE</span>
-                        <span style="color: var(--green);">● SECURE CONNECTION</span>
-                    </div>
-
-                    <div style="font-size: 0.6rem; opacity: 0.5; margin-bottom: 10px;">4-STAGE MULTI-AGENT SWARM</div>
-                    <div class="swarm-grid">
-                        <div class="swarm-node" style="border-color: var(--cyan);">
-                            <span class="node-label" style="color: var(--cyan);">Data Feeder</span>
-                            <span class="node-status" style="color: var(--green);">ONLINE</span>
-                        </div>
-                        <div style="display: flex; flex-direction: column; gap: 5px;">
-                            <div class="swarm-node"><span class="node-label" style="color: #4dc3ff;">FIN Analyst</span><span class="node-status">IDLE</span></div>
-                            <div class="swarm-node node-active"><span class="node-label" style="color: var(--red);">GEO Analyst</span><span class="node-status">AUDITING...</span></div>
-                            <div class="swarm-node"><span class="node-label" style="color: var(--purple);">DP Analyst</span><span class="node-status">IDLE</span></div>
-                        </div>
-                        <div class="swarm-node">
-                            <span class="node-label" style="color: var(--purple);">Senior Analyst</span>
-                            <span class="node-status">VETO CHECK...</span>
-                        </div>
-                        <div class="swarm-node" style="opacity: 0.3;">
-                            <span class="node-label">Lead Analyst</span>
-                            <span class="node-status">DORMANT</span>
-                        </div>
-                    </div>
-
-                    <div class="dashboard-grid">
-                        <div class="dash-panel">
-                            <div style="color: var(--cyan); margin-bottom: 10px;">MACRO MATRIX</div>
-                            <div class="defcon-box">DEFCON 2<br><span style="font-size: 0.5rem; font-weight: normal;">CRITICAL SHORTAGE</span></div>
-                            <div class="price-row"><span>COMEX Gold</span><span style="color: var(--red);">$4670.80</span></div>
-                            <div class="price-row"><span>COMEX Silver</span><span style="color: var(--red);">$84.43</span></div>
-                            <div class="price-row"><span>DXY Index</span><span style="color: var(--green);">98.35</span></div>
-                            <div style="margin-top: 15px; font-size: 0.6rem;">GSR RISK GAUGE</div>
-                            <div class="progress-bar"><div class="progress-fill" style="width: 75%; background: var(--gold);"></div></div>
-                        </div>
-                        <div class="dash-panel">
-                            <div style="color: var(--cyan); margin-bottom: 10px;">LIVE ARBITRAGE SPREAD (COMEX vs Shanghai)</div>
-                            <div style="height: 120px; border-left: 1px solid #222; border-bottom: 1px solid #222; position: relative;">
-                                <svg width="100%" height="100%" style="position: absolute;">
-                                    <path d="M0,80 Q50,20 100,70 T200,40 T300,90" fill="none" stroke="var(--cyan)" stroke-width="1.5" />
-                                    <path d="M0,90 Q60,30 120,80 T240,50 T300,100" fill="none" stroke="var(--red)" stroke-dasharray="4" stroke-width="1.5" />
-                                </svg>
-                            </div>
-                            <div style="display: flex; justify-content: space-between; margin-top: 10px; font-size: 0.6rem;">
-                                <span>LIVE SPREAD: <span style="color: var(--green);">+$4.50</span></span>
-                                <span>24H HIGH: +$6.50</span>
-                            </div>
-                        </div>
-                        <div class="dash-panel">
-                            <div style="color: var(--cyan); margin-bottom: 10px;">SYSTEM VITALS</div>
-                            <div style="background: rgba(255,77,77,0.1); padding: 10px; text-align: center; border: 1px solid #333;">
-                                <span style="font-size: 0.5rem;">PHYSICAL DRAIN</span><br>
-                                <span style="font-size: 1.2rem; color: var(--red); font-weight: bold;">129 OZ</span>
-                            </div>
-                            <div class="price-row" style="font-size: 0.6rem;"><span>Engine Status:</span><span style="color: var(--red);">● HUNTING</span></div>
-                            <div class="price-row" style="font-size: 0.6rem;"><span>API Latency:</span><span>256ms</span></div>
-                            <div class="price-row" style="font-size: 0.6rem;"><span>System Uptime:</span><span>81h 11m</span></div>
-                            <div style="margin-top: 10px; font-size: 0.5rem;">SIGNAL-TO-NOISE FLOW</div>
-                            <div class="progress-bar"><div class="progress-fill" style="width: 90%; background: var(--purple);"></div></div>
-                        </div>
-                    </div>
-                </div>
+            <!-- KAIROS CARD -->
+            <div class="card">
+                <div class="status-tag tag-dev">IN DEVELOPMENT</div>
+                <h3>KAIROS</h3>
+                <p>Advanced Quantitative Momentum Engine. Designed for high-frequency volatility filtering and momentum execution across large-cap and mid-cap equities. Currently undergoing rigorous backtesting.</p>
+                <span class="btn btn-disabled">Deployment Pending</span>
             </div>
-        </section>
-    </main>
 
-    <section id="contact" class="contact-section">
-        <h2 style="font-family: 'Space Grotesk';">Operational Support</h2>
-        <div class="link-group">
-            <a href="https://godhwanichetan.gumroad.com/l/baiglo" class="link-item" style="background: var(--cyan); color: #000;">Gumroad Store</a>
-            <a href="https://t.me/Silver_agent_gb_bot" class="link-item">Telegram Bot</a>
-            <a href="https://t.me/c_g_capital_ai" class="link-item">Community Support</a>
-            <a href="mailto:partners@cgcapitalai.online" class="link-item">Official Email</a>
         </div>
-    </section>
+    </div>
 
-</div>
-
-<script>
-    function showPage(id) {
-        document.querySelectorAll('.page-view').forEach(p => p.classList.remove('active'));
-        document.getElementById('page-' + id).classList.add('active');
-        window.scrollTo(0,0);
-    }
-</script>
+    <footer>
+        <div>
+            <a href="mailto:support@cgcapitalai.online">support@cgcapitalai.online</a> &nbsp;|&nbsp; 
+            <a href="https://t.me/c_g_capital_ai" target="_blank">Telegram: @c_g_capital_ai</a>
+        </div>
+        <div class="disclaimer">
+            © 2026 C.G. Capital. All rights reserved.<br>
+            DISCLAIMER: The intelligence provided by C.G. Capital and its algorithmic systems (including Alicanto) is for informational and educational purposes only. It does not constitute financial, investment, or trading advice. Markets are inherently volatile, and past performance or systemic identification does not guarantee future results.
+        </div>
+    </footer>
 
 </body>
 </html>
