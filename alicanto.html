@@ -10,53 +10,67 @@
             --bg-deep: #050608;
             --panel-bg: #0d0f14;
             --accent-cyan: #00d4ff;
-            --accent-silver: #c0c0c0;
             --text-main: #e0e6ed;
             --text-dim: #8a949d;
             --border-glow: rgba(0, 212, 255, 0.15);
-            --gold: #d4af37;
         }
 
-        * { box-sizing: border-box; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        * { box-sizing: border-box; transition: all 0.4s ease; }
         body, html { margin: 0; padding: 0; background-color: var(--bg-deep); color: var(--text-main); font-family: 'Inter', sans-serif; overflow-x: hidden; }
         
         body::before { content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.02), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.02)); background-size: 100% 4px, 3px 100%; z-index: 1000; pointer-events: none; }
 
-        h1, h2, h3 { font-family: 'Cinzel', serif; letter-spacing: 3px; text-transform: uppercase; }
+        h1, h2, h3 { font-family: 'Cinzel', serif; letter-spacing: 3px; text-transform: uppercase; margin: 0;}
         .mono { font-family: 'Share Tech Mono', monospace; }
 
         nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 60px; background: rgba(5, 6, 8, 0.95); border-bottom: 1px solid #1a1e26; position: sticky; top: 0; z-index: 999; backdrop-filter: blur(10px); }
+        
         .logo-block { display: flex; align-items: center; gap: 15px; text-decoration: none; }
-        .logo-img { height: 45px; width: 45px; border-radius: 50%; border: 1px solid var(--accent-cyan); box-shadow: 0 0 15px var(--border-glow); }
-        .brand-name { font-size: 1.4rem; font-weight: 800; color: #fff; }
+        .css-logo { height: 45px; width: 45px; border-radius: 50%; border: 2px solid var(--accent-cyan); display: flex; align-items: center; justify-content: center; font-family: 'Cinzel', serif; font-weight: 800; color: var(--accent-cyan); font-size: 1.2rem; box-shadow: 0 0 15px var(--border-glow); background: radial-gradient(circle, #111, #000); }
+        .brand-name { font-size: 1.4rem; font-weight: 800; color: #fff; letter-spacing: 2px;}
         
         .nav-links a { color: var(--text-dim); text-decoration: none; font-family: 'Share Tech Mono'; font-size: 0.9rem; border: 1px solid #333; padding: 8px 15px; border-radius: 2px;}
         .nav-links a:hover { border-color: var(--accent-cyan); color: var(--accent-cyan); box-shadow: 0 0 10px var(--border-glow); }
 
         .hero { text-align: center; max-width: 1000px; margin: 0 auto; padding-top: 80px; padding-bottom: 40px; padding-left: 20px; padding-right: 20px;}
         .hero-tag { color: var(--accent-cyan); font-family: 'Share Tech Mono'; letter-spacing: 5px; font-size: 1rem; margin-bottom: 20px; }
-        .hero h1 { font-size: 4.5rem; margin: 0; line-height: 1; text-shadow: 0 0 30px rgba(0, 212, 255, 0.3); color: var(--accent-cyan); }
+        .hero h1 { font-size: 4.5rem; line-height: 1.1; text-shadow: 0 0 30px rgba(0, 212, 255, 0.3); color: var(--accent-cyan); }
         .hero p { color: var(--text-dim); margin: 30px auto; font-size: 1.1rem; line-height: 1.8; }
 
-        .swarm-section { background: #080a0e; border: 1px solid #1a1e26; padding: 60px 20px; margin: 40px 20px; border-radius: 8px; }
-        .swarm-header { text-align: center; margin-bottom: 50px; }
-        .swarm-img { width: 100%; max-width: 1000px; display: block; margin: 0 auto; border-radius: 4px; box-shadow: 0 0 40px rgba(0,0,0,0.8); border: 1px solid #222; }
-        .swarm-grid { max-width: 1000px; margin: 40px auto 0; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; text-align: center; }
+        /* Pure CSS Swarm Diagram */
+        .swarm-section { background: #080a0e; border: 1px solid #1a1e26; padding: 60px 40px; margin: 40px 20px; border-radius: 8px; text-align: center;}
+        .swarm-header { margin-bottom: 50px; }
+        
+        .css-diagram { display: flex; align-items: center; justify-content: center; gap: 20px; max-width: 900px; margin: 0 auto 40px; flex-wrap: wrap;}
+        .node { background: #0a0a0a; border: 1px solid #333; padding: 20px; border-radius: 4px; flex: 1; min-width: 200px;}
+        .node h4 { font-family: 'Share Tech Mono'; margin: 0 0 10px 0; font-size: 1.1rem; letter-spacing: 1px;}
+        .node p { font-size: 0.8rem; color: #777; margin: 0; line-height: 1.4;}
+        .arrow { color: #555; font-size: 1.5rem; font-family: monospace; }
+        
+        .node-ext { border-color: var(--accent-cyan); box-shadow: inset 0 0 20px rgba(0, 212, 255, 0.05); }
+        .node-ext h4 { color: var(--accent-cyan); }
+        .node-veto { border-color: #b142ff; box-shadow: inset 0 0 20px rgba(177, 66, 255, 0.05); }
+        .node-veto h4 { color: #b142ff; }
+        .node-verd { border-color: #ffcc00; box-shadow: inset 0 0 20px rgba(255, 204, 0, 0.05); }
+        .node-verd h4 { color: #ffcc00; }
 
+        /* Pricing Table */
         .pricing-table { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; max-width: 1000px; margin: 50px auto; padding: 0 20px; }
-        .tier-card { background: var(--panel-bg); border: 1px solid #1a1e26; padding: 50px; border-radius: 4px; text-align: center; position: relative; }
+        .tier-card { background: var(--panel-bg); border: 1px solid #1a1e26; padding: 50px; border-radius: 4px; text-align: center; position: relative; display: flex; flex-direction: column;}
         .tier-card.pro { border: 1px solid var(--accent-cyan); box-shadow: 0 0 30px rgba(0, 212, 255, 0.05); }
         .tier-card h3 { font-size: 2rem; margin-bottom: 20px; }
         
+        .status-pill { position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: var(--bg-deep); border: 1px solid var(--accent-cyan); color: var(--accent-cyan); font-family: 'Share Tech Mono'; padding: 5px 12px; font-size: 0.7rem; border-radius: 2px; letter-spacing: 1px;}
+
         .price-box { margin-bottom: 30px; border-bottom: 1px solid #1a1e26; padding-bottom: 30px; }
         .price-main { font-size: 3rem; font-weight: 800; color: #fff; }
         .price-sub { display: block; color: var(--text-dim); font-family: 'Share Tech Mono'; margin-top: 10px; }
         
-        .feature-list { list-style: none; padding: 0; margin: 30px 0; text-align: left; }
+        .feature-list { list-style: none; padding: 0; margin: 0 0 30px 0; text-align: left; flex-grow: 1;}
         .feature-list li { padding: 12px 0; border-bottom: 1px solid #15181f; color: var(--text-dim); display: flex; align-items: flex-start; gap: 10px; line-height: 1.4;}
         .feature-list li::before { content: "»"; color: var(--accent-cyan); font-weight: bold; margin-top: 2px;}
 
-        .btn { display: block; width: 100%; padding: 18px; background: transparent; border: 1px solid var(--accent-cyan); color: var(--accent-cyan); font-family: 'Share Tech Mono'; text-transform: uppercase; font-weight: bold; cursor: pointer; text-decoration: none; margin-top: 20px; }
+        .btn { display: block; width: 100%; padding: 18px; background: transparent; border: 1px solid var(--accent-cyan); color: var(--accent-cyan); font-family: 'Share Tech Mono'; text-transform: uppercase; font-weight: bold; cursor: pointer; text-decoration: none; margin-top: auto; text-align: center;}
         .btn:hover { background: var(--accent-cyan); color: #000; box-shadow: 0 0 20px var(--accent-cyan); }
         .btn-outline { border-color: #444; color: #fff; }
         .btn-outline:hover { border-color: #fff; background: transparent; color: #fff; box-shadow: none; }
@@ -64,9 +78,10 @@
         footer { text-align: center; padding: 60px; border-top: 1px solid #1a1e26; color: var(--text-dim); font-size: 0.8rem; margin-top: 60px; }
 
         @media (max-width: 900px) {
-            .pricing-table, .swarm-grid { grid-template-columns: 1fr; }
+            .pricing-table, .css-diagram { grid-template-columns: 1fr; flex-direction: column; }
             .hero h1 { font-size: 2.8rem; }
             nav { padding: 15px 25px; flex-direction: column; gap: 15px; }
+            .arrow { transform: rotate(90deg); margin: 10px 0; }
         }
     </style>
 </head>
@@ -74,7 +89,7 @@
 
     <nav>
         <a href="index.html" class="logo-block">
-            <img src="6248802109012775016.jpg" class="logo-img" alt="CG Capital">
+            <div class="css-logo">CG</div>
             <span class="brand-name">C.G. CAPITAL</span>
         </a>
         <div class="nav-links">
@@ -89,20 +104,32 @@
         <a href="https://t.me/Silver_agent_gb_bot" target="_blank" class="btn btn-outline" style="max-width: 300px; margin: 0 auto;">Initialize Telegram Bot</a>
     </div>
 
+    <!-- Pure CSS Diagram (No image file needed) -->
     <div class="swarm-section">
         <div class="swarm-header">
             <h2>THE 6-ANALYST SWARM</h2>
             <p class="mono">Proprietary 4-Stage Intelligence Synthesis Architecture</p>
         </div>
-        <img src="image_a362f0.png" class="swarm-img" alt="Swarm Architecture">
-        <div class="swarm-grid mono">
-            <div><h4 style="color: var(--accent-cyan); margin-bottom: 5px;">DESK 1: EXTRACTION</h4><p style="font-size: 0.8rem; color: var(--text-dim);">4 Junior Analysts filter raw macro noise and kinetic data.</p></div>
-            <div><h4 style="color: #b142ff; margin-bottom: 5px;">DESK 2: VETO</h4><p style="font-size: 0.8rem; color: var(--text-dim);">Senior Analysts apply rigorous context checks to kill retail traps.</p></div>
-            <div><h4 style="color: var(--gold); margin-bottom: 5px;">DESK 3: VERDICT</h4><p style="font-size: 0.8rem; color: var(--text-dim);">Executive 70B Synthesis provides the final macro implication.</p></div>
+        
+        <div class="css-diagram">
+            <div class="node node-ext">
+                <h4>1. EXTRACTION</h4>
+                <p>4 Junior Analysts filter raw macro noise and kinetic data.</p>
+            </div>
+            <div class="arrow">---&gt;</div>
+            <div class="node node-veto">
+                <h4>2. VETO CHECK</h4>
+                <p>Senior Analysts apply rigorous context checks to kill retail traps.</p>
+            </div>
+            <div class="arrow">---&gt;</div>
+            <div class="node node-verd">
+                <h4>3. VERDICT</h4>
+                <p>Executive 70B Synthesis provides the final macro implication.</p>
+            </div>
         </div>
     </div>
 
-    <div class="hero" style="padding-top: 40px; padding-bottom: 0;">
+    <div class="hero" style="padding-top: 20px; padding-bottom: 0;">
         <h2>AUTHORIZATION TIERS</h2>
     </div>
 
@@ -125,7 +152,7 @@
         </div>
         
         <div class="tier-card pro">
-            <div class="status-pill" style="top: -15px; left: 50%; transform: translateX(-50%); background: var(--bg-deep);">INSTITUTIONAL STANDARD</div>
+            <div class="status-pill">INSTITUTIONAL STANDARD</div>
             <h3 style="color: var(--accent-cyan);">MACRO PRO</h3>
             <div class="price-box">
                 <span class="price-main">$69</span><span class="mono">/MONTH</span>
